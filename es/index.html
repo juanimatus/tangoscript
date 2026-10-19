@@ -342,10 +342,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
     <p>Antes de conectar una herramienta, entiendo cómo trabajás. Después automatizo lo que vale la pena.</p>
 
     <div class="tareas" aria-label="Ejemplos de tareas que se automatizan">
-      <div class="tarea"><q>Respondé el precio de cada semilla que consultan por WhatsApp, con el link a la tienda.</q><div class="chips"><span>WhatsApp</span><span>Shopify</span><span>IA</span></div></div>
+      <div class="tarea"><q>Respondé el precio de cada semilla que consultan por WhatsApp, con el link a la tienda.</q><div class="chips"><span>WhatsApp</span><span>Shopify</span><span>Make</span></div></div>
       <div class="tarea"><q>Pasá cada pedido nuevo a la planilla y avisale a logística.</q><div class="chips"><span>WhatsApp</span><span>Google Sheets</span><span>Gmail</span></div></div>
-      <div class="tarea"><q>Ordená las fotos del ensayo por variedad y por día.</q><div class="chips"><span>App móvil</span><span>Google Drive</span><span>Make</span></div></div>
-      <div class="tarea"><q>Si no tenemos el producto, derivalo al distribuidor de su localidad.</q><div class="chips"><span>WhatsApp</span><span>IA</span><span>Make</span></div></div>
+      <div class="tarea"><q>Ordená las fotos del ensayo por variedad y por día.</q><div class="chips"><span>AppSheet</span><span>IA</span><span>Google Drive</span></div></div>
+      <div class="tarea"><q>Si no tenemos el producto, derivalo al distribuidor de su localidad.</q><div class="chips"><span>WhatsApp</span><span>Google Sheets</span><span>Make</span></div></div>
       <div class="tarea"><q>Guardá en mi Notion las ideas que te mando por audio.</q><div class="chips"><span>WhatsApp</span><span>IA</span><span>Notion</span></div></div>
     </div>
   </div>
@@ -401,9 +401,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
         <div class="tarjeta-txt">
           <span class="tarjeta-cliente">Chemical Group · Rodeo Semillas y Chemical Sud</span>
           <h3>De responder cada consulta a mano a un catálogo que contesta solo</h3>
-          <p>Asistente de WhatsApp con IA conectado a la tienda online, que encuentra el producto y manda el link de compra.</p>
-          <div class="cifras-caso"><div><b>6</b><span>opciones con link de compra en una sola respuesta</span></div><div><b>2</b><span>canales de venta conectados: tienda y Mercado Libre</span></div><div><b>24/7</b><span>atención por WhatsApp, también fuera de horario</span></div></div>
-          <details><summary>Ver el caso completo</summary><dl class="star"><div><dt>Situación</dt><dd>La empresa recibe por WhatsApp consultas sobre semillas y fertilizantes, y vende por su tienda AgroVerde, Mercado Libre y distribuidores.</dd></div><div><dt>Desafío</dt><dd>Responder rápido sin que una persona conteste cada mensaje, y llevar cada consulta al canal de compra correcto.</dd></div><div><dt>Qué hice</dt><dd>Armé en Make un asistente con IA y memoria por conversación, conectado al catálogo de la tienda. Busca el producto y devuelve las opciones con link directo; si no lo encuentra, pide provincia y localidad para derivar con un asesor o distribuidor.</dd></div><div><dt>Resultado</dt><dd>Cada consulta recibe respuesta al instante con un link para comprar, y las que necesitan a una persona llegan derivadas con contexto.</dd></div></dl></details>
+          <p>Flujo inteligente en Make, conectado a WhatsApp, que encuentra el producto aunque esté mal escrito y manda el link de compra de la tienda o de Mercado Libre.</p>
+          <div class="cifras-caso"><div><b>1.700+</b><span>mensajes procesados desde septiembre de 2026</span></div><div><b>2</b><span>canales de venta conectados: tienda y Mercado Libre</span></div><div><b>24/7</b><span>atención por WhatsApp, también fuera de horario</span></div></div>
+          <details><summary>Ver el caso completo</summary><dl class="star"><div><dt>Situación</dt><dd>La empresa recibe por WhatsApp consultas sobre semillas y fertilizantes, y vende por su tienda AgroVerde, Mercado Libre y distribuidores.</dd></div><div><dt>Desafío</dt><dd>Responder rápido sin que una persona conteste cada mensaje, llevar cada consulta al canal de compra correcto y no mandar nunca el link de otro producto.</dd></div><div><dt>Qué hice</dt><dd>Armé en Make un flujo conectado a WhatsApp Business con un motor de búsqueda propio: tolera errores de escritura, distingue variedades, envases y cajas, y cruza la tienda con Mercado Libre. Si piden un distribuidor, lo ubica por provincia y localidad desde una planilla que el cliente actualiza.</dd></div><div><dt>Resultado</dt><dd>Más de 1.700 mensajes procesados sin que nadie tenga que contestarlos a mano. Ante la duda, el flujo manda a la tienda antes que a un producto equivocado.</dd></div></dl></details>
         </div>
         <div class="tarjeta-media amanecer">
           <button class="cel" data-full="../img/caso-bot-bienvenida.jpg"><img src="../img/caso-bot-bienvenida.jpg" alt="Bienvenida del asistente con los canales de compra" loading="lazy"></button>
@@ -413,15 +413,15 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 
       <article class="tarjeta">
         <div class="tarjeta-txt">
-          <span class="tarjeta-cliente">Ensayos agronómicos · Campaña 2026/27</span>
-          <h3>De fotos sueltas en el celular a un archivo ordenado por variedad y día</h3>
-          <p>App móvil para registrar los ensayos a campo, conectada a Google Drive.</p>
-          <div class="cifras-caso"><div><b>0</b><span>fotos para renombrar a mano</span></div><div><b>13+</b><span>variedades en seguimiento esta campaña</span></div><div><b>1</b><span>carpeta por variedad, ordenada por día</span></div></div>
-          <details><summary>Ver el caso completo</summary><dl class="star"><div><dt>Situación</dt><dd>En los ensayos a campo se sacan muchas fotos por variedad y por día, y quedaban mezcladas en el celular.</dd></div><div><dt>Desafío</dt><dd>Que cada foto quede identificada y archivada en su lugar sin trabajo extra en el campo.</dd></div><div><dt>Qué hice</dt><dd>Desarrollé una app para elegir la variedad y sacar las fotos. Cada una se nombra con el código de la estaca y la fecha, y se guarda sola en Drive dentro de la carpeta de su variedad, con subcarpetas por día y una hoja de ruta.</dd></div><div><dt>Resultado</dt><dd>El registro del ensayo queda ordenado cronológicamente y listo para revisar, sin renombrar ni mover archivos.</dd></div></dl></details>
+          <span class="tarjeta-cliente">Ensayos agronómicos · AppSheet, Make e IA · Campaña 2026/27</span>
+          <h3>De fotos sueltas en el celular a un archivo que se ordena solo</h3>
+          <p>App en AppSheet con IA: el técnico saca la foto y la IA lee la etiqueta, reconoce la variedad y la archiva en Drive.</p>
+          <div class="cifras-caso"><div><b>0</b><span>fotos para renombrar a mano</span></div><div><b>13+</b><span>variedades en seguimiento esta campaña</span></div><div><b>IA</b><span>lee la etiqueta, aunque esté escrita a mano</span></div></div>
+          <details><summary>Ver el caso completo</summary><dl class="star"><div><dt>Situación</dt><dd>En los ensayos a campo se sacan muchas fotos por variedad y por día, y quedaban mezcladas en el celular.</dd></div><div><dt>Desafío</dt><dd>Que cada foto quede identificada, descripta y archivada en su lugar sin trabajo extra en el campo.</dd></div><div><dt>Qué hice</dt><dd>Desarrollé la app en AppSheet y la automatización en Make. GPT-4o lee la foto: transcribe la etiqueta, describe la muestra y elige la variedad del catálogo. La foto se copia a Drive en la carpeta de su variedad, dentro de la subcarpeta del día, con nombre de código y fecha. Si la IA no está segura, la toma queda marcada para revisar a mano.</dd></div><div><dt>Resultado</dt><dd>El registro del ensayo queda ordenado y descripto, sin renombrar ni mover archivos, y una persona solo interviene cuando la IA tiene dudas.</dd></div></dl></details>
         </div>
         <div class="tarjeta-media campo">
           <button class="cel" data-full="../img/caso-app-variedades.jpg"><img src="../img/caso-app-variedades.jpg" alt="Listado de variedades de la campaña 2026/27 en la app" loading="lazy"></button>
-          <div class="arbol" aria-hidden="true"><b>0015</b> <span>Tomate Perita</span><br>├ Hoja de ruta<br>└ Fotos<br>&nbsp;&nbsp;├ Día1<br>&nbsp;&nbsp;│ └ <b>001515102026</b>.jpg<br>&nbsp;&nbsp;├ Día2<br>&nbsp;&nbsp;└ Día3</div>
+          <div class="arbol" aria-hidden="true"><b>0015</b> <span>Tomate Perita</span><br>├ Hoja de ruta<br>└ Fotos<br>&nbsp;&nbsp;├ Día 1 - 15-10-2026<br>&nbsp;&nbsp;│ └ <b>001515102026</b>_T1-1.jpg<br>&nbsp;&nbsp;└ Día 2 - 16-10-2026</div>
         </div>
       </article>
 

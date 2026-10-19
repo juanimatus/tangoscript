@@ -342,11 +342,11 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
     <p>Before connecting any tool, I learn how you work. Then I automate what’s worth automating.</p>
 
     <div class="tareas" aria-label="Examples of tasks that get automated">
-      <div class="tarea"><q>Reply with the price of every seed people ask about on WhatsApp, with a link to the store.</q><div class="chips"><span>WhatsApp</span><span>Shopify</span><span>IA</span></div></div>
+      <div class="tarea"><q>Reply with the price of every seed people ask about on WhatsApp, with a link to the store.</q><div class="chips"><span>WhatsApp</span><span>Shopify</span><span>Make</span></div></div>
       <div class="tarea"><q>Add every new order to the spreadsheet and let logistics know.</q><div class="chips"><span>WhatsApp</span><span>Google Sheets</span><span>Gmail</span></div></div>
-      <div class="tarea"><q>Sort the field trial photos by variety and by day.</q><div class="chips"><span>Mobile app</span><span>Google Drive</span><span>Make</span></div></div>
-      <div class="tarea"><q>If we don’t carry the product, send them to their local distributor.</q><div class="chips"><span>WhatsApp</span><span>IA</span><span>Make</span></div></div>
-      <div class="tarea"><q>Save the ideas I send you by voice note to my Notion.</q><div class="chips"><span>WhatsApp</span><span>IA</span><span>Notion</span></div></div>
+      <div class="tarea"><q>Sort the field trial photos by variety and by day.</q><div class="chips"><span>AppSheet</span><span>AI</span><span>Google Drive</span></div></div>
+      <div class="tarea"><q>If we don’t carry the product, send them to their local distributor.</q><div class="chips"><span>WhatsApp</span><span>Google Sheets</span><span>Make</span></div></div>
+      <div class="tarea"><q>Save the ideas I send you by voice note to my Notion.</q><div class="chips"><span>WhatsApp</span><span>AI</span><span>Notion</span></div></div>
     </div>
   </div>
 </section>
@@ -401,9 +401,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
         <div class="tarjeta-txt">
           <span class="tarjeta-cliente">Chemical Group · Rodeo Semillas and Chemical Sud</span>
           <h3>From answering every question by hand to a catalog that replies on its own</h3>
-          <p>AI WhatsApp assistant connected to the online store, which finds the product and sends the purchase link.</p>
-          <div class="cifras-caso"><div><b>6</b><span>options with purchase links in a single reply</span></div><div><b>2</b><span>sales channels connected: store and Mercado Libre</span></div><div><b>24/7</b><span>support on WhatsApp, after hours too</span></div></div>
-          <details><summary>See the full case</summary><dl class="star"><div><dt>Situation</dt><dd>The company gets questions about seeds and fertilizers on WhatsApp, and sells through its AgroVerde store, Mercado Libre and distributors.</dd></div><div><dt>Challenge</dt><dd>Reply fast without a person answering every message, and send each request to the right place to buy.</dd></div><div><dt>What I did</dt><dd>I built an AI assistant in Make with per-conversation memory, connected to the store catalog. It searches for the product and replies with direct links; if it can’t find it, it asks for the customer’s location to hand off to an advisor or distributor.</dd></div><div><dt>Result</dt><dd>Every question gets an instant reply with a link to buy, and the ones that need a person arrive with context.</dd></div></dl></details>
+          <p>A smart workflow in Make, connected to WhatsApp, that finds the product even when it’s misspelled and sends the purchase link from the store or Mercado Libre.</p>
+          <div class="cifras-caso"><div><b>1,700+</b><span>messages handled since September 2026</span></div><div><b>2</b><span>sales channels connected: store and Mercado Libre</span></div><div><b>24/7</b><span>support on WhatsApp, after hours too</span></div></div>
+          <details><summary>See the full case</summary><dl class="star"><div><dt>Situation</dt><dd>The company gets questions about seeds and fertilizers on WhatsApp, and sells through its AgroVerde store, Mercado Libre and distributors.</dd></div><div><dt>Challenge</dt><dd>Reply fast without a person answering every message, send each request to the right place to buy, and never link the wrong product.</dd></div><div><dt>What I did</dt><dd>I built a Make workflow on WhatsApp Business with a custom search engine: it handles typos, tells apart varieties, sizes and bulk boxes, and matches the store against Mercado Libre. When someone asks for a distributor, it finds one by province and town from a spreadsheet the client keeps updated.</dd></div><div><dt>Result</dt><dd>Over 1,700 messages handled without anyone replying by hand. When in doubt, the workflow points to the store rather than to the wrong product.</dd></div></dl></details>
         </div>
         <div class="tarjeta-media amanecer">
           <button class="cel" data-full="../img/caso-bot-bienvenida.jpg"><img src="../img/caso-bot-bienvenida.jpg" alt="Assistant welcome message listing where to buy (in Spanish)" loading="lazy"></button>
@@ -413,15 +413,15 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 
       <article class="tarjeta">
         <div class="tarjeta-txt">
-          <span class="tarjeta-cliente">Crop trials · 2026/27 season</span>
-          <h3>From loose photos on a phone to an archive sorted by variety and day</h3>
-          <p>Mobile app to log field trials, connected to Google Drive.</p>
-          <div class="cifras-caso"><div><b>0</b><span>photos to rename by hand</span></div><div><b>13+</b><span>varieties tracked this season</span></div><div><b>1</b><span>folder per variety, sorted by day</span></div></div>
-          <details><summary>See the full case</summary><dl class="star"><div><dt>Situation</dt><dd>Field trials produce many photos per variety and per day, and they piled up mixed on the phone.</dd></div><div><dt>Challenge</dt><dd>Get every photo identified and filed in the right place with no extra work in the field.</dd></div><div><dt>What I did</dt><dd>I built an app to pick the variety and take the photos. Each one is named with the plot code and date and saved to Drive in its variety’s folder, with subfolders per day and a route sheet.</dd></div><div><dt>Result</dt><dd>The trial log stays in chronological order and ready to review, with no renaming or moving files.</dd></div></dl></details>
+          <span class="tarjeta-cliente">Crop trials · AppSheet, Make and AI · 2026/27 season</span>
+          <h3>From loose photos on a phone to an archive that sorts itself</h3>
+          <p>An AppSheet app with AI: the technician takes the photo, and AI reads the label, recognizes the variety and files it in Drive.</p>
+          <div class="cifras-caso"><div><b>0</b><span>photos to rename by hand</span></div><div><b>13+</b><span>varieties tracked this season</span></div><div><b>AI</b><span>reads the label, even when handwritten</span></div></div>
+          <details><summary>See the full case</summary><dl class="star"><div><dt>Situation</dt><dd>Field trials produce many photos per variety and per day, and they piled up mixed on the phone.</dd></div><div><dt>Challenge</dt><dd>Get every photo identified, described and filed in the right place with no extra work in the field.</dd></div><div><dt>What I did</dt><dd>I built the app in AppSheet and the automation in Make. GPT-4o reads the photo: it transcribes the label, describes the sample and picks the variety from the catalog. The photo is copied to Drive into its variety’s folder, under that day’s subfolder, named with code and date. If the AI isn’t sure, the entry is flagged for manual review.</dd></div><div><dt>Result</dt><dd>The trial log stays organized and described, with no renaming or moving files, and a person only steps in when the AI is unsure.</dd></div></dl></details>
         </div>
         <div class="tarjeta-media campo">
           <button class="cel" data-full="../img/caso-app-variedades.jpg"><img src="../img/caso-app-variedades.jpg" alt="List of 2026/27 season varieties in the app (in Spanish)" loading="lazy"></button>
-          <div class="arbol" aria-hidden="true"><b>0015</b> <span>Plum tomato</span><br>├ Route sheet<br>└ Photos<br>&nbsp;&nbsp;├ Day1<br>&nbsp;&nbsp;│ └ <b>001515102026</b>.jpg<br>&nbsp;&nbsp;├ Day2<br>&nbsp;&nbsp;└ Day3</div>
+          <div class="arbol" aria-hidden="true"><b>0015</b> <span>Plum tomato</span><br>├ Route sheet<br>└ Photos<br>&nbsp;&nbsp;├ Day 1 - 15-10-2026<br>&nbsp;&nbsp;│ └ <b>001515102026</b>_T1-1.jpg<br>&nbsp;&nbsp;└ Day 2 - 16-10-2026</div>
         </div>
       </article>
 
