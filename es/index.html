@@ -234,6 +234,56 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .pie a{text-decoration:none}
 .pie a:hover{text-decoration:underline}
 
+
+/* ---------- casos como tarjetas ---------- */
+.tarjetas{display:grid;gap:20px;margin-top:48px}
+.tarjeta{display:grid;grid-template-columns:1fr 1.05fr;border-radius:28px;overflow:hidden;background:#eef0f3;min-height:520px}
+.tarjeta-txt{padding:clamp(28px,4vw,52px);display:flex;flex-direction:column;gap:18px}
+.tarjeta-cliente{font-size:15px;color:var(--gris);font-weight:500}
+.tarjeta h3{font-size:clamp(30px,3.2vw,44px);line-height:1.08}
+.tarjeta-txt>p{color:var(--gris);max-width:44ch}
+.cifras-caso{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:auto;padding-top:22px;border-top:1px solid rgba(11,22,38,.12)}
+.cifras-caso b{display:block;font:300 clamp(30px,3vw,40px)/1 var(--serif);margin-bottom:6px}
+.cifras-caso span{font-size:14px;color:var(--gris);line-height:1.35;display:block}
+.tarjeta details{border-top:1px solid rgba(11,22,38,.12);padding-top:14px}
+.tarjeta summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:10px;font-weight:500;background:var(--tinta);color:#fff;padding:11px 18px;border-radius:999px;font-size:14.5px}
+.tarjeta summary::-webkit-details-marker{display:none}
+.tarjeta summary::after{content:"+";font-size:18px;line-height:1;transition:transform .3s}
+.tarjeta details[open] summary::after{transform:rotate(45deg)}
+.star{display:grid;gap:14px;margin-top:20px;animation:entra .35s ease}
+.star div{display:grid;grid-template-columns:118px 1fr;gap:14px;font-size:15.5px}
+.star dt{font-weight:600}
+.star dd{color:var(--gris)}
+.tarjeta-media{position:relative;display:flex;align-items:flex-end;justify-content:center;gap:clamp(10px,1.6vw,20px);padding:44px 28px 0;overflow:hidden}
+.tarjeta-media.amanecer{background:linear-gradient(170deg,#1b2a44 0%,#5d5772 45%,#c88a63 78%,#e3a05c 100%)}
+.tarjeta-media.campo{background:linear-gradient(170deg,#dfe3d2 0%,#b9c29b 55%,#8d9a6a 100%)}
+.tarjeta-media.papel{background:linear-gradient(170deg,#e4e8ee 0%,#d3d9e2 100%);align-items:center;padding:40px 32px}
+.tarjeta-media .cel{width:min(220px,44%);margin-bottom:-90px;box-shadow:0 30px 60px -24px rgba(7,19,34,.55)}
+.tarjeta-media.amanecer .cel:nth-child(1){transform:translateY(40px)}
+.tarjeta-media .cel:hover{transform:translateY(-6px)}
+.tarjeta-media .arbol{align-self:center;margin-bottom:60px}
+.en-camino{display:inline-block;align-self:flex-start;font-size:13px;font-weight:500;padding:6px 12px;border-radius:999px;background:#fff;color:var(--tinta)}
+@media(max-width:900px){.tarjeta{grid-template-columns:1fr;min-height:0}.tarjeta-media{min-height:380px}}
+@media(max-width:520px){.cifras-caso{grid-template-columns:1fr 1fr 1fr;gap:10px}.cifras-caso span{font-size:12.5px}.star div{grid-template-columns:1fr;gap:2px}.tarjeta-media .cel{width:56%}.tarjeta-media.amanecer .cel:nth-child(1){display:none}.tarjeta-media .arbol{display:none}}
+
+/* ---------- calculadora ---------- */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);margin-top:48px;align-items:start}
+.calc-form{display:grid;gap:26px}
+.campo label{display:flex;justify-content:space-between;gap:12px;font-weight:500;margin-bottom:10px}
+.campo label output{font:300 26px/1 var(--serif)}
+.campo input[type=range]{width:100%;accent-color:var(--tinta);height:28px}
+.campo input[type=text],.campo input[type=number]{width:100%;font:inherit;padding:13px 16px;border-radius:14px;border:1px solid #cfd4db;background:#fff;color:var(--tinta)}
+.campo input:focus-visible{outline:2px solid var(--alba);outline-offset:2px}
+.campo small{display:block;color:var(--gris);font-size:13.5px;margin-top:8px}
+.calc-res{background:var(--noche);color:#fff;border-radius:28px;padding:clamp(26px,3.5vw,44px);display:grid;gap:26px}
+.calc-res .grande b{display:block;font:300 clamp(54px,7vw,88px)/1 var(--serif)}
+.calc-res .grande span{color:rgba(255,255,255,.7)}
+.calc-res .fila{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-top:22px;border-top:1px solid rgba(255,255,255,.15)}
+.calc-res .fila b{display:block;font:300 34px/1.1 var(--serif)}
+.calc-res .fila span{font-size:14px;color:rgba(255,255,255,.65)}
+.calc-res .aclara{font-size:13px;color:rgba(255,255,255,.5)}
+@media(max-width:860px){.calc{grid-template-columns:1fr}}
+
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:100;background:rgba(7,19,34,.9);display:none;place-items:center;padding:24px;cursor:zoom-out}
 .lb.on{display:grid}
@@ -341,75 +391,77 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 <!-- ============ CASOS ============ -->
 <section class="sec" id="casos" style="padding-top:clamp(96px,12vw,150px)">
   <div class="wrap">
-    <h2 class="titulo">Trabajo real, con clientes reales.</h2>
+    <h2 class="titulo">Casos con resultados concretos.</h2>
+    <p class="bajada">Cada caso cuenta qué pasaba, qué hice y qué cambió.</p>
+    <div class="tarjetas">
 
-    <article class="caso">
-      <div class="caso-head">
-        <div>
-          <h3>Asistente de WhatsApp para Chemical Group</h3>
-          <p class="cliente">Rodeo Semillas, Chemical Sud y la tienda AgroVerde</p>
+      <article class="tarjeta">
+        <div class="tarjeta-txt">
+          <span class="tarjeta-cliente">Chemical Group · Rodeo Semillas y Chemical Sud</span>
+          <h3>De responder cada consulta a mano a un catálogo que contesta solo</h3>
+          <p>Asistente de WhatsApp con IA conectado a la tienda online, que encuentra el producto y manda el link de compra.</p>
+          <div class="cifras-caso"><div><b>6</b><span>opciones con link de compra en una sola respuesta</span></div><div><b>2</b><span>canales de venta conectados: tienda y Mercado Libre</span></div><div><b>24/7</b><span>atención por WhatsApp, también fuera de horario</span></div></div>
+          <details><summary>Ver el caso completo</summary><dl class="star"><div><dt>Situación</dt><dd>La empresa recibe por WhatsApp consultas sobre semillas y fertilizantes, y vende por su tienda AgroVerde, Mercado Libre y distribuidores.</dd></div><div><dt>Desafío</dt><dd>Responder rápido sin que una persona conteste cada mensaje, y llevar cada consulta al canal de compra correcto.</dd></div><div><dt>Qué hice</dt><dd>Armé en Make un asistente con IA y memoria por conversación, conectado al catálogo de la tienda. Busca el producto y devuelve las opciones con link directo; si no lo encuentra, pide provincia y localidad para derivar con un asesor o distribuidor.</dd></div><div><dt>Resultado</dt><dd>Cada consulta recibe respuesta al instante con un link para comprar, y las que necesitan a una persona llegan derivadas con contexto.</dd></div></dl></details>
         </div>
-        <div class="caso-txt">
-          <p><strong>Antes,</strong> cada consulta por un producto, un precio o un distribuidor se respondía a mano.</p>
-          <p><strong>Ahora</strong> el asistente busca en el catálogo de la tienda y devuelve las opciones con link directo. Si no encuentra el producto, pide provincia y localidad y deriva con un asesor.</p>
+        <div class="tarjeta-media amanecer">
+          <button class="cel" data-full="../img/caso-bot-bienvenida.jpg"><img src="../img/caso-bot-bienvenida.jpg" alt="Bienvenida del asistente con los canales de compra" loading="lazy"></button>
+          <button class="cel" data-full="../img/caso-bot-catalogo.jpg"><img src="../img/caso-bot-catalogo.jpg" alt="El asistente encuentra seis opciones en el catálogo con links a la tienda" loading="lazy"></button>
         </div>
-      </div>
-      <div class="mesa amanecer">
-        <button class="cel" data-full="../img/caso-bot-bienvenida.jpg"><img src="../img/caso-bot-bienvenida.jpg" alt="Bienvenida del asistente con los canales de compra" loading="lazy"></button>
-        <button class="cel" data-full="../img/caso-bot-catalogo.jpg"><img src="../img/caso-bot-catalogo.jpg" alt="El asistente encuentra seis opciones en el catálogo con links a la tienda" loading="lazy"></button>
-        <button class="cel" data-full="../img/caso-bot-derivacion.jpg"><img src="../img/caso-bot-derivacion.jpg" alt="Cuando no encuentra el producto, ofrece derivar con un asesor" loading="lazy"></button>
-      </div>
-    </article>
+      </article>
 
-    <article class="caso">
-      <div class="caso-head">
-        <div>
-          <h3>Diario de campo para ensayos agronómicos</h3>
-          <p class="cliente">App móvil y Google Drive, campaña 2026/27</p>
+      <article class="tarjeta">
+        <div class="tarjeta-txt">
+          <span class="tarjeta-cliente">Ensayos agronómicos · Campaña 2026/27</span>
+          <h3>De fotos sueltas en el celular a un archivo ordenado por variedad y día</h3>
+          <p>App móvil para registrar los ensayos a campo, conectada a Google Drive.</p>
+          <div class="cifras-caso"><div><b>0</b><span>fotos para renombrar a mano</span></div><div><b>13+</b><span>variedades en seguimiento esta campaña</span></div><div><b>1</b><span>carpeta por variedad, ordenada por día</span></div></div>
+          <details><summary>Ver el caso completo</summary><dl class="star"><div><dt>Situación</dt><dd>En los ensayos a campo se sacan muchas fotos por variedad y por día, y quedaban mezcladas en el celular.</dd></div><div><dt>Desafío</dt><dd>Que cada foto quede identificada y archivada en su lugar sin trabajo extra en el campo.</dd></div><div><dt>Qué hice</dt><dd>Desarrollé una app para elegir la variedad y sacar las fotos. Cada una se nombra con el código de la estaca y la fecha, y se guarda sola en Drive dentro de la carpeta de su variedad, con subcarpetas por día y una hoja de ruta.</dd></div><div><dt>Resultado</dt><dd>El registro del ensayo queda ordenado cronológicamente y listo para revisar, sin renombrar ni mover archivos.</dd></div></dl></details>
         </div>
-        <div class="caso-txt">
-          <p><strong>Antes,</strong> las fotos quedaban sueltas en el celular y había que renombrarlas a mano.</p>
-          <p><strong>Ahora</strong> se elige la variedad en la app y se sacan las fotos. Cada una se nombra con el código de la estaca y la fecha, y cae sola en su carpeta, ordenada por día.</p>
+        <div class="tarjeta-media campo">
+          <button class="cel" data-full="../img/caso-app-variedades.jpg"><img src="../img/caso-app-variedades.jpg" alt="Listado de variedades de la campaña 2026/27 en la app" loading="lazy"></button>
+          <div class="arbol" aria-hidden="true"><b>0015</b> <span>Tomate Perita</span><br>├ Hoja de ruta<br>└ Fotos<br>&nbsp;&nbsp;├ Día1<br>&nbsp;&nbsp;│ └ <b>001515102026</b>.jpg<br>&nbsp;&nbsp;├ Día2<br>&nbsp;&nbsp;└ Día3</div>
         </div>
-      </div>
-      <div class="mesa campo">
-        <button class="cel" data-full="../img/caso-app-variedades.jpg"><img src="../img/caso-app-variedades.jpg" alt="Listado de variedades de la campaña 2026/27 en la app" loading="lazy"></button>
-        <div class="arbol" aria-label="Carpetas que se generan en Drive">
-          <b>0015</b> <span>Tomate Perita</span><br>
-          ├ Hoja de ruta<br>
-          └ Fotos<br>
-          &nbsp;&nbsp;├ Día1<br>
-          &nbsp;&nbsp;│ └ <b>001515102026</b>.jpg<br>
-          &nbsp;&nbsp;├ Día2<br>
-          &nbsp;&nbsp;└ Día3
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="caso">
-      <div class="caso-head">
-        <div>
-          <h3>Banco de ideas, de WhatsApp a Notion</h3>
-          <p class="cliente">Producto propio para freelancers</p>
+      <article class="tarjeta">
+        <div class="tarjeta-txt">
+          <span class="en-camino">En desarrollo</span>
+          <span class="tarjeta-cliente">Producto propio · Freelancers y emprendedores</span>
+          <h3>Banco de ideas: de un mensaje de WhatsApp a tu Notion</h3>
+          <p>Mandás la idea por WhatsApp, la IA la clasifica y queda guardada en una plantilla de Notion.</p>
+          <div class="cifras-caso"><div><b>1</b><span>mensaje para guardar una idea</span></div><div><b>0</b><span>apps que abrir</span></div><div><b>IA</b><span>clasifica cada idea por tema</span></div></div>
         </div>
-        <div class="caso-txt">
-          <p><strong>Antes,</strong> las ideas se perdían entre audios y notas porque abrir Notion lleva demasiados pasos.</p>
-          <p><strong>Ahora</strong> la idea se manda por WhatsApp, la IA la clasifica y queda guardada en la plantilla.</p>
-        </div>
-      </div>
-      <div class="mesa papel">
-        <div class="ideas" aria-label="Ejemplo de una idea que pasa de WhatsApp a Notion">
-          <div class="burbuja">Hacer un reel con el antes y después de un proceso automatizado</div>
-          <div class="paso-ia">La IA la clasifica y Make la guarda</div>
-          <div class="notion">
-            <div><span>Banco de ideas</span><span></span></div>
-            <div><span>Reel antes y después de un proceso</span><i>Contenido</i></div>
-            <div><span>Presupuestos automáticos</span><i>Producto</i></div>
-            <div><span>Charla para comercios de la zona</span><i>Ventas</i></div>
+        <div class="tarjeta-media papel">
+          <div class="ideas" aria-hidden="true">
+            <div class="burbuja">Hacer un reel con el antes y después de un proceso automatizado</div>
+            <div class="paso-ia">La IA la clasifica y Make la guarda</div>
+            <div class="notion"><div><span>Banco de ideas</span><span></span></div><div><span>Reel antes y después de un proceso</span><i>Contenido</i></div><div><span>Presupuestos automáticos</span><i>Producto</i></div><div><span>Charla para comercios de la zona</span><i>Ventas</i></div></div>
           </div>
         </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALCULADORA ============ -->
+<section class="sec" id="calculadora" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="titulo">¿Cuánto te cuesta hacerlo a mano?</h2>
+    <p class="bajada">Una cuenta rápida con tus números. Nada se guarda ni se envía hasta que vos lo decidas.</p>
+    <div class="calc">
+      <form class="calc-form" id="calc" onsubmit="return false">
+        <div class="campo"><label for="c-horas">Horas por semana en tareas repetitivas <output id="o-horas">8</output></label><input type="range" id="c-horas" min="1" max="40" value="8"></div>
+        <div class="campo"><label for="c-valor">Cuánto vale una hora de tu trabajo <span>USD</span></label><input type="number" id="c-valor" min="1" step="1" value="10" inputmode="numeric"><small>Si no lo sabés, usá lo que cobrarías por una hora de trabajo.</small></div>
+        <div class="campo"><label for="c-tarea">¿Qué tarea te come más tiempo?</label><input type="text" id="c-tarea" maxlength="80" placeholder="Por ejemplo: responder consultas de precios"></div>
+      </form>
+      <div class="calc-res" aria-live="polite">
+        <div class="grande"><b id="r-anio">384</b><span>horas al año</span></div>
+        <div class="fila"><div><b id="r-dias">48</b><span>días de trabajo de 8 horas</span></div><div><b id="r-plata">3.840</b><span>USD al año en tiempo</span></div></div>
+        <a class="btn btn-claro" id="calc-wa" href="#" target="_blank" rel="noopener">Contámelo por WhatsApp</a>
+        <p class="aclara">Calculado sobre 48 semanas de trabajo. No incluye errores ni consultas que se pierden.</p>
       </div>
-    </article>
+    </div>
   </div>
 </section>
 
@@ -553,6 +605,16 @@ function loop(now){ if(cv.getBoundingClientRect().bottom>0) dibujar(now); if(!re
 addEventListener('resize',()=>{medir();dibujar(performance.now())});
 addEventListener('scroll',scrollHero,{passive:true});
 medir(); scrollHero(); reduce?dibujar(0):requestAnimationFrame(loop);
+
+
+/* ===== Calculadora ===== */
+(()=>{const h=document.getElementById('c-horas'),v=document.getElementById('c-valor'),t=document.getElementById('c-tarea'),oh=document.getElementById('o-horas'),wa=document.getElementById('calc-wa');
+const fmt=n=>Math.round(n).toLocaleString('es-AR');
+const MSG='Hola Juani. Calculé en tu web que dedico unas {h} horas por semana a tareas repetitivas{t}. ¿Vemos si se puede automatizar?', MSG_T=' ({t})';
+function calc(){const hs=+h.value||0, val=Math.max(0,+v.value||0), anio=hs*48;
+oh.textContent=hs;document.getElementById('r-anio').textContent=fmt(anio);document.getElementById('r-dias').textContent=fmt(anio/8);document.getElementById('r-plata').textContent=fmt(anio*val);
+const tarea=t.value.trim();wa.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(MSG.replace('{h}',hs).replace('{t}',tarea?MSG_T.replace('{t}',tarea):''))}`;}
+[h,v,t].forEach(e=>e.addEventListener('input',calc));calc();})();
 
 /* ===== Capturas ampliadas ===== */
 const lb=document.getElementById('lb'), lbImg=lb.querySelector('img');

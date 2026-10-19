@@ -234,6 +234,56 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .pie a{text-decoration:none}
 .pie a:hover{text-decoration:underline}
 
+
+/* ---------- casos como tarjetas ---------- */
+.tarjetas{display:grid;gap:20px;margin-top:48px}
+.tarjeta{display:grid;grid-template-columns:1fr 1.05fr;border-radius:28px;overflow:hidden;background:#eef0f3;min-height:520px}
+.tarjeta-txt{padding:clamp(28px,4vw,52px);display:flex;flex-direction:column;gap:18px}
+.tarjeta-cliente{font-size:15px;color:var(--gris);font-weight:500}
+.tarjeta h3{font-size:clamp(30px,3.2vw,44px);line-height:1.08}
+.tarjeta-txt>p{color:var(--gris);max-width:44ch}
+.cifras-caso{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:auto;padding-top:22px;border-top:1px solid rgba(11,22,38,.12)}
+.cifras-caso b{display:block;font:300 clamp(30px,3vw,40px)/1 var(--serif);margin-bottom:6px}
+.cifras-caso span{font-size:14px;color:var(--gris);line-height:1.35;display:block}
+.tarjeta details{border-top:1px solid rgba(11,22,38,.12);padding-top:14px}
+.tarjeta summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:10px;font-weight:500;background:var(--tinta);color:#fff;padding:11px 18px;border-radius:999px;font-size:14.5px}
+.tarjeta summary::-webkit-details-marker{display:none}
+.tarjeta summary::after{content:"+";font-size:18px;line-height:1;transition:transform .3s}
+.tarjeta details[open] summary::after{transform:rotate(45deg)}
+.star{display:grid;gap:14px;margin-top:20px;animation:entra .35s ease}
+.star div{display:grid;grid-template-columns:118px 1fr;gap:14px;font-size:15.5px}
+.star dt{font-weight:600}
+.star dd{color:var(--gris)}
+.tarjeta-media{position:relative;display:flex;align-items:flex-end;justify-content:center;gap:clamp(10px,1.6vw,20px);padding:44px 28px 0;overflow:hidden}
+.tarjeta-media.amanecer{background:linear-gradient(170deg,#1b2a44 0%,#5d5772 45%,#c88a63 78%,#e3a05c 100%)}
+.tarjeta-media.campo{background:linear-gradient(170deg,#dfe3d2 0%,#b9c29b 55%,#8d9a6a 100%)}
+.tarjeta-media.papel{background:linear-gradient(170deg,#e4e8ee 0%,#d3d9e2 100%);align-items:center;padding:40px 32px}
+.tarjeta-media .cel{width:min(220px,44%);margin-bottom:-90px;box-shadow:0 30px 60px -24px rgba(7,19,34,.55)}
+.tarjeta-media.amanecer .cel:nth-child(1){transform:translateY(40px)}
+.tarjeta-media .cel:hover{transform:translateY(-6px)}
+.tarjeta-media .arbol{align-self:center;margin-bottom:60px}
+.en-camino{display:inline-block;align-self:flex-start;font-size:13px;font-weight:500;padding:6px 12px;border-radius:999px;background:#fff;color:var(--tinta)}
+@media(max-width:900px){.tarjeta{grid-template-columns:1fr;min-height:0}.tarjeta-media{min-height:380px}}
+@media(max-width:520px){.cifras-caso{grid-template-columns:1fr 1fr 1fr;gap:10px}.cifras-caso span{font-size:12.5px}.star div{grid-template-columns:1fr;gap:2px}.tarjeta-media .cel{width:56%}.tarjeta-media.amanecer .cel:nth-child(1){display:none}.tarjeta-media .arbol{display:none}}
+
+/* ---------- calculadora ---------- */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);margin-top:48px;align-items:start}
+.calc-form{display:grid;gap:26px}
+.campo label{display:flex;justify-content:space-between;gap:12px;font-weight:500;margin-bottom:10px}
+.campo label output{font:300 26px/1 var(--serif)}
+.campo input[type=range]{width:100%;accent-color:var(--tinta);height:28px}
+.campo input[type=text],.campo input[type=number]{width:100%;font:inherit;padding:13px 16px;border-radius:14px;border:1px solid #cfd4db;background:#fff;color:var(--tinta)}
+.campo input:focus-visible{outline:2px solid var(--alba);outline-offset:2px}
+.campo small{display:block;color:var(--gris);font-size:13.5px;margin-top:8px}
+.calc-res{background:var(--noche);color:#fff;border-radius:28px;padding:clamp(26px,3.5vw,44px);display:grid;gap:26px}
+.calc-res .grande b{display:block;font:300 clamp(54px,7vw,88px)/1 var(--serif)}
+.calc-res .grande span{color:rgba(255,255,255,.7)}
+.calc-res .fila{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-top:22px;border-top:1px solid rgba(255,255,255,.15)}
+.calc-res .fila b{display:block;font:300 34px/1.1 var(--serif)}
+.calc-res .fila span{font-size:14px;color:rgba(255,255,255,.65)}
+.calc-res .aclara{font-size:13px;color:rgba(255,255,255,.5)}
+@media(max-width:860px){.calc{grid-template-columns:1fr}}
+
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:100;background:rgba(7,19,34,.9);display:none;place-items:center;padding:24px;cursor:zoom-out}
 .lb.on{display:grid}
@@ -341,75 +391,77 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 <!-- ============ CASOS ============ -->
 <section class="sec" id="casos" style="padding-top:clamp(96px,12vw,150px)">
   <div class="wrap">
-    <h2 class="titulo">Real work, with real clients.</h2>
+    <h2 class="titulo">Case studies with concrete results.</h2>
+    <p class="bajada">Each case covers what was happening, what I did and what changed.</p>
+    <div class="tarjetas">
 
-    <article class="caso">
-      <div class="caso-head">
-        <div>
-          <h3>WhatsApp assistant for Chemical Group</h3>
-          <p class="cliente">Rodeo Semillas, Chemical Sud and the AgroVerde store</p>
+      <article class="tarjeta">
+        <div class="tarjeta-txt">
+          <span class="tarjeta-cliente">Chemical Group · Rodeo Semillas and Chemical Sud</span>
+          <h3>From answering every question by hand to a catalog that replies on its own</h3>
+          <p>AI WhatsApp assistant connected to the online store, which finds the product and sends the purchase link.</p>
+          <div class="cifras-caso"><div><b>6</b><span>options with purchase links in a single reply</span></div><div><b>2</b><span>sales channels connected: store and Mercado Libre</span></div><div><b>24/7</b><span>support on WhatsApp, after hours too</span></div></div>
+          <details><summary>See the full case</summary><dl class="star"><div><dt>Situation</dt><dd>The company gets questions about seeds and fertilizers on WhatsApp, and sells through its AgroVerde store, Mercado Libre and distributors.</dd></div><div><dt>Challenge</dt><dd>Reply fast without a person answering every message, and send each request to the right place to buy.</dd></div><div><dt>What I did</dt><dd>I built an AI assistant in Make with per-conversation memory, connected to the store catalog. It searches for the product and replies with direct links; if it can’t find it, it asks for the customer’s location to hand off to an advisor or distributor.</dd></div><div><dt>Result</dt><dd>Every question gets an instant reply with a link to buy, and the ones that need a person arrive with context.</dd></div></dl></details>
         </div>
-        <div class="caso-txt">
-          <p><strong>Before,</strong> every question about a product, a price or a distributor was answered by hand.</p>
-          <p><strong>Now</strong> the assistant searches the store catalog and replies with direct links. If it can’t find the product, it asks for the customer’s location and hands off to an advisor.</p>
+        <div class="tarjeta-media amanecer">
+          <button class="cel" data-full="../img/caso-bot-bienvenida.jpg"><img src="../img/caso-bot-bienvenida.jpg" alt="Assistant welcome message listing where to buy (in Spanish)" loading="lazy"></button>
+          <button class="cel" data-full="../img/caso-bot-catalogo.jpg"><img src="../img/caso-bot-catalogo.jpg" alt="The assistant finds six catalog matches with store links (in Spanish)" loading="lazy"></button>
         </div>
-      </div>
-      <div class="mesa amanecer">
-        <button class="cel" data-full="../img/caso-bot-bienvenida.jpg"><img src="../img/caso-bot-bienvenida.jpg" alt="Assistant welcome message listing where to buy (in Spanish)" loading="lazy"></button>
-        <button class="cel" data-full="../img/caso-bot-catalogo.jpg"><img src="../img/caso-bot-catalogo.jpg" alt="The assistant finds six catalog matches with store links (in Spanish)" loading="lazy"></button>
-        <button class="cel" data-full="../img/caso-bot-derivacion.jpg"><img src="../img/caso-bot-derivacion.jpg" alt="When a product isn’t found, it offers an advisor (in Spanish)" loading="lazy"></button>
-      </div>
-    </article>
+      </article>
 
-    <article class="caso">
-      <div class="caso-head">
-        <div>
-          <h3>Field journal for crop trials</h3>
-          <p class="cliente">Mobile app and Google Drive, 2026/27 season</p>
+      <article class="tarjeta">
+        <div class="tarjeta-txt">
+          <span class="tarjeta-cliente">Crop trials · 2026/27 season</span>
+          <h3>From loose photos on a phone to an archive sorted by variety and day</h3>
+          <p>Mobile app to log field trials, connected to Google Drive.</p>
+          <div class="cifras-caso"><div><b>0</b><span>photos to rename by hand</span></div><div><b>13+</b><span>varieties tracked this season</span></div><div><b>1</b><span>folder per variety, sorted by day</span></div></div>
+          <details><summary>See the full case</summary><dl class="star"><div><dt>Situation</dt><dd>Field trials produce many photos per variety and per day, and they piled up mixed on the phone.</dd></div><div><dt>Challenge</dt><dd>Get every photo identified and filed in the right place with no extra work in the field.</dd></div><div><dt>What I did</dt><dd>I built an app to pick the variety and take the photos. Each one is named with the plot code and date and saved to Drive in its variety’s folder, with subfolders per day and a route sheet.</dd></div><div><dt>Result</dt><dd>The trial log stays in chronological order and ready to review, with no renaming or moving files.</dd></div></dl></details>
         </div>
-        <div class="caso-txt">
-          <p><strong>Before,</strong> photos piled up on the phone and had to be renamed by hand.</p>
-          <p><strong>Now</strong> you pick the variety in the app and take the photos. Each one is named with the plot code and date and lands in its own folder, sorted by day.</p>
+        <div class="tarjeta-media campo">
+          <button class="cel" data-full="../img/caso-app-variedades.jpg"><img src="../img/caso-app-variedades.jpg" alt="List of 2026/27 season varieties in the app (in Spanish)" loading="lazy"></button>
+          <div class="arbol" aria-hidden="true"><b>0015</b> <span>Plum tomato</span><br>├ Route sheet<br>└ Photos<br>&nbsp;&nbsp;├ Day1<br>&nbsp;&nbsp;│ └ <b>001515102026</b>.jpg<br>&nbsp;&nbsp;├ Day2<br>&nbsp;&nbsp;└ Day3</div>
         </div>
-      </div>
-      <div class="mesa campo">
-        <button class="cel" data-full="../img/caso-app-variedades.jpg"><img src="../img/caso-app-variedades.jpg" alt="List of 2026/27 season varieties in the app (in Spanish)" loading="lazy"></button>
-        <div class="arbol" aria-label="Folders created in Drive">
-          <b>0015</b> <span>Plum tomato</span><br>
-          ├ Route sheet<br>
-          └ Photos<br>
-          &nbsp;&nbsp;├ Day1<br>
-          &nbsp;&nbsp;│ └ <b>001515102026</b>.jpg<br>
-          &nbsp;&nbsp;├ Day2<br>
-          &nbsp;&nbsp;└ Day3
-        </div>
-      </div>
-    </article>
+      </article>
 
-    <article class="caso">
-      <div class="caso-head">
-        <div>
-          <h3>Idea bank, from WhatsApp to Notion</h3>
-          <p class="cliente">My own product for freelancers</p>
+      <article class="tarjeta">
+        <div class="tarjeta-txt">
+          <span class="en-camino">In development</span>
+          <span class="tarjeta-cliente">My own product · Freelancers and entrepreneurs</span>
+          <h3>Idea bank: from a WhatsApp message to your Notion</h3>
+          <p>Send the idea on WhatsApp, AI tags it and it’s saved to a Notion template.</p>
+          <div class="cifras-caso"><div><b>1</b><span>message to save an idea</span></div><div><b>0</b><span>apps to open</span></div><div><b>AI</b><span>tags each idea by topic</span></div></div>
         </div>
-        <div class="caso-txt">
-          <p><strong>Before,</strong> ideas got lost in voice notes and scraps because opening Notion takes too many steps.</p>
-          <p><strong>Now</strong> you send the idea on WhatsApp, AI tags it and it’s saved to the template.</p>
-        </div>
-      </div>
-      <div class="mesa papel">
-        <div class="ideas" aria-label="Example of an idea going from WhatsApp to Notion">
-          <div class="burbuja">Make a reel showing the before and after of an automated process</div>
-          <div class="paso-ia">AI tags it and Make saves it</div>
-          <div class="notion">
-            <div><span>Idea bank</span><span></span></div>
-            <div><span>Before and after process reel</span><i>Content</i></div>
-            <div><span>Automatic quotes</span><i>Product</i></div>
-            <div><span>Talk for local businesses</span><i>Sales</i></div>
+        <div class="tarjeta-media papel">
+          <div class="ideas" aria-hidden="true">
+            <div class="burbuja">Make a reel showing the before and after of an automated process</div>
+            <div class="paso-ia">AI tags it and Make saves it</div>
+            <div class="notion"><div><span>Idea bank</span><span></span></div><div><span>Before and after process reel</span><i>Content</i></div><div><span>Automatic quotes</span><i>Product</i></div><div><span>Talk for local businesses</span><i>Sales</i></div></div>
           </div>
         </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALCULADORA ============ -->
+<section class="sec" id="calculadora" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="titulo">What does doing it by hand cost you?</h2>
+    <p class="bajada">A quick estimate with your own numbers. Nothing is saved or sent unless you choose to.</p>
+    <div class="calc">
+      <form class="calc-form" id="calc" onsubmit="return false">
+        <div class="campo"><label for="c-horas">Hours per week on repetitive tasks <output id="o-horas">8</output></label><input type="range" id="c-horas" min="1" max="40" value="8"></div>
+        <div class="campo"><label for="c-valor">What an hour of your work is worth <span>USD</span></label><input type="number" id="c-valor" min="1" step="1" value="10" inputmode="numeric"><small>If you’re not sure, use what you’d charge for an hour of work.</small></div>
+        <div class="campo"><label for="c-tarea">Which task takes most of your time?</label><input type="text" id="c-tarea" maxlength="80" placeholder="For example: answering price questions"></div>
+      </form>
+      <div class="calc-res" aria-live="polite">
+        <div class="grande"><b id="r-anio">384</b><span>hours a year</span></div>
+        <div class="fila"><div><b id="r-dias">48</b><span>8-hour workdays</span></div><div><b id="r-plata">3.840</b><span>USD a year in time</span></div></div>
+        <a class="btn btn-claro" id="calc-wa" href="#" target="_blank" rel="noopener">Tell me on WhatsApp</a>
+        <p class="aclara">Based on 48 working weeks. Doesn’t include mistakes or lost inquiries.</p>
       </div>
-    </article>
+    </div>
   </div>
 </section>
 
@@ -553,6 +605,16 @@ function loop(now){ if(cv.getBoundingClientRect().bottom>0) dibujar(now); if(!re
 addEventListener('resize',()=>{medir();dibujar(performance.now())});
 addEventListener('scroll',scrollHero,{passive:true});
 medir(); scrollHero(); reduce?dibujar(0):requestAnimationFrame(loop);
+
+
+/* ===== Calculadora ===== */
+(()=>{const h=document.getElementById('c-horas'),v=document.getElementById('c-valor'),t=document.getElementById('c-tarea'),oh=document.getElementById('o-horas'),wa=document.getElementById('calc-wa');
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+const MSG='Hi Juani. Your site’s calculator says I spend about {h} hours a week on repetitive tasks{t}. Can we see if it can be automated?', MSG_T=' ({t})';
+function calc(){const hs=+h.value||0, val=Math.max(0,+v.value||0), anio=hs*48;
+oh.textContent=hs;document.getElementById('r-anio').textContent=fmt(anio);document.getElementById('r-dias').textContent=fmt(anio/8);document.getElementById('r-plata').textContent=fmt(anio*val);
+const tarea=t.value.trim();wa.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(MSG.replace('{h}',hs).replace('{t}',tarea?MSG_T.replace('{t}',tarea):''))}`;}
+[h,v,t].forEach(e=>e.addEventListener('input',calc));calc();})();
 
 /* ===== Capturas ampliadas ===== */
 const lb=document.getElementById('lb'), lbImg=lb.querySelector('img');
