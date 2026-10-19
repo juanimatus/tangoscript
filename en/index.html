@@ -1,0 +1,624 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TangoScript — First I organize, then I automate</title>
+<meta name="description" content="Process consulting and AI automation for small businesses and entrepreneurs. Make, n8n and WhatsApp. Juan Ignacio Matus.">
+<link rel="canonical" href="https://tangoscript.vercel.app/en/">
+<link rel="alternate" hreflang="es" href="https://tangoscript.vercel.app/es/">
+<link rel="alternate" hreflang="en" href="https://tangoscript.vercel.app/en/">
+<link rel="alternate" hreflang="x-default" href="https://tangoscript.vercel.app/en/">
+<meta property="og:title" content="TangoScript — First I organize, then I automate">
+<meta property="og:description" content="Process consulting and AI automation for small businesses and entrepreneurs.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://tangoscript.vercel.app/img/juani.jpg">
+<meta name="theme-color" content="#071322">
+<link rel="icon" type="image/png" href="../img/logo.png">
+<link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   Tokens
+   noche: el azul del logo · alba: el amanecer sobre la cordillera
+   ============================================================ */
+:root{
+  --noche:#071322;
+  --noche-2:#13243d;
+  --malva:#5d5772;
+  --alba:#e3a05c;
+  --crema:#f2edda;      /* el círculo del logo */
+  --papel:#fbfbf9;
+  --tinta:#0b1626;
+  --gris:#5a6372;
+  --linea:#e2e4e8;
+  --serif:'Newsreader',Georgia,serif;
+  --sans:'Hanken Grotesk',system-ui,-apple-system,Segoe UI,sans-serif;
+  --gutter:clamp(18px,4.5vw,48px);
+  --ancho:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--papel);color:var(--tinta);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--alba);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--ancho);margin:0 auto;padding:0 var(--gutter)}
+h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-optical-sizing:auto}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;gap:10px;font:500 15px/1 var(--sans);text-decoration:none;padding:14px 22px;border-radius:999px;transition:background .25s,color .25s,box-shadow .25s}
+.btn-claro{background:#fff;color:var(--tinta)}
+.btn-claro:hover{background:var(--crema)}
+.btn-tinta{background:var(--tinta);color:#fff}
+.btn-tinta:hover{background:var(--noche-2)}
+.btn-linea{color:inherit;box-shadow:inset 0 0 0 1px currentColor}
+.btn-linea:hover{box-shadow:inset 0 0 0 1.5px currentColor}
+.wa-ico{width:17px;height:17px}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;inset:0 0 auto;z-index:40;color:#fff;transition:background .35s,color .35s,box-shadow .35s}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.marca{display:inline-flex;align-items:center;gap:10px;font:600 17px/1 var(--sans);letter-spacing:-.01em;text-decoration:none}
+.marca img{width:28px;height:28px;border-radius:50%}
+.nav-links{display:flex;gap:28px;font-size:15px}
+.nav-links a{text-decoration:none;opacity:.8}
+.nav-links a:hover{opacity:1}
+.nav .btn{padding:10px 18px;font-size:14px}
+.derecha{display:flex;align-items:center;gap:18px}
+.idioma{display:flex;gap:6px;font-size:14px}
+.idioma span[aria-current]{font-weight:600}
+.idioma span[aria-hidden]{opacity:.45}
+.idioma a{text-decoration:none;opacity:.7}
+.idioma a:hover{opacity:1;text-decoration:underline;text-underline-offset:3px}
+.nav.claro{background:rgba(251,251,249,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:var(--tinta);box-shadow:0 1px 0 var(--linea)}
+.nav.claro .btn-claro{background:var(--tinta);color:#fff}
+@media(max-width:820px){.nav-links{display:none}}
+
+/* ---------- hero: de la noche al alba ---------- */
+.hero{position:relative;height:190vh;background:var(--noche)}
+.hero-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff}
+.cielo,.alba{position:absolute;inset:0}
+.cielo{background:linear-gradient(180deg,#040b16 0%,var(--noche) 35%,var(--noche-2) 70%,#22304a 100%)}
+.alba{background:linear-gradient(180deg,#0c1a30 0%,#2b3654 30%,var(--malva) 58%,#c88a63 80%,var(--alba) 100%);opacity:0}
+#surcos{position:absolute;left:0;right:0;bottom:0;width:100%;height:44%}
+.hero-txt{position:relative;z-index:2;padding:0 var(--gutter);margin-top:-26vh}
+.hero h1{font-size:clamp(44px,7.4vw,96px);line-height:1.02;max-width:13ch;margin:0 auto}
+.hero p{font-size:clamp(17px,1.5vw,19px);color:rgba(255,255,255,.78);max-width:40ch;margin:22px auto 30px}
+.hero-pista{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;font-size:13px;color:rgba(255,255,255,.6)}
+
+/* ---------- secciones ---------- */
+.sec{padding:clamp(96px,13vw,160px) 0}
+.titulo{font-size:clamp(36px,4.8vw,62px);line-height:1.05;max-width:18ch}
+.bajada{color:var(--gris);font-size:18px;max-width:56ch;margin-top:18px}
+
+/* planteo */
+.planteo p{font-family:var(--serif);font-weight:300;font-size:clamp(28px,3.4vw,44px);line-height:1.22;max-width:26ch}
+.planteo p+p{color:var(--gris);margin-top:.6em}
+
+/* tareas */
+.tareas{margin-top:56px;border-top:1px solid var(--linea)}
+.tarea{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:26px 0;border-bottom:1px solid var(--linea)}
+.tarea q{font-family:var(--serif);font-size:clamp(21px,2.1vw,27px);line-height:1.3;quotes:"“" "”"}
+.chips{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.chips span{font-size:13px;color:var(--gris);background:#eff1f3;padding:6px 11px;border-radius:999px;white-space:nowrap}
+@media(max-width:760px){.tarea{grid-template-columns:1fr;gap:12px}.chips{justify-content:flex-start}}
+
+/* ---------- demo ---------- */
+.demo{background:var(--noche);color:#e9edf3}
+.demo .bajada{color:rgba(233,237,243,.66)}
+.escenarios{display:flex;gap:8px;flex-wrap:wrap;margin:40px 0 22px}
+.escenarios button{font:500 14px/1 var(--sans);color:rgba(233,237,243,.8);background:transparent;border:0;box-shadow:inset 0 0 0 1px rgba(233,237,243,.2);padding:11px 16px;border-radius:999px;cursor:pointer;transition:all .25s}
+.escenarios button:hover{color:#fff;box-shadow:inset 0 0 0 1px rgba(233,237,243,.45)}
+.escenarios button[aria-selected="true"]{background:var(--crema);color:var(--tinta);box-shadow:none}
+.demo-grid{display:grid;grid-template-columns:minmax(0,360px) 1fr;gap:20px}
+@media(max-width:900px){.demo-grid{grid-template-columns:1fr}}
+.tel{background:#0e1d33;border-radius:30px;overflow:hidden;display:flex;flex-direction:column;height:540px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.tel-top{display:flex;align-items:center;gap:12px;padding:15px 18px;border-bottom:1px solid rgba(255,255,255,.08)}
+.tel-av{width:36px;height:36px;border-radius:50%;background:var(--crema);color:var(--tinta);display:grid;place-items:center;font-weight:600;font-size:13px}
+.tel-top b{display:block;font-weight:500;font-size:15px}
+.tel-top small{font-size:12.5px;color:rgba(233,237,243,.55)}
+.chat{flex:1;overflow-y:auto;padding:18px 14px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+.msg{max-width:85%;padding:10px 13px 8px;border-radius:16px;font-size:14.5px;line-height:1.45;animation:entra .3s ease}
+.msg small{display:block;text-align:right;font-size:10.5px;opacity:.55;margin-top:4px}
+.msg.cli{align-self:flex-end;background:#2a4a6e;border-bottom-right-radius:5px}
+.msg.bot{align-self:flex-start;background:#1a2b44;border-bottom-left-radius:5px}
+.escribe{align-self:flex-start;background:#1a2b44;border-radius:16px;padding:12px 14px;display:flex;gap:4px}
+.escribe i{width:6px;height:6px;border-radius:50%;background:rgba(233,237,243,.6);animation:late 1.2s infinite}
+.escribe i:nth-child(2){animation-delay:.2s}.escribe i:nth-child(3){animation-delay:.4s}
+@keyframes late{0%,60%,100%{opacity:.25}30%{opacity:1}}
+@keyframes entra{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.tel-pie{padding:12px;border-top:1px solid rgba(255,255,255,.08)}
+.tel-pie div{background:#0a1628;border-radius:999px;padding:10px 16px;font-size:13.5px;color:rgba(233,237,243,.4)}
+.flujo{background:#0e1d33;border-radius:30px;padding:clamp(20px,2.6vw,30px);display:flex;flex-direction:column;gap:22px;min-width:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.flujo-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:15px}
+.flujo-top b{font-weight:500}
+.estado{font-size:13px;color:rgba(233,237,243,.65);display:inline-flex;gap:8px;align-items:center}
+.estado::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--alba)}
+.nodos{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.nodo{background:#0a1628;border-radius:16px;padding:14px 12px;min-height:116px;display:flex;flex-direction:column;gap:6px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);transition:box-shadow .35s,background .35s}
+.nodo b{font-weight:500;font-size:14px;line-height:1.2}
+.nodo small{font-size:12px;color:rgba(233,237,243,.5);line-height:1.35}
+.nodo.activo{box-shadow:inset 0 0 0 1.5px var(--alba);background:#14243b}
+.nodo.hecho{box-shadow:inset 0 0 0 1px rgba(227,160,92,.4)}
+.ramas{display:flex;flex-direction:column;gap:4px;margin-top:auto}
+.ramas span{font-size:11.5px;padding:3px 8px;border-radius:6px;background:#14243b;color:rgba(233,237,243,.45)}
+.ramas span.si{background:rgba(227,160,92,.18);color:var(--alba)}
+@media(max-width:700px){.nodos{grid-template-columns:1fr 1fr}.nodo:last-child{grid-column:span 2}}
+.registro{background:#08111f;border-radius:16px;padding:16px 18px;font-size:13px;line-height:1.75;min-height:168px;color:rgba(233,237,243,.78);font-variant-numeric:tabular-nums}
+.registro div{display:flex;gap:12px;animation:entra .3s ease}
+.registro time{color:rgba(233,237,243,.35);flex-shrink:0}
+.registro em{font-style:normal;color:var(--alba)}
+.cifras{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cifras div{border-radius:14px;padding:14px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.cifras b{display:block;font:300 28px/1.1 var(--serif)}
+.cifras small{font-size:12.5px;color:rgba(233,237,243,.55)}
+.nota{margin-top:20px;font-size:13.5px;color:rgba(233,237,243,.45)}
+
+/* ---------- casos ---------- */
+.caso{padding-top:clamp(70px,9vw,110px)}
+.caso-head{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:end;margin-bottom:34px}
+.caso h3{font-size:clamp(32px,3.8vw,50px);line-height:1.06}
+.cliente{color:var(--gris);margin-top:10px;font-size:16px}
+.caso-txt p{color:var(--gris);max-width:52ch}
+.caso-txt p+p{margin-top:12px}
+.caso-txt strong{color:var(--tinta);font-weight:600}
+@media(max-width:860px){.caso-head{grid-template-columns:1fr;align-items:start}}
+.mesa{position:relative;border-radius:28px;overflow:hidden;padding:clamp(34px,6vw,80px) clamp(16px,4vw,60px);display:flex;justify-content:center;align-items:flex-end;gap:clamp(10px,2vw,26px);min-height:clamp(360px,48vw,620px)}
+.mesa.amanecer{background:linear-gradient(170deg,#1b2a44 0%,#5d5772 45%,#c88a63 78%,#e3a05c 100%)}
+.mesa.campo{background:linear-gradient(170deg,#dfe3d2 0%,#b9c29b 55%,#8d9a6a 100%)}
+.mesa.papel{background:linear-gradient(170deg,#eceef1 0%,#dde1e7 100%)}
+.cel{position:relative;width:min(250px,30%);aspect-ratio:9/19.4;border-radius:30px;padding:6px;background:#0b1626;box-shadow:0 40px 70px -30px rgba(7,19,34,.6);border:0;cursor:zoom-in;flex-shrink:0;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.cel img{width:100%;height:100%;object-fit:cover;object-position:top;border-radius:24px}
+.cel:hover{transform:translateY(-8px)}
+.mesa.amanecer .cel:nth-child(2){width:min(280px,34%)}
+.arbol{background:#0b1626;color:#dfe4ec;border-radius:20px;padding:22px 24px;font-size:14px;line-height:1.95;width:min(300px,46%);box-shadow:0 40px 70px -30px rgba(7,19,34,.55);align-self:center;font-variant-numeric:tabular-nums}
+.arbol b{color:var(--alba);font-weight:500}
+.arbol span{color:rgba(223,228,236,.5)}
+.ideas{width:100%;max-width:480px;display:grid;gap:14px;align-self:center}
+.burbuja{justify-self:end;max-width:82%;background:#2a4a6e;color:#fff;padding:12px 15px;border-radius:16px 16px 5px 16px;font-size:15px}
+.paso-ia{justify-self:center;font-size:13.5px;color:var(--gris)}
+.notion{background:#fff;border-radius:18px;overflow:hidden;font-size:15px;box-shadow:0 30px 60px -30px rgba(7,19,34,.35)}
+.notion div{display:grid;grid-template-columns:1fr auto;gap:10px;padding:12px 16px;border-top:1px solid var(--linea)}
+.notion div:first-child{border-top:0;font-weight:600}
+.notion i{font-style:normal;font-size:12.5px;padding:3px 9px;border-radius:6px;background:#e9eef6;color:#2a4a6e}
+@media(max-width:560px){.cel{width:46%}.mesa.amanecer .cel:nth-child(1){display:none}.mesa.amanecer .cel:nth-child(2){width:50%}.arbol{width:100%}.mesa{flex-wrap:wrap}}
+
+/* ---------- proceso ---------- */
+.pasos{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,40px);margin-top:56px;counter-reset:p}
+.pasos li{counter-increment:p;padding-top:22px;border-top:1px solid var(--tinta)}
+.pasos li::before{content:counter(p);font:300 44px/1 var(--serif);display:block;margin-bottom:22px;color:var(--gris)}
+.pasos h3{font-size:26px;line-height:1.15;margin-bottom:10px}
+.pasos p{color:var(--gris);font-size:16px}
+.pasos .lleva{color:var(--tinta);margin-top:12px;font-size:15px}
+@media(max-width:900px){.pasos{grid-template-columns:1fr 1fr}}
+@media(max-width:540px){.pasos{grid-template-columns:1fr}}
+
+/* ---------- sobre mí ---------- */
+.yo{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(30px,6vw,90px);align-items:start}
+.foto{border-radius:28px;overflow:hidden;aspect-ratio:4/5;position:sticky;top:96px}
+.foto img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
+.carta{font-family:var(--serif);font-weight:300;font-size:clamp(20px,1.85vw,23px);line-height:1.62;max-width:34em}
+.carta p+p{margin-top:1em}
+.carta .primera{font-size:1.45em;line-height:1.3}
+.firma{margin-top:40px;padding-top:24px;border-top:1px solid var(--linea);font-family:var(--sans);font-size:15px;color:var(--gris)}
+.firma b{display:block;color:var(--tinta);font-weight:600;font-size:17px}
+@media(max-width:860px){.yo{grid-template-columns:1fr}.foto{position:relative;top:0;max-width:440px}}
+
+/* ---------- preguntas ---------- */
+.faq{margin-top:48px;border-top:1px solid var(--linea);max-width:860px}
+.faq details{border-bottom:1px solid var(--linea)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:24px 0;font:400 clamp(20px,2vw,25px)/1.3 var(--serif)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:300 26px/1 var(--sans);color:var(--gris);transition:transform .3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--gris);padding:0 40px 26px 0;max-width:62ch}
+.ia{margin-top:56px;display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;color:var(--gris);font-size:16px}
+.ia a{color:var(--tinta);font-weight:500;text-underline-offset:4px}
+
+/* ---------- cierre ---------- */
+.cierre{position:relative;overflow:hidden;color:#fff;text-align:center;padding:clamp(120px,16vw,200px) 0 0;background:linear-gradient(180deg,var(--noche) 0%,#2b3654 34%,var(--malva) 62%,#c88a63 84%,var(--alba) 100%)}
+.cierre h2{font-size:clamp(46px,7.4vw,100px);line-height:1.02;max-width:12ch;margin:0 auto}
+.cierre p{color:rgba(255,255,255,.8);max-width:40ch;margin:24px auto 32px;font-size:18px}
+.cierre .acciones{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.redes{list-style:none;display:flex;justify-content:center;gap:10px;margin-top:34px}
+.redes a{display:inline-flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;font-size:14px;text-decoration:none;color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.35)}
+.redes a:hover{background:rgba(255,255,255,.12)}
+.redes svg{width:16px;height:16px}
+@media(max-width:480px){.redes span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.redes a{padding:11px}}
+.pie{margin-top:clamp(110px,14vw,170px);padding:26px 0 30px;border-top:1px solid rgba(255,255,255,.25);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:14px;color:rgba(255,255,255,.85);text-align:left}
+.pie nav{display:flex;gap:22px}
+.pie a{text-decoration:none}
+.pie a:hover{text-decoration:underline}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(7,19,34,.9);display:none;place-items:center;padding:24px;cursor:zoom-out}
+.lb.on{display:grid}
+.lb img{max-height:92vh;max-width:92vw;border-radius:24px}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero{height:100vh}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="marca"><img src="../img/logo.png" alt="" width="28" height="28">TangoScript</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#demo">Demo</a>
+      <a href="#casos">Work</a>
+      <a href="#proceso">How I work</a>
+      <a href="#sobre-mi">About</a>
+    </nav>
+    <div class="derecha">
+      <div class="idioma" aria-label="Language"><a href="../es/" hreflang="es" lang="es">ES</a><span aria-hidden="true">|</span><span aria-current="true">EN</span></div>
+      <a class="btn btn-claro wa" href="#" target="_blank" rel="noopener">Let’s talk</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-label="Introduction">
+  <div class="hero-pin">
+    <div class="cielo"></div>
+    <div class="alba" id="alba"></div>
+    <canvas id="surcos" aria-hidden="true"></canvas>
+    <div class="hero-txt">
+      <h1>First I organize, then I automate.</h1>
+      <p>Process consulting and AI automation for small businesses and entrepreneurs.</p>
+      <a class="btn btn-claro wa" href="#" target="_blank" rel="noopener">
+        <svg class="wa-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg>
+        Message me on WhatsApp
+      </a>
+    </div>
+    <span class="hero-pista" id="pista">Scroll to bring order</span>
+  </div>
+</section>
+
+<!-- ============ PLANTEO + TAREAS ============ -->
+<section class="sec planteo">
+  <div class="wrap">
+    <p>Your business grew. Your processes didn’t, and now everything depends on you being on top of it.</p>
+    <p>Before connecting any tool, I learn how you work. Then I automate what’s worth automating.</p>
+
+    <div class="tareas" aria-label="Examples of tasks that get automated">
+      <div class="tarea"><q>Reply with the price of every seed people ask about on WhatsApp, with a link to the store.</q><div class="chips"><span>WhatsApp</span><span>Shopify</span><span>IA</span></div></div>
+      <div class="tarea"><q>Add every new order to the spreadsheet and let logistics know.</q><div class="chips"><span>WhatsApp</span><span>Google Sheets</span><span>Gmail</span></div></div>
+      <div class="tarea"><q>Sort the field trial photos by variety and by day.</q><div class="chips"><span>Mobile app</span><span>Google Drive</span><span>Make</span></div></div>
+      <div class="tarea"><q>If we don’t carry the product, send them to their local distributor.</q><div class="chips"><span>WhatsApp</span><span>IA</span><span>Make</span></div></div>
+      <div class="tarea"><q>Save the ideas I send you by voice note to my Notion.</q><div class="chips"><span>WhatsApp</span><span>IA</span><span>Notion</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DEMO ============ -->
+<section class="sec demo" id="demo">
+  <div class="wrap">
+    <h2 class="titulo">Watch an automation reply live.</h2>
+    <p class="bajada">A customer messages a farm supply distributor. On the right, what happens behind each message.</p>
+
+    <div class="escenarios" role="tablist" aria-label="Pick a scenario">
+      <button role="tab" aria-selected="true" data-s="precio">Price question</button>
+      <button role="tab" aria-selected="false" data-s="pedido">New order</button>
+      <button role="tab" aria-selected="false" data-s="asesor">Ask for an advisor</button>
+    </div>
+
+    <div class="demo-grid">
+      <div class="tel" aria-label="WhatsApp chat simulation">
+        <div class="tel-top"><div class="tel-av">AD</div><div><b>Agro Demo</b><small id="tel-estado">online</small></div></div>
+        <div class="chat" id="chat" aria-live="polite"></div>
+        <div class="tel-pie"><div>Type a message</div></div>
+      </div>
+      <div class="flujo">
+        <div class="flujo-top"><b>AI customer service on WhatsApp</b><span class="estado" id="estado">Waiting for a message</span></div>
+        <div class="nodos" id="nodos">
+          <div class="nodo"><b>WhatsApp</b><small>Message comes in</small></div>
+          <div class="nodo"><b>IA</b><small>Understands the request</small></div>
+          <div class="nodo"><b>Router</b><div class="ramas"><span data-b="precio">catalog</span><span data-b="pedido">order</span><span data-b="asesor">advisor</span></div></div>
+          <div class="nodo"><b>Action</b><small id="accion">Depends on the route</small></div>
+          <div class="nodo"><b>Reply</b><small>Sent back on WhatsApp</small></div>
+        </div>
+        <div class="registro" id="registro" aria-live="polite"></div>
+        <div class="cifras">
+          <div><b id="c-tiempo">0.0 s</b><small>response time</small></div>
+          <div><b id="c-ops">0</b><small>steps run</small></div>
+          <div><b id="c-humano">0</b><small>people involved</small></div>
+        </div>
+      </div>
+    </div>
+    <p class="nota">Demo with sample data. Real workflows are built around your products, prices and rules.</p>
+  </div>
+</section>
+
+<!-- ============ CASOS ============ -->
+<section class="sec" id="casos" style="padding-top:clamp(96px,12vw,150px)">
+  <div class="wrap">
+    <h2 class="titulo">Real work, with real clients.</h2>
+
+    <article class="caso">
+      <div class="caso-head">
+        <div>
+          <h3>WhatsApp assistant for Chemical Group</h3>
+          <p class="cliente">Rodeo Semillas, Chemical Sud and the AgroVerde store</p>
+        </div>
+        <div class="caso-txt">
+          <p><strong>Before,</strong> every question about a product, a price or a distributor was answered by hand.</p>
+          <p><strong>Now</strong> the assistant searches the store catalog and replies with direct links. If it can’t find the product, it asks for the customer’s location and hands off to an advisor.</p>
+        </div>
+      </div>
+      <div class="mesa amanecer">
+        <button class="cel" data-full="../img/caso-bot-bienvenida.jpg"><img src="../img/caso-bot-bienvenida.jpg" alt="Assistant welcome message listing where to buy (in Spanish)" loading="lazy"></button>
+        <button class="cel" data-full="../img/caso-bot-catalogo.jpg"><img src="../img/caso-bot-catalogo.jpg" alt="The assistant finds six catalog matches with store links (in Spanish)" loading="lazy"></button>
+        <button class="cel" data-full="../img/caso-bot-derivacion.jpg"><img src="../img/caso-bot-derivacion.jpg" alt="When a product isn’t found, it offers an advisor (in Spanish)" loading="lazy"></button>
+      </div>
+    </article>
+
+    <article class="caso">
+      <div class="caso-head">
+        <div>
+          <h3>Field journal for crop trials</h3>
+          <p class="cliente">Mobile app and Google Drive, 2026/27 season</p>
+        </div>
+        <div class="caso-txt">
+          <p><strong>Before,</strong> photos piled up on the phone and had to be renamed by hand.</p>
+          <p><strong>Now</strong> you pick the variety in the app and take the photos. Each one is named with the plot code and date and lands in its own folder, sorted by day.</p>
+        </div>
+      </div>
+      <div class="mesa campo">
+        <button class="cel" data-full="../img/caso-app-variedades.jpg"><img src="../img/caso-app-variedades.jpg" alt="List of 2026/27 season varieties in the app (in Spanish)" loading="lazy"></button>
+        <div class="arbol" aria-label="Folders created in Drive">
+          <b>0015</b> <span>Plum tomato</span><br>
+          ├ Route sheet<br>
+          └ Photos<br>
+          &nbsp;&nbsp;├ Day1<br>
+          &nbsp;&nbsp;│ └ <b>001515102026</b>.jpg<br>
+          &nbsp;&nbsp;├ Day2<br>
+          &nbsp;&nbsp;└ Day3
+        </div>
+      </div>
+    </article>
+
+    <article class="caso">
+      <div class="caso-head">
+        <div>
+          <h3>Idea bank, from WhatsApp to Notion</h3>
+          <p class="cliente">My own product for freelancers</p>
+        </div>
+        <div class="caso-txt">
+          <p><strong>Before,</strong> ideas got lost in voice notes and scraps because opening Notion takes too many steps.</p>
+          <p><strong>Now</strong> you send the idea on WhatsApp, AI tags it and it’s saved to the template.</p>
+        </div>
+      </div>
+      <div class="mesa papel">
+        <div class="ideas" aria-label="Example of an idea going from WhatsApp to Notion">
+          <div class="burbuja">Make a reel showing the before and after of an automated process</div>
+          <div class="paso-ia">AI tags it and Make saves it</div>
+          <div class="notion">
+            <div><span>Idea bank</span><span></span></div>
+            <div><span>Before and after process reel</span><i>Content</i></div>
+            <div><span>Automatic quotes</span><i>Product</i></div>
+            <div><span>Talk for local businesses</span><i>Sales</i></div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ PROCESO ============ -->
+<section class="sec" id="proceso" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="titulo">How we work together.</h2>
+    <ol class="pasos">
+      <li><h3>Diagnosis</h3><p>You tell me how your business runs and where your time goes.</p><p class="lleva">You get an honest take on whether I can help.</p></li>
+      <li><h3>Order</h3><p>I map the process and we decide what gets automated, what gets simplified and what stays as is.</p><p class="lleva">You get a process map and a fixed quote.</p></li>
+      <li><h3>Automation</h3><p>I build the workflows in Make or n8n and we test them with real cases.</p><p class="lleva">You get working automations.</p></li>
+      <li><h3>Support</h3><p>I walk you through how it all works, monitor it and adjust what’s needed.</p><p class="lleva">You get documentation and support.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ SOBRE MÍ ============ -->
+<section class="sec" id="sobre-mi" style="padding-top:0">
+  <div class="wrap yo">
+    <div class="foto"><img src="../img/juani.jpg" alt="Juan Ignacio Matus, founder of TangoScript" loading="lazy"></div>
+    <div class="carta">
+      <p class="primera">You probably don’t lack ideas. You lack time.</p>
+      <p>You answer the same message again and again, copy data from one spreadsheet to another and feel like everything depends on you. I see it in almost every business I talk to.</p>
+      <p>That’s why I start by understanding how you work. Automating a messy process only makes the mess faster.</p>
+      <p>I’m studying software development (Analista Programador) at UAI and data networks and telecommunications at ITU, Universidad Nacional de Cuyo. I’m also an agricultural technician specialized in winemaking, a graduate of the Don Bosco wine school in Rodeo del Medio, so I know field work and I know technology has to fit the business, not the other way around.</p>
+      <div class="firma"><b>Juan Ignacio Matus</b>Founder of TangoScript</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PREGUNTAS ============ -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="titulo">Common questions.</h2>
+    <div class="faq">
+      <details><summary>Do I need to be technical?</summary><p>No. You know how your business works and I handle the technical side. I explain everything plainly and document how each automation works.</p></details>
+      <details><summary>How much does a project cost?</summary><p>It depends on the scope. After our first call and the process review, I send you a fixed quote with no hidden costs.</p></details>
+      <details><summary>Can you guarantee I’ll save time?</summary><p>Before we start, we agree on how to measure success. If the review shows automation isn’t worth it for you, I’ll tell you.</p></details>
+      <details><summary>Make or n8n?</summary><p>Make is great for getting started fast with a visual builder. n8n makes sense for high volume or when you need more control and predictable costs. We choose based on your case.</p></details>
+      <details><summary>Do you work remotely?</summary><p>Yes. I work with clients in any country, in English or Spanish, over video calls and WhatsApp.</p></details>
+      <details><summary>What if something stops working?</summary><p>Workflows are monitored and documented. If a tool changes or something breaks, I review and fix it. We can also agree on monthly maintenance.</p></details>
+    </div>
+    <p class="ia">Want a second opinion? Ask your AI whether I’m a good fit for your business:
+      <a id="ask-claude" href="#" target="_blank" rel="noopener">Claude</a>
+      <a id="ask-gpt" href="#" target="_blank" rel="noopener">ChatGPT</a>
+    </p>
+  </div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<section class="cierre">
+  <div class="wrap">
+    <h2>Let’s build something together.</h2>
+    <p>Tell me which process is holding you back. In one call we’ll see if it’s worth automating and where to start.</p>
+    <div class="acciones">
+      <a class="btn btn-claro wa" href="#" target="_blank" rel="noopener">Message me on WhatsApp</a>
+    </div>
+    <ul class="redes" aria-label="Social media">
+      <li><a href="https://www.linkedin.com/in/juanimatus/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4z"/></svg><span>LinkedIn</span></a></li>
+      <li><a href="https://www.instagram.com/tangoscript" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><span>Instagram</span></a></li>
+      <li><a href="https://www.tiktok.com/@juanimatus" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.4 2.2 1.8 3.7 4 4v3.2a7.4 7.4 0 0 1-4-1.3v6.3a5.8 5.8 0 1 1-5.8-5.8c.3 0 .6 0 .9.1v3.3a2.6 2.6 0 1 0 1.8 2.4V3z"/></svg><span>TikTok</span></a></li>
+    </ul>
+    <footer class="pie">
+      <span>© <span id="anio"></span> TangoScript</span>
+      <nav aria-label="Contact">
+        <a class="wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="../es/" hreflang="es" lang="es">Español</a>
+      </nav>
+    </footer>
+  </div>
+</section>
+
+</main>
+
+<div class="lb" id="lb" role="dialog" aria-label="Enlarged screenshot"><img alt=""></div>
+
+<script>
+/* ===== Configuración ===== */
+const WHATSAPP='5492634596053';
+const WA_TEXT='Hi Juani, I saw your website and I’d like to organize and automate a process in my business.';
+document.querySelectorAll('.wa').forEach(a=>a.href=`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(WA_TEXT)}`);
+document.getElementById('anio').textContent=new Date().getFullYear();
+(()=>{const url=(location.origin.startsWith('http')?location.origin:'https://tangoscript.vercel.app')+'/en/';
+const q=`Review ${url}, the website of TangoScript (Juan Ignacio Matus, process and AI automation consultant). Based on what you know about my business, would he be a good fit? What could he automate for me, and what should I ask him before starting? If you don't know what my business does, ask me first.`;
+document.getElementById('ask-claude').href='https://claude.ai/new?q='+encodeURIComponent(q);
+document.getElementById('ask-gpt').href='https://chatgpt.com/?q='+encodeURIComponent(q);})();
+
+
+/* recordar el idioma elegido */
+document.querySelectorAll('a[hreflang]').forEach(a=>a.addEventListener('click',()=>{try{localStorage.setItem('ts-idioma',a.hreflang)}catch(e){}}));
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ===== Hero: los surcos se ordenan mientras amanece ===== */
+const hero=document.querySelector('.hero'), alba=document.getElementById('alba'), nav=document.getElementById('nav'), pista=document.getElementById('pista');
+const cv=document.getElementById('surcos'), ctx=cv.getContext('2d');
+let W=0,H=0,dpr=1, orden=reduce?1:0, t0=performance.now();
+const N=46;
+const ruido=[...Array(N)].map(()=>({a:Math.random()*2-1,b:Math.random()*2-1,f:1.5+Math.random()*3,ph:Math.random()*6.28,k:Math.random()}));
+function medir(){dpr=Math.min(devicePixelRatio||1,2);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+const ease=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+function dibujar(now){
+  ctx.clearRect(0,0,W,H);
+  const e=ease(orden), tm=(now-t0)/1000, caos=1-e;
+  const vx=W/2, vy=0;          /* punto de fuga sobre el horizonte */
+  for(let i=0;i<N;i++){
+    const r=ruido[i], u=i/(N-1);
+    const bx=-W*0.35+u*W*1.7;         /* base de cada surco, abajo */
+    ctx.beginPath();
+    const pasos=36;
+    for(let s=0;s<=pasos;s++){
+      const p=s/pasos;                  /* 0 abajo → 1 horizonte */
+      let x=bx+(vx-bx)*p, y=H+(vy-H)*p;
+      const amp=caos*(40+120*r.k)*(1-p*.6);
+      x+=amp*Math.sin(p*r.f*3.14+r.ph+tm*.25)*r.a + caos*r.b*90*p;
+      y+=caos*amp*.35*Math.cos(p*r.f*2+r.ph);
+      s?ctx.lineTo(x,y):ctx.moveTo(x,y);
+    }
+    const alfa=.16+.5*e*(1-Math.abs(u-.5));
+    const gr=ctx.createLinearGradient(0,H,0,0);gr.addColorStop(0,`rgba(242,237,218,${alfa})`);gr.addColorStop(1,'rgba(242,237,218,0)');
+    ctx.strokeStyle=gr;
+    ctx.lineWidth=1+e*.6;
+    ctx.stroke();
+    /* cuando todo está en orden, un pulso recorre algunos surcos */
+    if(e>.92 && i%5===2 && !reduce){
+      const p=((tm*.22+r.k)%1);
+      const x=bx+(vx-bx)*p, y=H+(vy-H)*p;
+      ctx.fillStyle=`rgba(227,160,92,${(e-.92)*12*(1-p)})`;
+      ctx.beginPath();ctx.arc(x,y,2.6*(1-p)+.6,0,6.28);ctx.fill();
+    }
+  }
+}
+function scrollHero(){
+  const r=hero.getBoundingClientRect(), total=hero.offsetHeight-innerHeight;
+  const prog=Math.min(Math.max(-r.top/total,0),1);
+  if(!reduce) orden=prog;
+  alba.style.opacity=reduce?1:prog.toFixed(3);
+  pista.style.opacity=Math.max(0,1-prog*4).toFixed(2);
+  nav.classList.toggle('claro',r.bottom<70);
+}
+function loop(now){ if(cv.getBoundingClientRect().bottom>0) dibujar(now); if(!reduce) requestAnimationFrame(loop); }
+addEventListener('resize',()=>{medir();dibujar(performance.now())});
+addEventListener('scroll',scrollHero,{passive:true});
+medir(); scrollHero(); reduce?dibujar(0):requestAnimationFrame(loop);
+
+/* ===== Capturas ampliadas ===== */
+const lb=document.getElementById('lb'), lbImg=lb.querySelector('img');
+document.querySelectorAll('.cel').forEach(b=>b.addEventListener('click',()=>{lbImg.src=b.dataset.full;lbImg.alt=b.querySelector('img').alt;lb.classList.add('on')}));
+lb.addEventListener('click',()=>lb.classList.remove('on'));
+addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
+
+/* ===== Demo ===== */
+const SCEN={
+  precio:{accion:'Searches the catalog',pasos:[
+    {cli:'Hi, how much is a bag of MZ-40 corn seed?'},
+    {n:0,log:'Message received on WhatsApp'},
+    {n:1,log:'AI detects: <em>price question</em>'},
+    {n:2,rama:'precio',log:'Router: <em>catalog</em> route'},
+    {n:3,log:'Spreadsheet: product "MZ-40" found'},
+    {n:4,bot:'Hi! MZ-40 comes in 80,000-seed bags at USD 160 + tax. It’s in stock for delivery this week. Want the terms for your area?',log:'Reply sent',tiempo:'2.4 s',ops:5,hum:0}]},
+  pedido:{accion:'Logs the order',pasos:[
+    {cli:'I’d like 10 bags of MZ-40 for Friday, delivered to Rivadavia.'},
+    {n:0,log:'Message received on WhatsApp'},
+    {n:1,log:'AI detects: <em>order</em>, 10 bags, Rivadavia'},
+    {n:2,rama:'pedido',log:'Router: <em>order</em> route'},
+    {n:3,log:'Orders sheet: row #1042 created'},
+    {n:3,log:'Email sent to logistics'},
+    {n:4,bot:'Done! I logged order #1042: 10 bags of MZ-40, delivered Friday to Rivadavia. We’ll confirm the time shortly. Do you need an invoice?',log:'Reply sent',tiempo:'3.1 s',ops:7,hum:0}]},
+  asesor:{accion:'Alerts an advisor',pasos:[
+    {cli:'I have a problem applying a foliar fertilizer on my vines. Can someone call me?'},
+    {n:0,log:'Message received on WhatsApp'},
+    {n:1,log:'AI detects: <em>technical advice</em>, high priority'},
+    {n:2,rama:'asesor',log:'Router: <em>advisor</em> route'},
+    {n:3,log:'Summary sent to the advisor'},
+    {n:3,log:'Request logged with history'},
+    {n:4,bot:'Thanks for reaching out. I’ve passed your question to a technical advisor with all the details, so you won’t have to repeat it. They’ll call you before 6 pm today.',log:'Handed off to a person',tiempo:'2.8 s',ops:6,hum:1}]}
+};
+const chat=document.getElementById('chat'), reg=document.getElementById('registro'), nodos=[...document.querySelectorAll('.nodo')], ramas=[...document.querySelectorAll('.ramas span')];
+const est=document.getElementById('estado'), telE=document.getElementById('tel-estado');
+const cT=document.getElementById('c-tiempo'), cO=document.getElementById('c-ops'), cH=document.getElementById('c-humano');
+let tok=0;
+const dormir=ms=>new Promise(r=>setTimeout(r,reduce?0:ms));
+const hora=(s)=>new Date().toTimeString().slice(0,s?8:5);
+function msg(t,q){const m=document.createElement('div');m.className='msg '+q;m.innerHTML=t+'<small>'+hora()+'</small>';chat.appendChild(m);chat.scrollTop=chat.scrollHeight}
+function log(h){const l=document.createElement('div');l.innerHTML='<time>'+hora(1)+'</time><span>'+h+'</span>';reg.appendChild(l);while(reg.children.length>7)reg.firstChild.remove()}
+async function correr(k){
+  const yo=++tok;chat.innerHTML='';reg.innerHTML='';nodos.forEach(n=>n.classList.remove('activo','hecho'));ramas.forEach(r=>r.classList.remove('si'));
+  cT.textContent='0.0 s';cO.textContent='0';cH.textContent='0';
+  const s=SCEN[k];document.getElementById('accion').textContent=s.accion;est.textContent='Waiting for a message';
+  await dormir(600);let ops=0;
+  for(const p of s.pasos){
+    if(yo!==tok)return;
+    if(p.cli){msg(p.cli,'cli');est.textContent='Running';await dormir(650);continue}
+    nodos.forEach((n,i)=>{if(i<p.n){n.classList.remove('activo');n.classList.add('hecho')}});
+    nodos[p.n].classList.add('activo');
+    if(p.rama)ramas.forEach(r=>r.classList.toggle('si',r.dataset.b===p.rama));
+    log(p.log);cO.textContent=++ops;
+    if(p.bot){
+      telE.textContent='typing…';const e=document.createElement('div');e.className='escribe';e.innerHTML='<i></i><i></i><i></i>';chat.appendChild(e);chat.scrollTop=chat.scrollHeight;
+      await dormir(1300);if(yo!==tok)return;e.remove();telE.textContent='online';msg(p.bot,'bot');
+      nodos.forEach(n=>{n.classList.remove('activo');n.classList.add('hecho')});
+      cT.textContent=p.tiempo;cO.textContent=p.ops;cH.textContent=p.hum;est.textContent='Done';continue;
+    }
+    await dormir(850);
+  }
+}
+document.querySelectorAll('.escenarios button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.escenarios button').forEach(x=>x.setAttribute('aria-selected',x===b));correr(b.dataset.s)}));
+let arrancó=false;
+new IntersectionObserver(es=>{if(es[0].isIntersecting&&!arrancó){arrancó=true;correr('precio')}},{threshold:.3}).observe(document.getElementById('demo'));
+</script>
+</body>
+</html>
