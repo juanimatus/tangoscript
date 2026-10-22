@@ -284,6 +284,18 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .tarjeta.t-alba .tarjeta-media.papel{background:linear-gradient(170deg,#f3d9b8 0%,#e8b47c 60%,#e3a05c 100%)}
 .tarjeta.t-alba .paso-ia{color:#5c4a3a}
 .tarjeta-media .arbol{width:auto;white-space:nowrap}
+
+/* clientes */
+.clientes{padding:44px 0;border-bottom:1px solid var(--linea)}
+.clientes .wrap{display:flex;align-items:center;justify-content:center;gap:clamp(28px,5vw,64px);flex-wrap:wrap}
+.clientes p{color:var(--gris);font-size:15px}
+.clientes img{opacity:.8}
+.logo-rodeo{height:78px;width:auto}
+.logo-chemical{height:30px;width:auto}
+.tarjeta-logos{display:flex;align-items:center;gap:22px}
+.tarjeta-logos img{opacity:.9}
+.tarjeta-logos .logo-rodeo{height:52px}
+.tarjeta-logos .logo-chemical{height:21px}
 /* ---------- calculadora ---------- */
 .calc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);margin-top:48px;align-items:start}
 .calc-form{display:grid;gap:26px}
@@ -351,6 +363,14 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
   </div>
 </section>
 
+<section class="clientes" aria-label="Confían en TangoScript">
+  <div class="wrap">
+    <p>Confían en TangoScript</p>
+    <img class="logo-chemical" src="../img/logo-chemical-tinta.png" alt="Logo de Chemical Sud" width="380" height="51">
+    <img class="logo-rodeo" src="../img/logo-rodeo-tinta.png" alt="Logo de Rodeo Semillas" width="276" height="290">
+  </div>
+</section>
+
 <!-- ============ PLANTEO + TAREAS ============ -->
 <section class="sec planteo">
   <div class="wrap">
@@ -415,6 +435,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 
       <article class="tarjeta t-noche">
         <div class="tarjeta-txt">
+          <div class="tarjeta-logos"><img class="logo-chemical" src="../img/logo-chemical-crema.png" alt="Logo de Chemical Sud" width="380" height="51"><img class="logo-rodeo" src="../img/logo-rodeo-crema.png" alt="Logo de Rodeo Semillas" width="276" height="290"></div>
           <span class="tarjeta-cliente">Chemical Group · Rodeo Semillas y Chemical Sud</span>
           <h3>De responder cada consulta a mano a un catálogo que contesta solo</h3>
           <p>Flujo inteligente en Make, conectado a WhatsApp, que encuentra el producto aunque esté mal escrito y manda el link de compra de la tienda o de Mercado Libre.</p>
