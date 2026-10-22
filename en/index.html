@@ -268,6 +268,22 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 @media(max-width:900px){.tarjeta{grid-template-columns:1fr;min-height:0}.tarjeta-media{min-height:380px}}
 @media(max-width:520px){.cifras-caso{grid-template-columns:1fr 1fr 1fr;gap:10px}.cifras-caso span{font-size:12.5px}.star div{grid-template-columns:1fr;gap:2px}.tarjeta-media .cel{width:56%}.tarjeta-media.amanecer .cel:nth-child(1){display:none}.tarjeta-media .arbol{display:none}}
 
+
+/* colores por tarjeta */
+.tarjeta.t-noche{background:#0e1d33;color:#fff}
+.tarjeta.t-noche .tarjeta-cliente,.tarjeta.t-noche .tarjeta-txt>p,.tarjeta.t-noche .cifras-caso span,.tarjeta.t-noche .star dd{color:rgba(255,255,255,.74)}
+.tarjeta.t-noche .cifras-caso,.tarjeta.t-noche details{border-color:rgba(255,255,255,.16)}
+.tarjeta.t-noche summary{background:#f2edda;color:var(--tinta)}
+.tarjeta.t-campo{background:#e3e8d4}
+.tarjeta.t-campo .cifras-caso,.tarjeta.t-campo details{border-color:rgba(46,58,30,.16)}
+.tarjeta.t-campo summary{background:#2f3d22}
+.tarjeta.t-alba{background:#f5e4cf}
+.tarjeta.t-alba .cifras-caso{border-color:rgba(122,74,30,.18)}
+.tarjeta.t-alba .tarjeta-cliente,.tarjeta.t-alba .tarjeta-txt>p,.tarjeta.t-alba .cifras-caso span{color:#5c4a3a}
+
+.tarjeta.t-alba .tarjeta-media.papel{background:linear-gradient(170deg,#f3d9b8 0%,#e8b47c 60%,#e3a05c 100%)}
+.tarjeta.t-alba .paso-ia{color:#5c4a3a}
+.tarjeta-media .arbol{width:auto;white-space:nowrap}
 /* ---------- calculadora ---------- */
 .calc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);margin-top:48px;align-items:start}
 .calc-form{display:grid;gap:26px}
@@ -397,7 +413,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
     <p class="bajada">Each case covers what was happening, what I did and what changed.</p>
     <div class="tarjetas">
 
-      <article class="tarjeta">
+      <article class="tarjeta t-noche">
         <div class="tarjeta-txt">
           <span class="tarjeta-cliente">Chemical Group · Rodeo Semillas and Chemical Sud</span>
           <h3>From answering every question by hand to a catalog that replies on its own</h3>
@@ -411,7 +427,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
         </div>
       </article>
 
-      <article class="tarjeta">
+      <article class="tarjeta t-campo">
         <div class="tarjeta-txt">
           <span class="tarjeta-cliente">Crop trials · AppSheet, Make and AI · 2026/27 season</span>
           <h3>From loose photos on a phone to an archive that sorts itself</h3>
@@ -425,7 +441,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
         </div>
       </article>
 
-      <article class="tarjeta">
+      <article class="tarjeta t-alba">
         <div class="tarjeta-txt">
           <span class="en-camino">In development</span>
           <span class="tarjeta-cliente">My own product · Freelancers and entrepreneurs</span>
