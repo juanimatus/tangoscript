@@ -285,6 +285,20 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .tarjeta.t-alba .paso-ia{color:#5c4a3a}
 .tarjeta-media .arbol{width:auto;white-space:nowrap}
 
+/* ---------- otros proyectos ---------- */
+.proyectos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+.proyecto{display:flex;flex-direction:column;gap:14px;padding:30px 28px 28px;border-radius:24px;background:#eef0f3;border-top:6px solid var(--acento,var(--tinta))}
+.proyecto .tarjeta-cliente{font-size:14px}
+.proyecto h3{font-size:clamp(26px,2.4vw,32px);line-height:1.1}
+.proyecto>p{color:var(--gris);font-size:16px}
+.proyecto .chips{justify-content:flex-start;margin-top:auto;padding-top:8px}
+.proyecto .chips span{background:rgba(255,255,255,.7)}
+.proyecto .btn{align-self:flex-start;padding:11px 18px;font-size:14.5px}
+.proyecto.p-noche{--acento:#13243d}
+.proyecto.p-campo{--acento:#8d9a6a;background:#e3e8d4}
+.proyecto.p-alba{--acento:#e3a05c;background:#f5e4cf}
+@media(max-width:960px){.proyectos{grid-template-columns:1fr}}
+
 /* clientes */
 .clientes{padding:44px 0;border-bottom:1px solid var(--linea)}
 .clientes .wrap{display:flex;align-items:center;justify-content:center;gap:clamp(28px,5vw,64px);flex-wrap:wrap}
@@ -333,6 +347,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
     <nav class="nav-links" aria-label="Secciones">
       <a href="#demo">Demo</a>
       <a href="#casos">Casos</a>
+      <a href="#proyectos">Proyectos</a>
       <a href="#proceso">Cómo trabajo</a>
       <a href="#sobre-mi">Sobre mí</a>
     </nav>
@@ -477,6 +492,41 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
             <div class="notion"><div><span>Banco de ideas</span><span></span></div><div><span>Reel antes y después de un proceso</span><i>Contenido</i></div><div><span>Presupuestos automáticos</span><i>Producto</i></div><div><span>Charla para comercios de la zona</span><i>Ventas</i></div></div>
           </div>
         </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ OTROS PROYECTOS ============ -->
+<section class="sec" id="proyectos" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="titulo">Otros proyectos.</h2>
+    <p class="bajada">Apps y sitios que construí de punta a punta, publicados y en uso.</p>
+    <div class="proyectos">
+
+      <article class="proyecto p-noche">
+        <span class="tarjeta-cliente">Consultorio odontológico · Dra. Natalia Matus</span>
+        <h3>Agenda de turnos para un consultorio</h3>
+        <p>Los pacientes sacan turno solos desde el celular. El consultorio maneja la semana arrastrando turnos y tiene en un lugar la ficha de cada paciente, el plan de tratamiento y el presupuesto.</p>
+        <div class="chips"><span>Web app</span><span>Turnos online</span><span>Ficha del paciente</span></div>
+        <a class="btn btn-tinta" href="https://turnos-dranataliamatus.vercel.app/" target="_blank" rel="noopener">Ver en vivo ↗</a>
+      </article>
+
+      <article class="proyecto p-campo">
+        <span class="tarjeta-cliente">Producto propio · Datos abiertos</span>
+        <h3>Observatorio de Empleo IT Argentina</h3>
+        <p>Cuánto se gana en cada rol IT según seniority, dónde está el empleo por provincia y cuánta gente trabaja en el sector. Cada dato aclara si es oficial, de encuesta o estimado.</p>
+        <div class="chips"><span>Sitio de datos</span><span>Buscador por rol</span><span>Fuentes citadas</span></div>
+        <a class="btn btn-tinta" href="https://observatorio-it-ar.vercel.app/" target="_blank" rel="noopener">Ver en vivo ↗</a>
+      </article>
+
+      <article class="proyecto p-alba">
+        <span class="tarjeta-cliente">Civic tech · Mendoza</span>
+        <h3>Mendoza Respira</h3>
+        <p>Los vecinos reportan el arbolado de su cuadra con una foto. Un ingeniero agrónomo evalúa el riesgo y el reporte llega al municipio con ubicación y evidencia. Reportar no pide datos personales.</p>
+        <div class="chips"><span>Web app</span><span>Mapa</span><span>Datos abiertos</span></div>
+        <a class="btn btn-tinta" href="https://mendoza-respira-app.vercel.app/" target="_blank" rel="noopener">Ver en vivo ↗</a>
       </article>
 
     </div>
