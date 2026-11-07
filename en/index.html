@@ -332,23 +332,6 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .tarjeta-logos img{opacity:.9}
 .tarjeta-logos .logo-rodeo{height:52px}
 .tarjeta-logos .logo-chemical{height:21px}
-/* ---------- calculadora ---------- */
-.calc{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);margin-top:48px;align-items:start}
-.calc-form{display:grid;gap:26px}
-.campo label{display:flex;justify-content:space-between;gap:12px;font-weight:500;margin-bottom:10px}
-.campo label output{font:300 26px/1 var(--serif)}
-.campo input[type=range]{width:100%;accent-color:var(--tinta);height:28px}
-.campo input[type=text],.campo input[type=number]{width:100%;font:inherit;padding:13px 16px;border-radius:14px;border:1px solid #cfd4db;background:#fff;color:var(--tinta)}
-.campo input:focus-visible{outline:2px solid var(--alba);outline-offset:2px}
-.campo small{display:block;color:var(--gris);font-size:13.5px;margin-top:8px}
-.calc-res{background:var(--noche);color:#fff;border-radius:28px;padding:clamp(26px,3.5vw,44px);display:grid;gap:26px}
-.calc-res .grande b{display:block;font:300 clamp(54px,7vw,88px)/1 var(--serif)}
-.calc-res .grande span{color:rgba(255,255,255,.7)}
-.calc-res .fila{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding-top:22px;border-top:1px solid rgba(255,255,255,.15)}
-.calc-res .fila b{display:block;font:300 34px/1.1 var(--serif)}
-.calc-res .fila span{font-size:14px;color:rgba(255,255,255,.65)}
-.calc-res .aclara{font-size:13px;color:rgba(255,255,255,.5)}
-@media(max-width:860px){.calc{grid-template-columns:1fr}}
 
 /* lightbox */
 .lb{position:fixed;inset:0;z-index:100;background:rgba(7,19,34,.9);display:none;place-items:center;padding:24px;cursor:zoom-out}
@@ -399,10 +382,6 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 :root[data-theme="dark"] .tarjeta-media.papel{background:linear-gradient(170deg,#1a2c47 0%,#13243d 100%)}
 :root[data-theme="dark"] .tarjeta.t-alba .tarjeta-media.papel{background:linear-gradient(170deg,#f3d9b8 0%,#e8b47c 60%,#e3a05c 100%)}
 :root[data-theme="dark"] .mesa.papel{background:linear-gradient(170deg,#1a2c47 0%,#13243d 100%)}
-:root[data-theme="dark"] .campo input[type=text],
-:root[data-theme="dark"] .campo input[type=number]{background:var(--superficie);border-color:rgba(242,237,218,.22);color:var(--tinta)}
-:root[data-theme="dark"] .campo input[type=range]{accent-color:var(--alba)}
-:root[data-theme="dark"] .calc-res{background:var(--superficie)}
 :root[data-theme="dark"] .clientes img{filter:brightness(0) invert(.92) sepia(.12)}
 :root[data-theme="dark"] .ia a{color:var(--alba)}
 
@@ -497,8 +476,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
     <nav class="nav-links" aria-label="Sections">
       <a href="#demo">Demo</a>
       <a href="#ideas">Ideas</a>
-      <a href="#casos">Work</a>
-      <a href="#proyectos">Projects</a>
+      <a href="#casos">Projects</a>
       <a href="#proceso">How I work</a>
       <a href="#sobre-mi">About</a>
     </nav>
@@ -623,8 +601,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 <!-- ============ CASOS ============ -->
 <section class="sec" id="casos" style="padding-top:clamp(96px,12vw,150px)">
   <div class="wrap">
-    <h2 class="titulo">Case studies with concrete results.</h2>
-    <p class="bajada">Each case covers what was happening, what I did and what changed.</p>
+    <h2 class="titulo">Projects and case studies with concrete results.</h2>
+    <p class="bajada">Client cases with what was happening, what I did and what changed, plus apps I built end to end.</p>
     <div class="tarjetas">
 
       <article class="tarjeta t-noche">
@@ -678,14 +656,6 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
       </article>
 
     </div>
-  </div>
-</section>
-
-<!-- ============ OTROS PROYECTOS ============ -->
-<section class="sec" id="proyectos" style="padding-top:0">
-  <div class="wrap">
-    <h2 class="titulo">Other projects.</h2>
-    <p class="bajada">Apps and sites I built end to end, live and in use.</p>
     <div class="proyectos">
 
       <article class="proyecto p-noche">
@@ -712,27 +682,6 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
         <a class="btn btn-tinta" href="https://mendoza-respira-app.vercel.app/" target="_blank" rel="noopener">See it live ↗</a>
       </article>
 
-    </div>
-  </div>
-</section>
-
-<!-- ============ CALCULADORA ============ -->
-<section class="sec" id="calculadora" style="padding-top:0">
-  <div class="wrap">
-    <h2 class="titulo">What does doing it by hand cost you?</h2>
-    <p class="bajada">A quick estimate with your own numbers. Nothing is saved or sent unless you choose to.</p>
-    <div class="calc">
-      <form class="calc-form" id="calc" onsubmit="return false">
-        <div class="campo"><label for="c-horas">Hours per week on repetitive tasks <output id="o-horas">8</output></label><input type="range" id="c-horas" min="1" max="40" value="8"></div>
-        <div class="campo"><label for="c-valor">What an hour of your work is worth <span>USD</span></label><input type="number" id="c-valor" min="1" step="1" value="10" inputmode="numeric"><small>If you’re not sure, use what you’d charge for an hour of work.</small></div>
-        <div class="campo"><label for="c-tarea">Which task takes most of your time?</label><input type="text" id="c-tarea" maxlength="80" placeholder="For example: answering price questions"></div>
-      </form>
-      <div class="calc-res" aria-live="polite">
-        <div class="grande"><b id="r-anio">384</b><span>hours a year</span></div>
-        <div class="fila"><div><b id="r-dias">48</b><span>8-hour workdays</span></div><div><b id="r-plata">3.840</b><span>USD a year in time</span></div></div>
-        <a class="btn btn-wa" id="calc-wa" href="#" target="_blank" rel="noopener">Tell me on WhatsApp</a>
-        <p class="aclara">Based on 48 working weeks. Doesn’t include mistakes or lost inquiries.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -912,15 +861,6 @@ addEventListener('resize',()=>{medir();dibujar(performance.now())});
 addEventListener('scroll',scrollHero,{passive:true});
 medir(); scrollHero(); reduce?dibujar(0):requestAnimationFrame(loop);
 
-
-/* ===== Calculadora ===== */
-(()=>{const h=document.getElementById('c-horas'),v=document.getElementById('c-valor'),t=document.getElementById('c-tarea'),oh=document.getElementById('o-horas'),wa=document.getElementById('calc-wa');
-const fmt=n=>Math.round(n).toLocaleString('en-US');
-const MSG='Hi Juani. Your site’s calculator says I spend about {h} hours a week on repetitive tasks{t}. Can we see if it can be automated?', MSG_T=' ({t})';
-function calc(){const hs=+h.value||0, val=Math.max(0,+v.value||0), anio=hs*48;
-oh.textContent=hs;document.getElementById('r-anio').textContent=fmt(anio);document.getElementById('r-dias').textContent=fmt(anio/8);document.getElementById('r-plata').textContent=fmt(anio*val);
-const tarea=t.value.trim();wa.href=WA(MSG.replace('{h}',hs).replace('{t}',tarea?MSG_T.replace('{t}',tarea):''));}
-[h,v,t].forEach(e=>e.addEventListener('input',calc));calc();})();
 
 /* ===== Capturas ampliadas ===== */
 const lb=document.getElementById('lb'), lbImg=lb.querySelector('img');
