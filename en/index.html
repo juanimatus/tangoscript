@@ -291,6 +291,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .tarjeta.t-alba .tarjeta-media.papel{background:linear-gradient(170deg,#f3d9b8 0%,#e8b47c 60%,#e3a05c 100%)}
 .tarjeta.t-alba .paso-ia{color:#5c4a3a}
 .tarjeta-media .arbol{width:auto;white-space:nowrap}
+.tarjeta-media.campo .cel{width:min(205px,32%);margin-bottom:-60px}
+.tarjeta-media.campo .cel:nth-child(2){transform:translateY(-22px)}
+.tarjeta-media.campo .cel:nth-child(2):hover{transform:translateY(-28px)}
+@media(max-width:520px){.tarjeta-media.campo .cel{width:32%}}
 
 /* ---------- otros proyectos ---------- */
 .proyectos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
@@ -531,8 +535,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
           <details><summary>See the full case</summary><dl class="star"><div><dt>Situation</dt><dd>Field trials produce many photos per variety and per day, and they piled up mixed on the phone.</dd></div><div><dt>Challenge</dt><dd>Get every photo identified, described and filed in the right place with no extra work in the field.</dd></div><div><dt>What I did</dt><dd>I started with an AppSheet prototype and turned it into a custom web app, deployed on Vercel and designed for one-handed use in the field. Observations are dictated and transcribed automatically. Behind it, a Make automation with GPT-4o reads the photo: it transcribes the label, describes the sample and picks the variety from the catalog. The photo is copied to Drive into its variety’s folder, under that day’s subfolder, named with code and date. If the AI isn’t sure, the entry is flagged for manual review.</dd></div><div><dt>Result</dt><dd>The trial log stays organized and described, with no renaming or moving files, and a person only steps in when the AI is unsure.</dd></div></dl></details>
         </div>
         <div class="tarjeta-media campo">
-          <button class="cel" data-full="../img/caso-diario-web.jpg"><img src="../img/caso-diario-web.jpg" alt="App screen: take the label photo, AI-read variety and voice note (in Spanish)" loading="lazy"></button>
-          <div class="arbol" aria-hidden="true"><b>0015</b> <span>Plum tomato</span><br>├ Route sheet<br>└ Photos<br>&nbsp;&nbsp;├ Day 1 - 15-10-2026<br>&nbsp;&nbsp;│ └ <b>001515102026</b>_T1-1.jpg<br>&nbsp;&nbsp;└ Day 2 - 16-10-2026</div>
+          <button class="cel" data-full="../img/app-campo-inicio.jpg"><img src="../img/app-campo-inicio.jpg" alt="App home: new capture and the day's count (in Spanish)" width="560" height="1213" loading="lazy"></button>
+          <button class="cel" data-full="../img/app-campo-nueva-toma.jpg"><img src="../img/app-campo-nueva-toma.jpg" alt="New capture screen: label or QR photo, sample photos and variety (in Spanish)" width="560" height="1213" loading="lazy"></button>
+          <button class="cel" data-full="../img/app-campo-variedad.jpg"><img src="../img/app-campo-variedad.jpg" alt="Variety record with the capture log and the AI-written description (in Spanish)" width="560" height="1213" loading="lazy"></button>
         </div>
       </article>
 

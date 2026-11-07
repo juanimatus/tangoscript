@@ -291,6 +291,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .tarjeta.t-alba .tarjeta-media.papel{background:linear-gradient(170deg,#f3d9b8 0%,#e8b47c 60%,#e3a05c 100%)}
 .tarjeta.t-alba .paso-ia{color:#5c4a3a}
 .tarjeta-media .arbol{width:auto;white-space:nowrap}
+.tarjeta-media.campo .cel{width:min(205px,32%);margin-bottom:-60px}
+.tarjeta-media.campo .cel:nth-child(2){transform:translateY(-22px)}
+.tarjeta-media.campo .cel:nth-child(2):hover{transform:translateY(-28px)}
+@media(max-width:520px){.tarjeta-media.campo .cel{width:32%}}
 
 /* ---------- otros proyectos ---------- */
 .proyectos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
@@ -531,8 +535,9 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
           <details><summary>Ver el caso completo</summary><dl class="star"><div><dt>Situación</dt><dd>En los ensayos a campo se sacan muchas fotos por variedad y por día, y quedaban mezcladas en el celular.</dd></div><div><dt>Desafío</dt><dd>Que cada foto quede identificada, descripta y archivada en su lugar sin trabajo extra en el campo.</dd></div><div><dt>Qué hice</dt><dd>Empecé con un prototipo en AppSheet y lo llevé a una web app propia, publicada en Vercel y pensada para usar con una mano en el campo. Las observaciones se dictan por voz y se transcriben solas. Detrás, una automatización en Make con GPT-4o lee la foto: transcribe la etiqueta, describe la muestra y elige la variedad del catálogo. La foto se copia a Drive en la carpeta de su variedad, dentro de la subcarpeta del día, con nombre de código y fecha. Si la IA no está segura, la toma queda marcada para revisar a mano.</dd></div><div><dt>Resultado</dt><dd>El registro del ensayo queda ordenado y descripto, sin renombrar ni mover archivos, y una persona solo interviene cuando la IA tiene dudas.</dd></div></dl></details>
         </div>
         <div class="tarjeta-media campo">
-          <button class="cel" data-full="../img/caso-diario-web.jpg"><img src="../img/caso-diario-web.jpg" alt="Pantalla de la app: sacar la foto de la etiqueta, variedad leída por IA y nota de voz" loading="lazy"></button>
-          <div class="arbol" aria-hidden="true"><b>0015</b> <span>Tomate Perita</span><br>├ Hoja de ruta<br>└ Fotos<br>&nbsp;&nbsp;├ Día 1 - 15-10-2026<br>&nbsp;&nbsp;│ └ <b>001515102026</b>_T1-1.jpg<br>&nbsp;&nbsp;└ Día 2 - 16-10-2026</div>
+          <button class="cel" data-full="../img/app-campo-inicio.jpg"><img src="../img/app-campo-inicio.jpg" alt="Inicio de la app: nueva toma y recuento del día" width="560" height="1213" loading="lazy"></button>
+          <button class="cel" data-full="../img/app-campo-nueva-toma.jpg"><img src="../img/app-campo-nueva-toma.jpg" alt="Pantalla de nueva toma: foto de la etiqueta o QR, foto de la muestra y variedad" width="560" height="1213" loading="lazy"></button>
+          <button class="cel" data-full="../img/app-campo-variedad.jpg"><img src="../img/app-campo-variedad.jpg" alt="Ficha de variedad con el diario de tomas y la descripción hecha por la IA" width="560" height="1213" loading="lazy"></button>
         </div>
       </article>
 
