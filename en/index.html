@@ -92,6 +92,33 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 @media(max-width:360px){.nav .btn{padding:8px 11px}.derecha{gap:8px}.marca{font-size:15px}}
 @media(max-width:340px){.marca{font-size:0;gap:0}}
 
+/* ---------- menú en celular ---------- */
+.menu-btn,.menu-panel{display:none}
+@media(max-width:820px){
+.nav .idioma,.nav .tema{display:none}
+.menu-btn{display:inline-grid;place-items:center;width:42px;height:42px;border:0;border-radius:50%;background:transparent;color:inherit;cursor:pointer;box-shadow:inset 0 0 0 1px currentColor;opacity:.9}
+.menu-btn i{display:block;width:18px;height:2px;background:currentColor;border-radius:2px;transition:transform .3s,opacity .2s;grid-area:1/1}
+.menu-btn i:nth-child(1){transform:translateY(-5px)}
+.menu-btn i:nth-child(3){transform:translateY(5px)}
+.menu-btn[aria-expanded="true"] i:nth-child(1){transform:rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] i:nth-child(3){transform:rotate(-45deg)}
+.menu-btn:focus-visible,.menu-panel a:focus-visible,.menu-panel button:focus-visible{outline:2px solid var(--alba);outline-offset:3px}
+.menu-panel{position:fixed;inset:0;z-index:39;background:var(--papel);color:var(--tinta);padding:96px var(--gutter) 28px;flex-direction:column;overflow-y:auto;visibility:hidden;opacity:0;transform:translateY(-12px);transition:opacity .3s,transform .35s,visibility 0s .35s}
+.menu-panel.on{display:flex;visibility:visible;opacity:1;transform:none;transition:opacity .3s,transform .35s}
+.menu-panel:not(.on){display:flex}
+.menu-panel nav{display:grid}
+.menu-panel nav a{font:300 clamp(34px,10vw,46px)/1.15 var(--serif);color:inherit;text-decoration:none;padding:11px 0;letter-spacing:-.01em}
+.menu-panel nav a[aria-current="true"]{color:var(--alba)}
+.menu-panel .menu-extra{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.menu-panel .menu-extra a,.menu-panel .menu-extra button{font:500 15px/1 var(--sans);padding:13px 18px;border-radius:999px;border:0;background:var(--chip);color:var(--tinta);text-decoration:none;cursor:pointer}
+.menu-panel .btn-wa{margin-top:auto;justify-content:center;font-size:17px;padding:18px 22px}
+.menu-panel .menu-extra+.btn-wa{margin-top:28px}
+body.menu-abierto{overflow:hidden}
+body.menu-abierto .nav{color:var(--tinta);background:transparent;box-shadow:none}
+body.menu-abierto .nav .btn-claro{background:var(--tinta);color:var(--papel)}
+}
+@media(prefers-reduced-motion:reduce){.menu-panel,.menu-btn i{transition:none}}
 /* ---------- hero: de la noche al alba ---------- */
 .hero{position:relative;height:190vh;background:var(--noche)}
 .hero-pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding:84px 0 max(16vh,90px);box-sizing:border-box}
@@ -533,9 +560,23 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
       <button class="tema" id="tema" type="button" aria-pressed="false" aria-label="Dark mode" title="Dark mode"><svg class="sol" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="luna" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
       <div class="idioma" aria-label="Language"><a href="../es/" hreflang="es" lang="es">ES</a><span aria-hidden="true">|</span><span aria-current="true">EN</span></div>
       <a class="btn btn-claro wa" href="#" target="_blank" rel="noopener">Let’s talk</a>
+      <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu-panel" aria-label="Open menu"><i></i><i></i><i></i></button>
     </div>
   </div>
 </header>
+<div class="menu-panel" id="menu-panel" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Sections">
+  <nav aria-label="Sections">
+      <a href="#demo">Demo</a>
+      <a href="#casos">Projects</a>
+      <a href="#ideas">Ideas</a>
+      <a href="#mapas">Maps</a>
+      <a href="#proceso">How I work</a>
+      <a href="#sobre-mi">About</a>
+    </nav>
+  <div class="menu-extra"><a href="../es/" hreflang="es" lang="es">Español</a><button id="tema2" type="button">Dark mode</button></div>
+  <a class="btn btn-wa wa" href="#" target="_blank" rel="noopener">Message me on WhatsApp</a>
+</div>
+
 
 <main id="top">
 
@@ -1162,6 +1203,23 @@ pintar();
 (()=>{const b=document.getElementById('progreso');if(!b)return;let t=0;
 const f=()=>{t=0;const h=document.documentElement.scrollHeight-innerHeight;b.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')'};
 addEventListener('scroll',()=>{if(!t)t=requestAnimationFrame(f)},{passive:true});f()})();
+/* ===== Menú en celular ===== */
+(()=>{const btn=document.getElementById('menu-btn'),pan=document.getElementById('menu-panel');if(!btn||!pan)return;
+const links=[...pan.querySelectorAll('nav a')],foco=()=>[...pan.querySelectorAll('a,button')];
+function abrir(v,kb){pan.classList.toggle('on',v);btn.setAttribute('aria-expanded',v);btn.setAttribute('aria-label',v?'Close menu':'Open menu');document.body.classList.toggle('menu-abierto',v);pan.setAttribute('aria-hidden',!v);
+  if(v){if(kb)setTimeout(()=>links[0]&&links[0].focus(),50)}else if(document.activeElement&&pan.contains(document.activeElement))btn.focus({preventScroll:true})}
+btn.addEventListener('click',e=>abrir(!pan.classList.contains('on'),e.detail===0));
+links.forEach(a=>a.addEventListener('click',()=>abrir(false)));
+pan.querySelectorAll('.menu-extra a,.btn-wa').forEach(a=>a.addEventListener('click',()=>{if(a.hreflang)return;abrir(false)}));
+const t2=document.getElementById('tema2');if(t2)t2.addEventListener('click',()=>document.getElementById('tema').click());
+addEventListener('keydown',e=>{if(!pan.classList.contains('on'))return;
+  if(e.key==='Escape'){abrir(false);return}
+  if(e.key==='Tab'){const f=foco().concat(btn),i=f.indexOf(document.activeElement);if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus()}else if(!e.shiftKey&&i===f.length-1){e.preventDefault();f[0].focus()}}});
+matchMedia('(min-width:821px)').addEventListener('change',e=>{if(e.matches&&pan.classList.contains('on'))abrir(false)});
+/* sección actual */
+const ids=links.map(a=>a.getAttribute('href').slice(1)),sec=ids.map(i=>document.getElementById(i)).filter(Boolean);
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+e.target.id?'true':'false'))}),{rootMargin:'-45% 0px -50% 0px'});sec.forEach(s=>io.observe(s));
+})();
 let arrancó=false;
 new IntersectionObserver(es=>{if(es[0].isIntersecting&&!arrancó){arrancó=true;correr('precio')}},{threshold:.3}).observe(document.getElementById('demo'));
 </script>
