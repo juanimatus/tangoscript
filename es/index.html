@@ -530,6 +530,7 @@ body.menu-abierto .nav .btn-claro{background:var(--tinta);color:var(--papel)}
 .sigue span{display:inline-block;transition:transform .3s}
 .sigue:hover span{transform:translateY(4px)}
 #progreso{position:fixed;top:0;left:0;right:0;height:3px;background:var(--alba);transform-origin:0 50%;transform:scaleX(0);z-index:60;pointer-events:none}
+.mapa-resumen{font:300 clamp(28px,3vw,40px)/1.1 var(--serif);margin:0 0 6px}
 .mapa-diags{display:grid;grid-template-columns:1fr;gap:34px;margin-top:44px}
 .mapa-diags figure{margin:0;display:flex;flex-direction:column}
 .mapa-diags iframe{display:block;width:100%;height:340px;border:0;background:transparent}
@@ -616,8 +617,6 @@ body.menu-abierto .nav .btn-claro{background:var(--tinta);color:var(--papel)}
       <div class="tarea"><q>Respondé el precio de cada semilla que consultan por WhatsApp, con el link a la tienda.</q><div class="chips"><span>WhatsApp</span><span>Shopify</span><span>Make</span></div></div>
       <div class="tarea"><q>Pasá cada pedido nuevo a la planilla y avisale a logística.</q><div class="chips"><span>WhatsApp</span><span>Google Sheets</span><span>Gmail</span></div></div>
       <div class="tarea"><q>Ordená las fotos del ensayo por variedad y por día.</q><div class="chips"><span>Vercel</span><span>IA</span><span>Google Drive</span></div></div>
-      <div class="tarea"><q>Si no tenemos el producto, derivalo al distribuidor de su localidad.</q><div class="chips"><span>WhatsApp</span><span>Google Sheets</span><span>Make</span></div></div>
-      <div class="tarea"><q>Guardá en mi Notion las ideas que te mando por audio.</q><div class="chips"><span>WhatsApp</span><span>IA</span><span>Notion</span></div></div>
     </div>
   </div>
 </section>
@@ -702,25 +701,6 @@ body.menu-abierto .nav .btn-claro{background:var(--tinta);color:var(--papel)}
           <button class="cel" data-full="../img/app-campo-variedad.jpg"><img src="../img/app-campo-variedad.jpg" alt="Ficha de variedad con el diario de tomas y la descripción hecha por la IA" width="560" height="1213" loading="lazy"></button>
         </div>
       </article>
-
-      <article class="tarjeta t-alba">
-        <div class="tarjeta-txt">
-          <span class="en-camino">En desarrollo</span>
-          <span class="tarjeta-cliente">Producto propio · Freelancers y emprendedores</span>
-          <h3>Banco de ideas: de un mensaje de WhatsApp a tu Notion</h3>
-          <p>Mandás la idea por WhatsApp, la IA la clasifica y queda guardada en una plantilla de Notion.</p>
-          <div class="stack"><span>WhatsApp</span><span>IA</span><span>Notion</span></div>
-          <div class="cifras-caso"><div><b>1</b><span>mensaje para guardar una idea</span></div><div><b>0</b><span>apps que abrir</span></div><div><b>IA</b><span>clasifica cada idea por tema</span></div></div>
-        </div>
-        <div class="tarjeta-media papel">
-          <div class="ideas" aria-hidden="true">
-            <div class="burbuja">Hacer un reel con el antes y después de un proceso automatizado</div>
-            <div class="paso-ia">La IA la clasifica y Make la guarda</div>
-            <div class="notion"><div><span>Banco de ideas</span><span></span></div><div><span>Reel antes y después de un proceso</span><i>Contenido</i></div><div><span>Presupuestos automáticos</span><i>Producto</i></div><div><span>Charla para comercios de la zona</span><i>Ventas</i></div></div>
-          </div>
-        </div>
-      </article>
-
     </div>
     <div class="proyectos">
 
@@ -762,7 +742,6 @@ body.menu-abierto .nav .btn-claro{background:var(--tinta);color:var(--papel)}
     <div class="ideas-ctl">
       <div><p class="paso-t" id="p1">¿Qué tipo de negocio tenés?</p><div class="opts" id="o-rubro" role="group" aria-labelledby="p1"></div></div>
       <div><p class="paso-t" id="p3">¿Qué usás hoy?</p><div class="opts" id="o-tools" role="group" aria-labelledby="p3"></div></div>
-      <div class="ancho"><p class="paso-t" id="p2">¿Qué te quita más tiempo? (opcional)</p><div class="opts" id="o-tareas" role="group" aria-labelledby="p2"></div></div>
     </div>
     <div id="stage" aria-live="polite"></div>
     <div class="ideas-acciones">
@@ -791,14 +770,7 @@ body.menu-abierto .nav .btn-claro{background:var(--tinta);color:var(--papel)}
     </div>
     <div class="mapa-tabs" id="mapa-tabs" role="group" aria-label="Elegí un proceso"></div>
     <p class="mapa-ctx" id="mapa-ctx"></p>
-    <ul class="mapa-leyenda" aria-label="Quién hace cada paso">
-      <li style="--o:#8b95a5"><i></i>Cliente</li><li style="--o:#f0a34a"><i></i>Una persona</li><li style="--o:#6d8fd6"><i></i>Make</li><li style="--o:#a08ad0"><i></i>IA</li><li style="--o:#3fb37f"><i></i>App</li>
-    </ul>
-    <div class="mapa-grid" aria-live="polite">
-      <section class="mapa-col antes" aria-labelledby="mh-a"><h3 id="mh-a">Antes</h3><div class="mapa-res" id="res-a">  <a class="sigue" href="#proceso">Así trabajamos juntos <span aria-hidden="true">&darr;</span></a>
-  </div><ol class="mapa-pasos" id="pasos-a"></ol></section>
-      <section class="mapa-col despues" aria-labelledby="mh-d"><h3 id="mh-d">Después</h3><div class="mapa-res" id="res-d"></div><ol class="mapa-pasos" id="pasos-d"></ol></section>
-    </div>
+    <p class="mapa-resumen" id="mapa-resumen"></p>
     <div class="mapa-diags">
       <figure><iframe id="dg-a" loading="lazy"></iframe><figcaption>Antes</figcaption></figure>
       <figure><iframe id="dg-d" loading="lazy"></iframe><figcaption>Después</figcaption></figure>
@@ -807,6 +779,7 @@ body.menu-abierto .nav .btn-claro{background:var(--tinta);color:var(--papel)}
       <p>El mapa que te llevás muestra, para cada paso, quién lo hace, con qué herramienta, qué datos usa y dónde se traba. Con eso decidimos qué se automatiza, qué se simplifica y qué queda igual.</p>
       <a class="btn btn-wa wa-mapa" id="mapa-wa" href="#" target="_blank" rel="noopener">Quiero mapear mi proceso</a>
     </div>
+    <a class="sigue" href="#proceso">Así trabajamos juntos <span aria-hidden="true">&darr;</span></a>
   </div>
 </section>
 
@@ -1071,7 +1044,7 @@ const mk=(box,arr,multi,key)=>arr.forEach(([v,t])=>{const b=document.createEleme
     if(multi){const s=st[key];s.has(v)?s.delete(v):s.add(v);b.setAttribute('aria-pressed',s.has(v))}
     else{st[key]=st[key]===v?null:v;[...box.children].forEach(c=>c.setAttribute('aria-pressed',c===b&&st[key]===v))}
     st.off=0;render()});box.appendChild(b)});
-mk($('o-rubro'),D.rubros,false,'rubro');mk($('o-tools'),D.tools,true,'tools');mk($('o-tareas'),D.tareas,true,'tareas');
+mk($('o-rubro'),D.rubros,false,'rubro');mk($('o-tools'),D.tools,true,'tools');
 /* ideas aplicables */
 function ideas(){
   const r=D.rn[st.rubro||'otro'];
@@ -1170,13 +1143,7 @@ const $=id=>document.getElementById(id);
 let cur=0;
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const own=o=>M.owners[o];
-function col(listEl,resEl,steps){
-  let tr=0,man=0;
-  listEl.innerHTML=steps.map((s,i)=>{
-    const prev=steps[i-1];const h=prev&&prev.o!==s.o;if(h)tr++;if(s.m)man++;
-    return '<li class="paso-m o-'+s.o+(h?' tr':'')+'"'+(h?' data-tr="'+esc(M.tr)+'"':'')+'><span class="o">'+esc(own(s.o))+(s.c?' · '+esc(M.cond):'')+'</span><b>'+esc(s.t)+'</b><span class="d">'+esc(s.d)+'</span><span class="h">'+esc(s.h)+'</span></li>'}).join('');
-  resEl.innerHTML='<div><b>'+steps.length+'</b><span>'+esc(M.pasos)+'</span></div><div><b>'+man+'</b><span>'+esc(M.mano)+'</span></div>';
-}
+const man=a=>a.filter(x=>x.m).length;
 const tema=()=>{const a=document.documentElement.getAttribute('data-theme');return a||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')};
   const LIMPIO='html,body{background:transparent!important;margin:0!important;padding:0!important}.toolbar,.header,.cards,.subtitle,.export-wrap{display:none!important}.container{max-width:none!important;padding:0!important;margin:0!important}.diagram-container{background:transparent!important;border:0!important;box-shadow:none!important;border-radius:0!important;padding:0 0 .4rem!important;margin:0!important}';
   function limpiar(f){try{const d=f.contentDocument;if(!d||!d.body||d.getElementById('ts-limpio'))return;
@@ -1192,7 +1159,7 @@ function pintar(){
   const p=M.procs[cur];
   document.querySelectorAll('#mapa-tabs button').forEach((b,i)=>b.setAttribute('aria-pressed',i===cur));
   $('mapa-ctx').textContent=p.ctx;
-  col($('pasos-a'),$('res-a'),p.antes);col($('pasos-d'),$('res-d'),p.despues);
+  $('mapa-resumen').textContent='De {a} pasos a mano a {d}.'.replace('{a}',man(p.antes)).replace('{d}',man(p.despues));
   [['a','antes','antes'],['d','despues','después']].forEach(([k,n,w])=>{const u='../mapas/'+p.file+'-'+n+'.html',f=$('dg-'+k),q=u+'?embed=1&theme='+tema();f.style.colorScheme='normal';if(f.getAttribute('src')!==q){f.removeAttribute('data-ok');f.src=q}f.title='Diagrama del proceso «{p}», {w}'.replace('{p}',p.nombre).replace('{w}',w);});
   $('mapa-wa').href='https://wa.me/5492634876659?text='+encodeURIComponent(M.msg.replace('{p}',p.nombre));
 }
