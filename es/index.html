@@ -425,6 +425,38 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .ideas-acciones{display:flex;gap:14px 22px;flex-wrap:wrap;align-items:center;margin-top:34px}
 .ideas-acciones p{margin:0;color:var(--gris);font-size:16px}
 @media(max-width:700px){.ring .ic{min-height:200px}}
+/* ---------- giro: carrusel isométrico ---------- */
+.giro{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(20px,4vw,56px);align-items:center;margin:52px 0 12px}
+.giro-ring{position:relative;width:100%;max-width:560px;height:390px;margin:0 auto}
+.giro-base{position:absolute;left:50%;top:172px;width:150px;height:150px;margin-left:-75px;border-radius:22px;background:var(--superficie);transform:rotateX(60deg) rotateZ(45deg);box-shadow:0 0 0 1px var(--linea),10px 10px 0 -2px rgba(127,127,127,.13),20px 20px 0 -4px rgba(127,127,127,.08),30px 30px 0 -6px rgba(127,127,127,.05)}
+.giro-lineas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.giro-lineas path{fill:none;stroke:var(--gris);opacity:.45;stroke-width:1;stroke-dasharray:2 6;animation:giro-flujo 1.6s linear infinite}
+@keyframes giro-flujo{to{stroke-dashoffset:-16}}
+.giro-item{position:absolute;top:0;left:50%;width:140px;height:140px;margin-left:-70px;padding:0;border:0;background:none;color:inherit;cursor:pointer;transform:translate(var(--x,0),var(--y,0)) scale(var(--s,1));opacity:var(--o,1);z-index:var(--z,1);transition:transform .75s cubic-bezier(.2,.8,.2,1),opacity .5s ease}
+.giro-item:focus-visible{outline:none}
+.giro-item:focus-visible .giro-plato{box-shadow:inset 0 0 0 2px var(--alba)}
+.giro-plato{position:absolute;inset:14px;border-radius:18px;background:var(--papel);transform:rotateX(60deg) rotateZ(45deg);box-shadow:inset 0 0 0 1px var(--linea),0 12px 26px rgba(7,19,34,.12);transition:box-shadow .5s ease}
+.giro-ico{position:absolute;inset:0;display:grid;place-items:center;color:var(--gris);transform:translateY(-8px);transition:color .5s ease,transform .6s cubic-bezier(.2,.8,.2,1)}
+.giro-ico svg{width:40px;height:40px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.giro-item[data-slot="0"]{--y:168px;--z:4;cursor:default}
+.giro-item[data-slot="1"]{--x:-190px;--y:70px;--s:.84;--o:.88;--z:3}
+.giro-item[data-slot="2"]{--y:-4px;--s:.74;--o:.7;--z:2}
+.giro-item[data-slot="3"]{--x:190px;--y:70px;--s:.84;--o:.88;--z:3}
+.giro-item[data-slot="0"] .giro-plato{box-shadow:inset 0 0 0 1.5px var(--alba),0 18px 36px rgba(227,160,92,.28)}
+.giro-item[data-slot="0"] .giro-ico{color:var(--alba);transform:translateY(-14px)}
+.giro-card{background:var(--superficie);border-radius:24px;padding:clamp(24px,3vw,34px);min-height:210px}
+.giro-card .giro-ojo{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
+.giro-card .giro-ojo b{display:grid;place-items:center;width:26px;height:26px;border-radius:999px;background:var(--alba);color:#0b1626;font-size:12px;letter-spacing:0}
+.giro-card h3{font-size:clamp(28px,2.6vw,36px);line-height:1.1;margin:14px 0 10px}
+.giro-card p{color:var(--gris);margin:0;max-width:40ch}
+.giro-card .giro-txt{animation:entra .35s ease}
+.giro-puntos{display:flex;gap:6px;margin-top:22px}
+.giro-puntos i{width:22px;height:3px;border-radius:2px;background:var(--linea);transition:background .4s}
+.giro-puntos i.on{background:var(--alba)}
+@media(max-width:900px){.giro{grid-template-columns:1fr}}
+@media(max-width:620px){.giro-ring{height:310px}.giro-lineas{display:none}.giro-base{top:138px;width:116px;height:116px;margin-left:-58px}.giro-item{width:106px;height:106px;margin-left:-53px}.giro-item[data-slot="0"]{--y:132px}.giro-item[data-slot="1"]{--x:-118px;--y:56px}.giro-item[data-slot="3"]{--x:118px;--y:56px}.giro-ico svg{width:32px;height:32px}}
+@media(prefers-reduced-motion:reduce){.giro-item,.giro-ico,.giro-plato{transition:none}.giro-lineas path,.giro-card .giro-txt{animation:none}}
+
 /* ---------- mapas de procesos ---------- */
 .mapa-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:44px 0 28px}
 .mapa-tabs button{font:500 15px/1.2 var(--sans);padding:13px 18px;border-radius:999px;border:0;background:var(--chip);color:var(--tinta);cursor:pointer;transition:background .2s,color .2s}
@@ -694,6 +726,17 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
   <div class="wrap">
     <h2 class="titulo">Antes y después de cada proceso, en un solo mapa.</h2>
     <p class="bajada">Antes de automatizar, dibujo cómo funciona hoy tu proceso: quién hace cada paso, con qué herramienta y dónde se traba. Estos son dos que mapeé y construí en Make.</p>
+    <div class="giro" id="giro" aria-label="Cómo viaja un pedido por una automatización">
+      <div class="giro-ring">
+        <span class="giro-base" aria-hidden="true"></span>
+        <svg class="giro-lineas" viewBox="0 0 560 390" preserveAspectRatio="none" aria-hidden="true"><path d="M122 116 C160 84 208 68 244 66"/><path d="M316 66 C352 68 400 84 438 116"/><path d="M440 176 C408 212 362 236 320 244"/><path d="M240 244 C198 236 152 212 120 176"/></svg>
+        <button type="button" class="giro-item" data-slot="0" data-l="WhatsApp" data-h="Llega el mensaje." data-d="El cliente escribe como siempre: con errores, con audios o fuera de horario." aria-label="WhatsApp"><span class="giro-plato"></span><span class="giro-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M8.5 10.5h7"/><path d="M8.5 13.5h4.5"/></svg></span></button>
+        <button type="button" class="giro-item" data-slot="1" data-l="Make" data-h="Make ordena el flujo." data-d="Recibe cada mensaje o cada toma, lo filtra y decide qué camino sigue." aria-label="Make"><span class="giro-plato"></span><span class="giro-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="6" height="6" rx="1.5"/><rect x="15" y="15" width="6" height="6" rx="1.5"/><path d="M9 6h4a2 2 0 0 1 2 2v7"/></svg></span></button>
+        <button type="button" class="giro-item" data-slot="2" data-l="IA" data-h="La IA entiende." data-d="Encuentra el producto aunque esté mal escrito, lee la etiqueta o transcribe la voz." aria-label="IA"><span class="giro-plato"></span><span class="giro-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 3.5l1.7 4.4 4.4 1.7-4.4 1.7L11 15.7l-1.7-4.4L4.9 9.6l4.4-1.7z"/><path d="M18.5 14.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z"/></svg></span></button>
+        <button type="button" class="giro-item" data-slot="3" data-l="Drive y Sheets" data-h="Todo queda en su lugar." data-d="La foto en su carpeta, la planilla al día y la respuesta enviada." aria-label="Drive y Sheets"><span class="giro-plato"></span><span class="giro-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9l-.8-1.2A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg></span></button>
+      </div>
+      <div class="giro-card" aria-live="polite"><div class="giro-txt"><p class="giro-ojo"><b>01</b><span>WhatsApp</span></p><h3>Llega el mensaje.</h3><p>El cliente escribe como siempre: con errores, con audios o fuera de horario.</p></div><div class="giro-puntos" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div></div>
+    </div>
     <div class="mapa-tabs" id="mapa-tabs" role="group" aria-label="Elegí un proceso"></div>
     <p class="mapa-ctx" id="mapa-ctx"></p>
     <ul class="mapa-leyenda" aria-label="Quién hace cada paso">
@@ -1048,6 +1091,24 @@ new IntersectionObserver(es=>{onScreen=es[0].isIntersecting;if(onScreen)kick()},
 function render(){cur=ideas();anillo();foot()}
 render();
 })();
+
+/* ===== Giro: carrusel isométrico ===== */
+(()=>{const g=document.getElementById('giro');if(!g)return;
+const items=[...g.querySelectorAll('.giro-item')],n=items.length,card=g.querySelector('.giro-card'),puntos=[...card.querySelectorAll('.giro-puntos i')];
+const quieto=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let cur=0,timer=null,visible=false,pausa=false;
+function pintar(){items.forEach((b,i)=>{b.dataset.slot=(i-cur+n)%n;b.setAttribute('aria-current',i===cur)});
+  const b=items[cur],old=card.querySelector('.giro-txt'),nuevo=document.createElement('div');nuevo.className='giro-txt';
+  nuevo.innerHTML='<p class="giro-ojo"><b>0'+(cur+1)+'</b><span></span></p><h3></h3><p></p>';
+  nuevo.querySelector('span').textContent=b.dataset.l;nuevo.querySelector('h3').textContent=b.dataset.h;nuevo.querySelector('p:last-child').textContent=b.dataset.d;
+  old.replaceWith(nuevo);puntos.forEach((p,i)=>p.classList.toggle('on',i===cur));}
+function andar(){clearInterval(timer);timer=null;if(!quieto&&visible&&!pausa&&!document.hidden)timer=setInterval(()=>{if(g.matches(':hover'))return;cur=(cur+1)%n;pintar()},3400)}
+items.forEach((b,i)=>b.addEventListener('click',()=>{cur=i;pintar();andar()}));
+
+g.addEventListener('focusin',e=>{if(e.target.matches(':focus-visible')){pausa=true;andar()}});g.addEventListener('focusout',()=>{pausa=false;andar()});
+document.addEventListener('visibilitychange',andar);
+new IntersectionObserver(es=>{visible=es[0].isIntersecting;andar()},{threshold:.25}).observe(g);
+pintar();})();
 
 /* ===== Mapas de procesos ===== */
 (()=>{
