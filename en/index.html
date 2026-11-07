@@ -436,6 +436,48 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .idea-mas{font:500 15px/1 var(--sans);border:0;border-radius:999px;padding:14px 22px;background:var(--chip);color:var(--tinta);cursor:pointer}
 .idea-mas:hover{background:var(--superficie)}
 @media(prefers-reduced-motion:reduce){.idea{animation:none}}
+
+/* ---------- mapas de procesos ---------- */
+.mapa-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:44px 0 28px}
+.mapa-tabs button{font:500 15px/1.2 var(--sans);padding:13px 18px;border-radius:999px;border:0;background:var(--chip);color:var(--tinta);cursor:pointer;transition:background .2s,color .2s}
+.mapa-tabs button:hover{background:var(--superficie)}
+.mapa-tabs button[aria-pressed="true"]{background:var(--tinta);color:var(--papel)}
+.mapa-tabs button:focus-visible{outline:2px solid var(--alba);outline-offset:2px}
+.mapa-ctx{color:var(--gris);font-size:17px;max-width:62ch;margin:0 0 36px}
+.mapa-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.4vw,32px);align-items:start}
+@media(max-width:900px){.mapa-grid{grid-template-columns:1fr}}
+.mapa-col{background:var(--superficie);border-radius:28px;padding:clamp(22px,2.8vw,34px)}
+.mapa-col.despues{background:var(--tinta);color:var(--papel)}
+.mapa-col h3{font-size:clamp(28px,2.8vw,38px);line-height:1}
+.mapa-res{display:flex;gap:26px;flex-wrap:wrap;margin:18px 0 24px}
+.mapa-res div b{display:block;font:300 clamp(34px,3.4vw,46px)/1 var(--serif)}
+.mapa-res div span{font-size:13.5px;opacity:.72}
+.mapa-pasos{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.paso-m{position:relative;display:grid;gap:4px;background:var(--papel);color:var(--tinta);border-radius:16px;padding:14px 16px 14px 20px;border-left:6px solid var(--o,var(--tinta))}
+.despues .paso-m{background:rgba(255,255,255,.08);color:var(--papel)}
+.paso-m .o{font-size:13px;font-weight:600;color:var(--o-t,var(--gris))}
+.paso-m b{font-weight:500;font-size:16.5px;line-height:1.3}
+.paso-m .d{font-size:14.5px;opacity:.78;line-height:1.45}
+.paso-m .h{justify-self:start;font-size:12.5px;background:var(--chip);padding:4px 10px;border-radius:999px;margin-top:4px}
+.despues .paso-m .h{background:rgba(255,255,255,.12)}
+.paso-m.tr::before{content:attr(data-tr);position:absolute;top:-9px;right:14px;font-size:11.5px;background:var(--alba);color:#0b1626;padding:2px 9px;border-radius:999px;font-weight:600}
+.paso-m.o-cliente{--o:#8b95a5;--o-t:#5a6372}
+.paso-m.o-persona{--o:var(--alba);--o-t:#9a5a12}
+.paso-m.o-make{--o:#6d8fd6;--o-t:#3f5f9e}
+.paso-m.o-ia{--o:#a08ad0;--o-t:#6d57a3}
+.paso-m.o-app{--o:#3fb37f;--o-t:#1f7a52}
+.despues .paso-m.o-cliente{--o-t:#c3cad6}.despues .paso-m.o-persona{--o-t:#f0b875}.despues .paso-m.o-make{--o-t:#a9c1f0}.despues .paso-m.o-ia{--o-t:#cdbdf0}.despues .paso-m.o-app{--o-t:#8fe0b9}
+:root[data-theme="dark"] .paso-m.o-cliente{--o-t:#c3cad6}:root[data-theme="dark"] .paso-m.o-persona{--o-t:#f0b875}:root[data-theme="dark"] .paso-m.o-make{--o-t:#a9c1f0}:root[data-theme="dark"] .paso-m.o-ia{--o-t:#cdbdf0}:root[data-theme="dark"] .paso-m.o-app{--o-t:#8fe0b9}
+:root[data-theme="dark"] .mapa-col.despues{background:var(--crema);color:#0b1626}
+:root[data-theme="dark"] .despues .paso-m{background:#fff;color:#0b1626}
+:root[data-theme="dark"] .despues .paso-m .h{background:#eff1f3}
+:root[data-theme="dark"] .despues .paso-m.o-cliente{--o-t:#5a6372}:root[data-theme="dark"] .despues .paso-m.o-persona{--o-t:#9a5a12}:root[data-theme="dark"] .despues .paso-m.o-make{--o-t:#3f5f9e}:root[data-theme="dark"] .despues .paso-m.o-ia{--o-t:#6d57a3}:root[data-theme="dark"] .despues .paso-m.o-app{--o-t:#1f7a52}
+.mapa-pie{display:flex;gap:14px 24px;align-items:center;flex-wrap:wrap;margin-top:34px}
+.mapa-pie p{margin:0;color:var(--gris);font-size:16px;max-width:60ch}
+.mapa-leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:13.5px;color:var(--gris);margin:0 0 18px;padding:0;list-style:none}
+.mapa-leyenda li{display:flex;align-items:center;gap:7px}
+.mapa-leyenda i{width:14px;height:14px;border-radius:4px;background:var(--o)}
+@media(prefers-reduced-motion:no-preference){.paso-m{animation:entra .35s ease both}}
 </style>
 </head>
 <body>
@@ -686,13 +728,35 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
   </div>
 </section>
 
+
+<!-- ============ MAPAS DE PROCESOS ============ -->
+<section class="sec" id="mapas" style="padding-top:clamp(96px,12vw,150px)">
+  <div class="wrap">
+    <h2 class="titulo">The before and after of every process, on one map.</h2>
+    <p class="bajada">Before automating anything, I draw how your process works today: who does each step, with which tool and where it gets stuck. Here are two I mapped and built in Make.</p>
+    <div class="mapa-tabs" id="mapa-tabs" role="group" aria-label="Pick a process"></div>
+    <p class="mapa-ctx" id="mapa-ctx"></p>
+    <ul class="mapa-leyenda" aria-label="Who does each step">
+      <li style="--o:#8b95a5"><i></i>Customer</li><li style="--o:#f0a34a"><i></i>A person</li><li style="--o:#6d8fd6"><i></i>Make</li><li style="--o:#a08ad0"><i></i>AI</li><li style="--o:#3fb37f"><i></i>App</li>
+    </ul>
+    <div class="mapa-grid" aria-live="polite">
+      <section class="mapa-col antes" aria-labelledby="mh-a"><h3 id="mh-a">Before</h3><div class="mapa-res" id="res-a"></div><ol class="mapa-pasos" id="pasos-a"></ol></section>
+      <section class="mapa-col despues" aria-labelledby="mh-d"><h3 id="mh-d">After</h3><div class="mapa-res" id="res-d"></div><ol class="mapa-pasos" id="pasos-d"></ol></section>
+    </div>
+    <div class="mapa-pie">
+      <p>The map you get shows, for every step, who does it, with which tool, what data it uses and where it gets stuck. With that we decide what gets automated, what gets simplified and what stays as is.</p>
+      <a class="btn btn-wa wa-mapa" id="mapa-wa" href="#" target="_blank" rel="noopener">I want to map my process</a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ PROCESO ============ -->
 <section class="sec" id="proceso" style="padding-top:0">
   <div class="wrap">
     <h2 class="titulo">How we work together.</h2>
     <ol class="pasos">
       <li><h3>Diagnosis</h3><p>You tell me how your business runs and where your time goes.</p><p class="lleva">You get an honest take on whether I can help.</p></li>
-      <li><h3>Order</h3><p>I map the process and we decide what gets automated, what gets simplified and what stays as is.</p><p class="lleva">You get a process map and a fixed quote.</p></li>
+      <li><h3>Order</h3><p>I map the process step by step, before and after: who does what, with which tool and where it gets stuck. We decide what gets automated, what gets simplified and what stays as is.</p><p class="lleva">You get a process map and a fixed quote.</p></li>
       <li><h3>Automation</h3><p>I build the workflows in Make or n8n and we test them with real cases.</p><p class="lleva">You get working automations.</p></li>
       <li><h3>Support</h3><p>I walk you through how it all works, monitor it and adjust what’s needed.</p><p class="lleva">You get documentation and support.</p></li>
     </ol>
@@ -976,6 +1040,31 @@ function wa(L){
   $('ideas-wa').href='https://wa.me/5492634876659?text='+encodeURIComponent(txt);
 }
 $('ideas-otra').addEventListener('click',()=>{st.off++;st.no.clear();pintar()});
+pintar();
+})();
+
+/* ===== Mapas de procesos ===== */
+(()=>{
+const M={"owners": {"cliente": "Customer", "persona": "A person", "make": "Make", "ia": "AI", "app": "App"}, "tr": "Handoff", "cond": "only when needed", "pasos": "steps", "mano": "manual steps", "tras": "handoffs", "msg": "Hi Juani. I saw your process maps on the site and I’d like to map one from my business, similar to \"{p}\".", "procs": [{"nombre": "WhatsApp inquiries", "ctx": "Rodeo Semillas and Chemical Sud get seed and fertilizer questions on WhatsApp and sell through their store, Mercado Libre and distributors.", "antes": [{"o": "cliente", "t": "The inquiry arrives", "d": "The customer writes on WhatsApp and the message waits until someone sees it.", "h": "WhatsApp", "m": 0}, {"o": "persona", "t": "Look the product up by hand", "d": "Someone checks the store and Mercado Libre to find the right product.", "h": "Store · Mercado Libre", "m": 1}, {"o": "persona", "t": "Copy the link and reply", "d": "The purchase link is pasted into a reply written for each customer.", "h": "WhatsApp", "m": 1}, {"o": "persona", "t": "Find a distributor", "d": "If the product isn’t available, someone looks up by hand who sells in their area.", "h": "Spreadsheet", "m": 1}], "despues": [{"o": "cliente", "t": "The inquiry arrives", "d": "The customer writes on WhatsApp, typos and after-hours included.", "h": "WhatsApp", "m": 0}, {"o": "make", "t": "Receive and filter", "d": "It processes only incoming inquiries and queues them to answer one by one.", "h": "WhatsApp Business", "m": 0}, {"o": "make", "t": "Search with a custom engine", "d": "Tolerates typos and tells varieties, packaging and boxes apart.", "h": "Code · Catalog sheet", "m": 0}, {"o": "make", "t": "Pick the channel and build the link", "d": "Cross-checks the store with Mercado Libre. When in doubt, it sends people to the store rather than the wrong product.", "h": "Store · Mercado Libre", "m": 0}, {"o": "make", "t": "Reply", "d": "Answers on WhatsApp with the purchase link or the distributor for their province and town.", "h": "WhatsApp Business", "m": 0}, {"o": "persona", "t": "Update the distributors sheet", "d": "The client keeps it up to date. It’s the only thing a person does.", "h": "Spreadsheet", "m": 0, "c": 1}]}, {"nombre": "Field trial photos", "ctx": "In the trials, many photos are taken per variety and per day, and they ended up mixed together on the phone.", "antes": [{"o": "persona", "t": "Take the photos in the field", "d": "All together on the phone, from several varieties and several days.", "h": "Phone", "m": 0}, {"o": "persona", "t": "Write notes by hand", "d": "Observations end up in a notebook, separate from the photos.", "h": "Notebook", "m": 1}, {"o": "persona", "t": "Transfer and rename the photos", "d": "They’re moved to a computer and renamed one by one.", "h": "Computer · Folders", "m": 1}, {"o": "persona", "t": "Move each photo to its folder", "d": "Into its variety folder, inside the right day.", "h": "Google Drive", "m": 1}, {"o": "persona", "t": "Type the description", "d": "Someone writes by hand what each photo shows.", "h": "Spreadsheet", "m": 1}], "despues": [{"o": "app", "t": "Log the capture from the phone", "d": "Label photo or QR, sample photos and a voice note or notebook photo, one-handed.", "h": "App on Vercel", "m": 0}, {"o": "make", "t": "Receive the capture", "d": "Validates the app key and avoids saving duplicates.", "h": "Make", "m": 0}, {"o": "make", "t": "Save photos and audio", "d": "They land in Drive and the capture is logged in the spreadsheet.", "h": "Google Drive · Sheets", "m": 0}, {"o": "ia", "t": "Transcribe voice and handwritten notes", "d": "Audio and notebook handwriting are turned into text.", "h": "Whisper · GPT-4o", "m": 0}, {"o": "ia", "t": "Read the label and describe the sample", "d": "Picks the variety from the catalog and describes what the photo shows.", "h": "GPT-4o", "m": 0}, {"o": "make", "t": "File it in the right place", "d": "Copies the photo to its variety folder, in the day’s subfolder, named with a code and the date.", "h": "Google Drive", "m": 0}, {"o": "persona", "t": "Review only the doubtful ones", "d": "If the AI isn’t sure, the capture is flagged for a manual check.", "h": "App · Review", "m": 0, "c": 1}]}]};
+const $=id=>document.getElementById(id);
+let cur=0;
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const own=o=>M.owners[o];
+function col(listEl,resEl,steps){
+  let tr=0,man=0;
+  listEl.innerHTML=steps.map((s,i)=>{
+    const prev=steps[i-1];const h=prev&&prev.o!==s.o;if(h)tr++;if(s.m)man++;
+    return '<li class="paso-m o-'+s.o+(h?' tr':'')+'"'+(h?' data-tr="'+esc(M.tr)+'"':'')+'><span class="o">'+esc(own(s.o))+(s.c?' · '+esc(M.cond):'')+'</span><b>'+esc(s.t)+'</b><span class="d">'+esc(s.d)+'</span><span class="h">'+esc(s.h)+'</span></li>'}).join('');
+  resEl.innerHTML='<div><b>'+steps.length+'</b><span>'+esc(M.pasos)+'</span></div><div><b>'+man+'</b><span>'+esc(M.mano)+'</span></div>';
+}
+function pintar(){
+  const p=M.procs[cur];
+  document.querySelectorAll('#mapa-tabs button').forEach((b,i)=>b.setAttribute('aria-pressed',i===cur));
+  $('mapa-ctx').textContent=p.ctx;
+  col($('pasos-a'),$('res-a'),p.antes);col($('pasos-d'),$('res-d'),p.despues);
+  $('mapa-wa').href='https://wa.me/5492634876659?text='+encodeURIComponent(M.msg.replace('{p}',p.nombre));
+}
+M.procs.forEach((p,i)=>{const b=document.createElement('button');b.type='button';b.textContent=p.nombre;b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>{cur=i;pintar()});$('mapa-tabs').appendChild(b)});
 pintar();
 })();
 let arrancó=false;
