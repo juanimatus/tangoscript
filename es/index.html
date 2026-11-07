@@ -430,9 +430,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .ic .chips{justify-content:flex-start}
 .ic .chips span{background:rgba(255,255,255,.72);color:#0b1626}
 .ic-pie{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:4px}
-.si{font:500 14px/1 var(--sans);border:0;border-radius:999px;padding:11px 15px;background:rgba(255,255,255,.8);color:#0b1626;cursor:pointer;transition:background .2s,color .2s,transform .15s}
+.si{font:500 14px/1 var(--sans);border:0;border-radius:999px;padding:11px 15px;background:#0b1626;color:#fff;cursor:pointer;transition:background .2s,color .2s,transform .15s}
 .si:active{transform:scale(.95)}
-.si[aria-pressed="true"]{background:#0b1626;color:#fff}
+.si:hover{background:#1c2c47}
+.si[aria-pressed="true"]{background:#25D366;color:#0b1626}
 .gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 @media(max-width:1000px){.gal-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.gal-grid{grid-template-columns:1fr}}
