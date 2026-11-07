@@ -140,8 +140,13 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .escribe i:nth-child(2){animation-delay:.2s}.escribe i:nth-child(3){animation-delay:.4s}
 @keyframes late{0%,60%,100%{opacity:.25}30%{opacity:1}}
 @keyframes entra{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.tel-pie{padding:12px;border-top:1px solid rgba(255,255,255,.08)}
-.tel-pie div{background:#0a1628;border-radius:999px;padding:10px 16px;font-size:13.5px;color:rgba(233,237,243,.4)}
+.tel-pie{padding:12px;border-top:1px solid rgba(255,255,255,.08);display:flex;gap:8px;align-items:center}
+.tel-pie input{flex:1;min-width:0;background:#0a1628;border:0;border-radius:999px;padding:11px 16px;font:inherit;font-size:16px;color:#e9edf3}
+.tel-pie input::placeholder{color:rgba(233,237,243,.45)}
+.tel-pie input:focus-visible{outline:2px solid var(--alba);outline-offset:1px}
+.tel-pie button{flex:none;width:42px;height:42px;border:0;border-radius:50%;background:var(--crema);color:#0b1626;font-size:16px;cursor:pointer;transition:transform .2s}
+.tel-pie button:active{transform:scale(.92)}
+.tel-ayuda{font-size:14.5px;color:rgba(233,237,243,.62);margin-top:16px}
 .flujo{background:#0e1d33;border-radius:30px;padding:clamp(20px,2.6vw,30px);display:flex;flex-direction:column;gap:22px;min-width:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
 .flujo-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:15px}
 .flujo-top b{font-weight:500}
@@ -401,6 +406,32 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
   *,*::before,*::after{animation:none!important;transition:none!important}
   .hero{height:100vh}
 }
+
+/* ---------- lluvia de ideas ---------- */
+.ideas-grid{display:grid;grid-template-columns:minmax(0,420px) 1fr;gap:clamp(28px,4.5vw,64px);margin-top:52px;align-items:start}
+@media(max-width:900px){.ideas-grid{grid-template-columns:1fr}}
+.paso-t{font:500 16px/1.3 var(--sans);margin:0 0 12px}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.opts button{font:500 14.5px/1 var(--sans);padding:12px 16px;border-radius:999px;border:0;background:var(--chip);color:var(--tinta);cursor:pointer;transition:background .2s,color .2s,transform .15s}
+.opts button:hover{background:var(--superficie)}
+.opts button:active{transform:scale(.96)}
+.opts button[aria-pressed="true"]{background:var(--tinta);color:var(--papel)}
+.opts button:focus-visible,.idea-mas:focus-visible,.idea-si:focus-visible{outline:2px solid var(--alba);outline-offset:2px}
+.ideas-out{min-height:320px}
+.ideas-vacio{background:var(--superficie);border-radius:24px;padding:clamp(28px,4vw,48px);font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.3vw,30px);line-height:1.25;color:var(--gris)}
+.ideas-lista{display:grid;gap:14px;margin:0;padding:0;list-style:none}
+.idea{background:var(--superficie);border-radius:22px;padding:22px 24px;display:grid;gap:10px;animation:entra .35s ease both}
+.idea h3{font-size:clamp(22px,2vw,26px);line-height:1.15}
+.idea p{color:var(--gris);font-size:16px;margin:0}
+.idea-pie{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:4px}
+.idea .chips{justify-content:flex-start}
+.idea .chips span{background:var(--papel)}
+.idea-si{font:500 14px/1 var(--sans);border:0;border-radius:999px;padding:10px 14px;background:transparent;color:var(--tinta);box-shadow:inset 0 0 0 1.5px var(--tinta);cursor:pointer;transition:background .2s,color .2s}
+.idea-si[aria-pressed="true"]{background:var(--tinta);color:var(--papel)}
+.ideas-acciones{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.idea-mas{font:500 15px/1 var(--sans);border:0;border-radius:999px;padding:14px 22px;background:var(--chip);color:var(--tinta);cursor:pointer}
+.idea-mas:hover{background:var(--superficie)}
+@media(prefers-reduced-motion:reduce){.idea{animation:none}}
 </style>
 </head>
 <body>
@@ -410,6 +441,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
     <a href="#top" class="marca"><img src="../img/logo.png" alt="" width="28" height="28">TangoScript</a>
     <nav class="nav-links" aria-label="Sections">
       <a href="#demo">Demo</a>
+      <a href="#ideas">Ideas</a>
       <a href="#casos">Work</a>
       <a href="#proyectos">Projects</a>
       <a href="#proceso">How I work</a>
@@ -435,8 +467,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
       <h1>First I organize, then I automate.</h1>
       <p>Process consulting and AI automation for small businesses and entrepreneurs.</p>
       <a class="btn btn-wa wa" href="#" target="_blank" rel="noopener">
-        <svg class="wa-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-        Message me by email
+        <svg class="wa-ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg>
+        Message me on WhatsApp
       </a>
     </div>
     <span class="hero-pista" id="pista">Scroll to bring order</span>
@@ -483,7 +515,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
       <div class="tel" aria-label="WhatsApp chat simulation">
         <div class="tel-top"><div class="tel-av">AD</div><div><b>Agro Demo</b><small id="tel-estado">online</small></div></div>
         <div class="chat" id="chat" aria-live="polite"></div>
-        <div class="tel-pie"><div>Type a message</div></div>
+        <form class="tel-pie" id="tel-form" autocomplete="off"><input id="tel-in" type="text" maxlength="140" placeholder="Type a message" aria-label="Type a message to Agro Demo" enterkeyhint="send"><button type="submit" aria-label="Send">&#10148;</button></form>
       </div>
       <div class="flujo">
         <div class="flujo-top"><b>AI customer service on WhatsApp</b><span class="estado" id="estado">Waiting for a message</span></div>
@@ -502,7 +534,34 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
         </div>
       </div>
     </div>
+    <p class="tel-ayuda">Type your own message in the chat and watch how it’s handled: price, order or advisor.</p>
     <p class="nota">Demo with sample data. Real workflows are built around your products, prices and rules.</p>
+  </div>
+</section>
+
+
+<!-- ============ LLUVIA DE IDEAS ============ -->
+<section class="sec" id="ideas" style="padding-top:clamp(96px,12vw,150px)">
+  <div class="wrap">
+    <h2 class="titulo">Tell me about your business and I’ll brainstorm ideas.</h2>
+    <p class="bajada">Pick your industry and what eats your time. Right away I show you how it would be automated, with the tools you already use.</p>
+    <div class="ideas-grid">
+      <div>
+        <p class="paso-t" id="p1">What kind of business do you have?</p>
+        <div class="opts" id="o-rubro" role="group" aria-labelledby="p1"></div>
+        <p class="paso-t" id="p2">What takes up most of your time?</p>
+        <div class="opts" id="o-tareas" role="group" aria-labelledby="p2"></div>
+        <p class="paso-t" id="p3">What do you use today?</p>
+        <div class="opts" id="o-tools" role="group" aria-labelledby="p3"></div>
+      </div>
+      <div>
+        <div class="ideas-out" id="ideas-out" aria-live="polite"></div>
+        <div class="ideas-acciones" id="ideas-acc" hidden>
+          <button type="button" class="idea-mas" id="ideas-otra">Another round of ideas</button>
+          <a class="btn btn-wa wa-ideas" id="ideas-wa" href="#" target="_blank" rel="noopener">Send me these ideas on WhatsApp</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -616,7 +675,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
       <div class="calc-res" aria-live="polite">
         <div class="grande"><b id="r-anio">384</b><span>hours a year</span></div>
         <div class="fila"><div><b id="r-dias">48</b><span>8-hour workdays</span></div><div><b id="r-plata">3.840</b><span>USD a year in time</span></div></div>
-        <a class="btn btn-wa" id="calc-wa" href="#" target="_blank" rel="noopener">Tell me by email</a>
+        <a class="btn btn-wa" id="calc-wa" href="#" target="_blank" rel="noopener">Tell me on WhatsApp</a>
         <p class="aclara">Based on 48 working weeks. Doesn’t include mistakes or lost inquiries.</p>
       </div>
     </div>
@@ -675,9 +734,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
     <h2>Let’s build something together.</h2>
     <p>Tell me which process is holding you back. In one call we’ll see if it’s worth automating and where to start.</p>
     <div class="acciones">
-      <a class="btn btn-wa wa" href="#" target="_blank" rel="noopener">Message me by email</a>
+      <a class="btn btn-wa wa" href="#" target="_blank" rel="noopener">Message me on WhatsApp</a>
     </div>
-    <p style="margin:14px 0 0;opacity:.8">Or write to me directly at <a href="mailto:juanigmatus@gmail.com" style="color:inherit">juanigmatus@gmail.com</a></p>
     <ul class="redes" aria-label="Social media">
       <li><a href="https://www.linkedin.com/company/tangoscript/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4z"/></svg><span>LinkedIn</span></a></li>
       <li><a href="https://www.instagram.com/tangoscript" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg><span>Instagram</span></a></li>
@@ -686,7 +744,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
     <footer class="pie">
       <span>© <span id="anio"></span> TangoScript</span>
       <nav aria-label="Contact">
-        <a class="wa" href="#" target="_blank" rel="noopener">Email</a>
+        <a class="wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
         <a href="../es/" hreflang="es" lang="es">Español</a>
       </nav>
     </footer>
@@ -699,11 +757,10 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 
 <script>
 /* ===== Configuración ===== */
-const EMAIL='juanigmatus@gmail.com';
+const WHATSAPP='5492634876659';
 const WA_TEXT='Hi Juani, I saw your website and I’d like to organize and automate a process in my business.';
-const MOVIL=/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-const MAIL=b=>MOVIL?`mailto:${EMAIL}?subject=${encodeURIComponent('TangoScript')}&body=${encodeURIComponent(b)}`:`https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}&su=${encodeURIComponent('TangoScript')}&body=${encodeURIComponent(b)}`;
-document.querySelectorAll('.wa').forEach(a=>a.href=MAIL(WA_TEXT));
+const WA=b=>`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(b)}`;
+document.querySelectorAll('.wa').forEach(a=>a.href=WA(WA_TEXT));
 document.getElementById('anio').textContent=new Date().getFullYear();
 (()=>{const url=(location.origin.startsWith('http')?location.origin:'https://tangoscript.vercel.app')+'/en/';
 const q=`Review ${url}, the website of TangoScript (Juan Ignacio Matus, process and AI automation consultant). Based on what you know about my business, would he be a good fit? What could he automate for me, and what should I ask him before starting? If you don't know what my business does, ask me first.`;
@@ -780,7 +837,7 @@ const fmt=n=>Math.round(n).toLocaleString('en-US');
 const MSG='Hi Juani. Your site’s calculator says I spend about {h} hours a week on repetitive tasks{t}. Can we see if it can be automated?', MSG_T=' ({t})';
 function calc(){const hs=+h.value||0, val=Math.max(0,+v.value||0), anio=hs*48;
 oh.textContent=hs;document.getElementById('r-anio').textContent=fmt(anio);document.getElementById('r-dias').textContent=fmt(anio/8);document.getElementById('r-plata').textContent=fmt(anio*val);
-const tarea=t.value.trim();wa.href=MAIL(MSG.replace('{h}',hs).replace('{t}',tarea?MSG_T.replace('{t}',tarea):''));}
+const tarea=t.value.trim();wa.href=WA(MSG.replace('{h}',hs).replace('{t}',tarea?MSG_T.replace('{t}',tarea):''));}
 [h,v,t].forEach(e=>e.addEventListener('input',calc));calc();})();
 
 /* ===== Capturas ampliadas ===== */
@@ -823,10 +880,10 @@ const dormir=ms=>new Promise(r=>setTimeout(r,reduce?0:ms));
 const hora=(s)=>new Date().toTimeString().slice(0,s?8:5);
 function msg(t,q){const m=document.createElement('div');m.className='msg '+q;m.innerHTML=t+'<small>'+hora()+'</small>';chat.appendChild(m);chat.scrollTop=chat.scrollHeight}
 function log(h){const l=document.createElement('div');l.innerHTML='<time>'+hora(1)+'</time><span>'+h+'</span>';reg.appendChild(l);while(reg.children.length>7)reg.firstChild.remove()}
-async function correr(k){
+async function correr(k,libre){
   const yo=++tok;chat.innerHTML='';reg.innerHTML='';nodos.forEach(n=>n.classList.remove('activo','hecho'));ramas.forEach(r=>r.classList.remove('si'));
   cT.textContent='0.0 s';cO.textContent='0';cH.textContent='0';
-  const s=SCEN[k];document.getElementById('accion').textContent=s.accion;est.textContent='Waiting for a message';
+  const s=libre||SCEN[k];document.getElementById('accion').textContent=s.accion;est.textContent='Waiting for a message';
   await dormir(600);let ops=0;
   for(const p of s.pasos){
     if(yo!==tok)return;
@@ -846,6 +903,77 @@ async function correr(k){
 }
 document.querySelectorAll('.escenarios button').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.escenarios button').forEach(x=>x.setAttribute('aria-selected',x===b));correr(b.dataset.s)}));
+/* ===== Demo: mensaje propio ===== */
+const TX={
+  rx:{asesor:/advis|call me|problem|help|technical|pest|complain/,pedido:/quiero|necesito|pedido|comprar|encargar|mandame|enviame|\d+\s*(bolsas?|kg|litros?|bidones?|unidades?)/,precio:/price|how much|cost|stock|\$/},
+  precioLog:p=>p?'Spreadsheet: product "'+esc(p)+'" found':'Spreadsheet: looks up the product in the catalog',
+  precioBot:p=>'Hi! '+(p?esc(p):'That product')+' is USD 160 + tax per bag. It’s in stock for delivery this week. Want the terms for your area?',
+  pedidoLog:n=>'AI detects: <em>order</em>'+(n?', '+esc(n)+' units':''),
+  pedidoBot:n=>'Done! I logged order #1042'+(n?' for '+esc(n)+' units':'')+'. We’ll confirm the delivery time shortly. Do you need an invoice?',
+  noSeguro:'AI isn’t sure what they need: <em>hands it to a person</em>'
+};
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function armar(t){
+  const low=t.toLowerCase();
+  const prod=(t.match(/\b[A-Za-z]{1,3}-?\d{1,4}\b/)||[])[0];
+  const num=(t.match(/\d+/)||[])[0];
+  let k=null;
+  if(TX.rx.asesor.test(low))k='asesor';
+  else if(TX.rx.pedido.test(low))k='pedido';
+  else if(TX.rx.precio.test(low))k='precio';
+  const s=JSON.parse(JSON.stringify(SCEN[k||'asesor']));
+  s.pasos[0].cli=esc(t);
+  if(k==='precio'){s.pasos[4].log=TX.precioLog(prod);s.pasos[5].bot=TX.precioBot(prod)}
+  else if(k==='pedido'){s.pasos[2].log=TX.pedidoLog(num);s.pasos[6].bot=TX.pedidoBot(num)}
+  else if(!k){s.pasos[2].log=TX.noSeguro}
+  return [k||'asesor',s];
+}
+const form=document.getElementById('tel-form'), entrada=document.getElementById('tel-in');
+form.addEventListener('submit',e=>{
+  e.preventDefault();const t=entrada.value.trim().slice(0,140);if(!t)return;
+  entrada.value='';const [k,s]=armar(t);
+  document.querySelectorAll('.escenarios button').forEach(x=>x.setAttribute('aria-selected',x.dataset.s===k));
+  correr(k,s);
+});
+
+/* ===== Lluvia de ideas ===== */
+(()=>{
+const D={"rubros": [["comercio", "Retail"], ["agro", "Agriculture"], ["salud", "Health and clinics"], ["servicios", "Professional services"], ["gastro", "Food and hospitality"], ["educacion", "Education"], ["otro", "Other"]], "tareas": [["consultas", "Answering the same questions"], ["pedidos", "Moving orders to a spreadsheet"], ["turnos", "Appointments and reminders"], ["seguimiento", "Following up with customers"], ["reportes", "Reports and numbers"], ["archivos", "Sorting photos and files"], ["redes", "Social media and content"], ["cobros", "Payments and invoices"]], "tools": [["WhatsApp", "WhatsApp"], ["Instagram", "Instagram"], ["Gmail", "Gmail"], ["Google Sheets", "Google Sheets"], ["Excel", "Excel"], ["Notion", "Notion"], ["Tienda online", "Online store"], ["nada", "Nothing yet"]], "rn": {"comercio": {"cli": "your customers", "prod": "your products", "ped": "a new order", "r": "retail"}, "agro": {"cli": "your customers", "prod": "your supplies", "ped": "a new order", "r": "agriculture"}, "salud": {"cli": "your patients", "prod": "your treatments", "ped": "a new appointment", "r": "health"}, "servicios": {"cli": "your clients", "prod": "your services", "ped": "a new inquiry", "r": "professional services"}, "gastro": {"cli": "your guests", "prod": "your dishes", "ped": "a new booking", "r": "food and hospitality"}, "educacion": {"cli": "your students", "prod": "your courses", "ped": "a new enrollment", "r": "education"}, "otro": {"cli": "your customers", "prod": "what you sell", "ped": "a new order", "r": "other"}}, "ideas": {"consultas": [["An assistant that answers the usual questions", "Replies on {canal} with prices, hours and availability for {prod} any time of day, and pings you only when a person is needed.", ["{canal}", "AI"]], ["Handoff with the summary ready", "If a question is complex, it passes it to a person with all the context, so {cli} never repeat themselves.", ["{canal}", "AI", "{plan}"]]], "pedidos": [["Every order into the spreadsheet, no typing", "When {ped} arrives on {canal}, it’s logged in {plan} and whoever prepares it gets a heads-up.", ["{canal}", "{plan}", "Make"]], ["Automatic confirmation", "The buyer gets a confirmation with the details, and you see everything in a single table.", ["{canal}", "{plan}"]]], "turnos": [["Reminders that prevent no-shows", "The day before, everyone gets a reminder on {canal} and confirms or reschedules with one tap.", ["{canal}", "Make"]], ["A waiting list that fills itself", "If a slot opens up, it’s offered in order to the people who were waiting.", ["{canal}", "{plan}"]]], "seguimiento": [["Quote follow-ups", "If a quote goes three days without an answer, a friendly message goes out and it’s noted in {plan}.", ["{canal}", "{plan}", "AI"]], ["A nudge to buy again", "When it’s about time {cli} usually come back, they get a message with the option ready.", ["{canal}", "{plan}"]]], "reportes": [["A weekly summary in your inbox", "Every Monday you get what happened that week, pulled from {plan}, with nothing built by hand.", ["{plan}", "Gmail", "Make"]], ["Alerts for what matters", "If stock runs low, a payment is late or something looks off, you hear about it right away.", ["{plan}", "{canal}"]]], "archivos": [["Photos and documents in the right folder", "Everything that comes in on {canal} is saved to Drive in the correct folder, with a name and date.", ["{canal}", "Google Drive", "AI"]], ["Voice notes to text", "Voice notes are transcribed and filed by topic in {plan}.", ["{canal}", "AI", "{plan}"]]], "redes": [["Posts drafted with AI", "From one photo and two lines from you, the AI drafts the copy for {prod} so you can review and schedule it.", ["AI", "Instagram"]], ["Replies to comments and messages", "Frequent questions on social media get an answer with the detail or link they ask for.", ["Instagram", "AI"]]], "cobros": [["Getting paid without chasing anyone", "The payment link goes out with the order and, once it clears, it’s logged and the receipt is sent.", ["{canal}", "{plan}", "Make"]], ["Reminders for pending payments", "Whoever owes gets a polite message at 3, 7 and 15 days.", ["{canal}", "{plan}"]]]}, "canal": {"WhatsApp": "WhatsApp", "Instagram": "Instagram", "Gmail": "Gmail", "def": "WhatsApp"}, "plan": {"Google Sheets": "Google Sheets", "Excel": "Excel", "Notion": "Notion", "def": "a Google Sheets spreadsheet"}, "vacio": "Pick your industry and at least one task, and your ideas show up here.", "si": "I’m interested", "msg_head": "Hi Juani. My industry: {r}. I saw these automation ideas on your site:", "msg_tail": "Can we talk?"};
+const $=id=>document.getElementById(id);
+const st={rubro:null,tareas:new Set(),tools:new Set(),off:0,no:new Set()};
+const mk=(box,arr,multi,key)=>arr.forEach(([v,t])=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.setAttribute('aria-pressed','false');
+  b.addEventListener('click',()=>{
+    if(multi){const s=st[key];s.has(v)?s.delete(v):s.add(v);b.setAttribute('aria-pressed',s.has(v))}
+    else{st[key]=st[key]===v?null:v;[...box.children].forEach(c=>c.setAttribute('aria-pressed',c===b&&st[key]===v))}
+    st.off=0;st.no.clear();pintar()});box.appendChild(b)});
+mk($('o-rubro'),D.rubros,false,'rubro');mk($('o-tareas'),D.tareas,true,'tareas');mk($('o-tools'),D.tools,true,'tools');
+const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function lista(){
+  const r=D.rn[st.rubro||'otro'];
+  const canal=['WhatsApp','Instagram','Gmail'].find(x=>st.tools.has(x))||D.canal.def;
+  const plan=['Google Sheets','Excel','Notion'].find(x=>st.tools.has(x))||D.plan.def;
+  const sub=s=>s.replace(/\{canal\}/g,canal).replace(/\{plan\}/g,plan).replace(/\{cli\}/g,r.cli).replace(/\{prod\}/g,r.prod).replace(/\{ped\}/g,r.ped);
+  const out=[];
+  [...st.tareas].forEach(t=>{const a=D.ideas[t];for(let i=0;i<a.length;i++){const x=a[(i+st.off)%a.length];out.push({id:t+(i+st.off)%a.length,t:sub(x[0]),d:sub(x[1]),s:[...new Set(x[2].map(sub))]})}});
+  return out.slice(0,6);
+}
+function pintar(){
+  const o=$('ideas-out'),acc=$('ideas-acc');
+  if(!st.rubro||!st.tareas.size){o.innerHTML='<p class="ideas-vacio">'+D.vacio+'</p>';acc.hidden=true;return}
+  const L=lista();
+  o.innerHTML='<ul class="ideas-lista">'+L.map(i=>'<li class="idea"><h3>'+esc(i.t)+'</h3><p>'+esc(i.d)+'</p><div class="idea-pie"><div class="chips">'+i.s.map(x=>'<span>'+esc(x)+'</span>').join('')+'</div><button type="button" class="idea-si" data-id="'+i.id+'" aria-pressed="'+!st.no.has(i.id)+'">'+D.si+'</button></div></li>').join('')+'</ul>';
+  o.querySelectorAll('.idea-si').forEach(b=>b.addEventListener('click',()=>{const id=b.dataset.id;st.no.has(id)?st.no.delete(id):st.no.add(id);b.setAttribute('aria-pressed',!st.no.has(id));wa(L)}));
+  acc.hidden=false;wa(L);
+}
+function wa(L){
+  const sel=L.filter(i=>!st.no.has(i.id));
+  const r=D.rn[st.rubro||'otro'].r;
+  const txt=D.msg_head.replace('{r}',r)+'\n'+(sel.length?sel:L).map(i=>'- '+i.t).join('\n')+'\n'+D.msg_tail;
+  $('ideas-wa').href='https://wa.me/5492634876659?text='+encodeURIComponent(txt);
+}
+$('ideas-otra').addEventListener('click',()=>{st.off++;st.no.clear();pintar()});
+pintar();
+})();
 let arrancó=false;
 new IntersectionObserver(es=>{if(es[0].isIntersecting&&!arrancó){arrancó=true;correr('precio')}},{threshold:.3}).observe(document.getElementById('demo'));
 </script>
