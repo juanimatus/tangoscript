@@ -454,12 +454,15 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 :root[data-theme="dark"] .despues .paso-m.o-cliente{--o-t:#5a6372}:root[data-theme="dark"] .despues .paso-m.o-persona{--o-t:#9a5a12}:root[data-theme="dark"] .despues .paso-m.o-make{--o-t:#3f5f9e}:root[data-theme="dark"] .despues .paso-m.o-ia{--o-t:#6d57a3}:root[data-theme="dark"] .despues .paso-m.o-app{--o-t:#1f7a52}
 .mapa-pie{display:flex;gap:14px 24px;align-items:center;flex-wrap:wrap;margin-top:34px}
 .mapa-pie p{margin:0;color:var(--gris);font-size:16px;max-width:60ch}
-.mapa-diags{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:40px}
+.mapa-bpmn a{color:inherit;text-underline-offset:3px}
+.mapa-diags{display:grid;gap:22px;margin-top:40px}
 .mapa-diags figure{margin:0}
-.mapa-diags iframe{display:block;width:100%;height:clamp(380px,42vw,560px);border:0;border-radius:22px;background:#0b1626;box-shadow:0 0 0 1px rgba(127,127,127,.25)}
+.mapa-diags .diag{display:block;width:100%;padding:0;border:0;background:#fff;border-radius:22px;overflow:hidden;cursor:zoom-in;box-shadow:0 0 0 1px rgba(127,127,127,.25)}
+.mapa-diags .diag img{display:block;width:100%;height:auto}
+.mapa-diags .diag:focus-visible{outline:2px solid var(--alba);outline-offset:3px}
 .mapa-diags figcaption{font-size:14px;color:var(--gris);margin-top:10px}
-.mapa-diags figcaption a{color:inherit;text-underline-offset:3px}
-@media(max-width:900px){.mapa-diags{grid-template-columns:1fr}}
+.lb.wide{overflow:auto;place-items:start center}
+.lb.wide img{max-width:none;max-height:none;width:max(1100px,92vw);height:auto;background:#fff;border-radius:16px}
 .mapa-leyenda{display:flex;gap:16px;flex-wrap:wrap;font-size:13.5px;color:var(--gris);margin:0 0 18px;padding:0;list-style:none}
 .mapa-leyenda li{display:flex;align-items:center;gap:7px}
 .mapa-leyenda i{width:14px;height:14px;border-radius:4px;background:var(--o)}
@@ -700,11 +703,12 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
       <section class="mapa-col despues" aria-labelledby="mh-d"><h3 id="mh-d">Después</h3><div class="mapa-res" id="res-d"></div><ol class="mapa-pasos" id="pasos-d"></ol></section>
     </div>
     <div class="mapa-diags">
-      <figure><iframe id="dg-a" loading="lazy"></iframe><figcaption>Antes · <a id="dg-a-l" href="#" target="_blank" rel="noopener">Abrir en pantalla completa ↗</a></figcaption></figure>
-      <figure><iframe id="dg-d" loading="lazy"></iframe><figcaption>Después · <a id="dg-d-l" href="#" target="_blank" rel="noopener">Abrir en pantalla completa ↗</a></figcaption></figure>
+      <figure><button type="button" class="diag" id="dg-a"><img id="dg-a-i" alt="" loading="lazy"></button><figcaption>Antes · BPMN 2.0 · Tocá para ampliar</figcaption></figure>
+      <figure><button type="button" class="diag" id="dg-d"><img id="dg-d-i" alt="" loading="lazy"></button><figcaption>Después · BPMN 2.0 · Tocá para ampliar</figcaption></figure>
     </div>
     <div class="mapa-pie">
       <p>El mapa que te llevás muestra, para cada paso, quién lo hace, con qué herramienta, qué datos usa y dónde se traba. Con eso decidimos qué se automatiza, qué se simplifica y qué queda igual.</p>
+      <p class="mapa-bpmn">Los diagramas están en BPMN 2.0, el estándar que abren Camunda Modeler y bpmn.io: <a id="bp-a" href="#" download>Antes (.bpmn)</a> · <a id="bp-d" href="#" download>Después (.bpmn)</a></p>
       <a class="btn btn-wa wa-mapa" id="mapa-wa" href="#" target="_blank" rel="noopener">Quiero mapear mi proceso</a>
     </div>
   </div>
@@ -992,6 +996,7 @@ function wa(L){
   $('ideas-wa').href='https://wa.me/5492634876659?text='+encodeURIComponent(txt);
 }
 $('ideas-otra').addEventListener('click',()=>{st.off++;st.no.clear();pintar()});
+document.querySelectorAll('.diag').forEach(b=>b.addEventListener('click',()=>{const L=document.getElementById('lb'),I=L.querySelector('img');I.src=b.dataset.full;I.alt=b.querySelector('img').alt;L.classList.add('wide','on')}));
 pintar();
 })();
 
@@ -1014,7 +1019,8 @@ function pintar(){
   document.querySelectorAll('#mapa-tabs button').forEach((b,i)=>b.setAttribute('aria-pressed',i===cur));
   $('mapa-ctx').textContent=p.ctx;
   col($('pasos-a'),$('res-a'),p.antes);col($('pasos-d'),$('res-d'),p.despues);
-  [['a','antes','antes'],['d','despues','después']].forEach(([k,n,w])=>{const u='../mapas/'+p.file+'-'+n+'.html',f=$('dg-'+k);if(f.getAttribute('src')!==u)f.src=u;f.title='Diagrama del proceso «{p}», {w}'.replace('{p}',p.nombre).replace('{w}',w);$('dg-'+k+'-l').href=u});
+  $('bp-a').href='../mapas/'+p.file+'-antes.bpmn';$('bp-d').href='../mapas/'+p.file+'-despues.bpmn';
+  [['a','antes','antes'],['d','despues','después']].forEach(([k,n,w])=>{const u='../mapas/'+p.file+'-'+n+'.svg',im=$('dg-'+k+'-i'),b=$('dg-'+k);im.src=u;im.alt='Diagrama BPMN del proceso «{p}», {w}'.replace('{p}',p.nombre).replace('{w}',w);b.dataset.full=u});
   $('mapa-wa').href='https://wa.me/5492634876659?text='+encodeURIComponent(M.msg.replace('{p}',p.nombre));
 }
 M.procs.forEach((p,i)=>{const b=document.createElement('button');b.type='button';b.textContent=p.nombre;b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>{cur=i;pintar()});$('mapa-tabs').appendChild(b)});
