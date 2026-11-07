@@ -393,6 +393,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 
 /* ---------- lluvia de ideas ---------- */
 .ideas-ctl{display:grid;grid-template-columns:1fr 1fr;gap:8px clamp(24px,4vw,56px);margin-top:44px}
+.ideas-ctl .ancho{grid-column:1/-1}
 @media(max-width:820px){.ideas-ctl{grid-template-columns:1fr}}
 .paso-t{font:500 16px/1.3 var(--sans);margin:0 0 12px}
 .opts{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
@@ -400,30 +401,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .opts button:hover{background:var(--superficie)}
 .opts button:active{transform:scale(.96)}
 .opts button[aria-pressed="true"]{background:var(--tinta);color:var(--papel)}
-.vistas{display:inline-flex;gap:4px;background:var(--chip);padding:4px;border-radius:999px;margin:6px 0 34px}
-.vistas button{font:500 15px/1 var(--sans);border:0;background:transparent;color:var(--tinta);padding:12px 20px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s}
-.vistas button[aria-pressed="true"]{background:var(--tinta);color:var(--papel)}
-.opts button:focus-visible,.vistas button:focus-visible,.carp:focus-visible,.si:focus-visible,.ring-nav button:focus-visible{outline:2px solid var(--alba);outline-offset:3px}
-/* carpetas */
-.carp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:64px 22px;padding-top:40px}
-@media(max-width:900px){.carp-grid{grid-template-columns:repeat(2,1fr);gap:56px 14px}.stk span:nth-child(2){display:none}.stk span:nth-child(1){left:34%}}
-.carp{position:relative;border:0;background:none;padding:0;text-align:left;cursor:pointer;font:inherit;color:#0b1626}
-.carp-tab{position:absolute;left:0;top:-15px;width:44%;height:32px;border-radius:12px 12px 0 0;background:color-mix(in srgb,var(--c) 80%,#000 20%);z-index:1;transition:transform .35s}
-.carp-body{position:relative;z-index:3;display:grid;gap:4px;align-content:end;min-height:150px;padding:18px;border-radius:4px 22px 22px 22px;background:var(--c);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
-.carp-body b{font:500 18px/1.2 var(--sans)}
-.carp-body span{font-size:14px;color:#26334a}
-.carp-ok{position:absolute;right:14px;top:14px;width:26px;height:26px;border-radius:50%;background:#0b1626;color:#fff;display:grid;place-items:center;font-size:13px;opacity:0;transform:scale(.4);transition:opacity .25s,transform .3s}
-.carp[aria-pressed="true"] .carp-ok{opacity:1;transform:none}
-.stk{position:absolute;left:0;right:0;top:0;height:0;z-index:2;pointer-events:none}
-.stk span{position:absolute;left:var(--x);top:-4px;transform:translateY(0) rotate(var(--r));font:500 13.5px/1 var(--sans);background:#fff;color:#0b1626;padding:10px 13px;border-radius:12px;white-space:nowrap;transition:transform .5s cubic-bezier(.2,.9,.25,1.15)}
-.carp:hover .stk span,.carp:focus-visible .stk span{transform:translateY(calc(-20px - var(--k)*5px)) rotate(var(--r))}
-.carp[aria-pressed="true"] .stk span{transform:translateY(calc(-36px - var(--k)*7px)) rotate(calc(var(--r)*1.6))}
-.carp:hover .carp-body{transform:translateY(-3px)}
-.carp[aria-pressed="true"] .carp-body{transform:translateY(5px)}
-.carp[aria-pressed="true"] .carp-tab{transform:translateY(5px)}
-.carp-vacio{font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.3vw,30px);line-height:1.25;color:var(--gris);margin:48px 0 0;max-width:30ch}
-.carp-res{margin-top:56px}
-/* tarjetas de idea */
+.opts button:focus-visible,.si:focus-visible,.ring-nav button:focus-visible{outline:2px solid var(--alba);outline-offset:3px}
 .ic{--c:#f0b875;background:var(--c);color:#0b1626;border-radius:22px;padding:20px 20px 18px;box-sizing:border-box;display:grid;gap:9px;align-content:start}
 .ic h3{font-size:clamp(21px,1.9vw,25px);line-height:1.12;color:#0b1626}
 .ic p{font-size:15.5px;line-height:1.42;margin:0;color:#1d2a3d}
@@ -431,28 +409,22 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .ic .chips span{background:rgba(255,255,255,.72);color:#0b1626}
 .ic-pie{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:4px}
 .si{font:500 14px/1 var(--sans);border:0;border-radius:999px;padding:11px 15px;background:#0b1626;color:#fff;cursor:pointer;transition:background .2s,color .2s,transform .15s}
-.si:active{transform:scale(.95)}
 .si:hover{background:#1c2c47}
+.si:active{transform:scale(.95)}
 .si[aria-pressed="true"]{background:#25D366;color:#0b1626}
-.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media(max-width:1000px){.gal-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:620px){.gal-grid{grid-template-columns:1fr}}
-.gal-grid .ic{animation:ic-in .5s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*55ms)}
-@keyframes ic-in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
-/* anillo */
 .ring-wrap{position:relative;height:clamp(420px,42vw,500px);perspective:1900px;overflow:hidden;border-radius:30px;background:var(--superficie);touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
 .ring-wrap:active{cursor:grabbing}
 .ring{position:absolute;left:50%;top:52%;width:0;height:0;transform-style:preserve-3d;will-change:transform}
 .ring .ic{position:absolute;width:var(--cw);left:calc(var(--cw)/-2);top:-215px;padding:16px 16px 14px;backface-visibility:hidden;-webkit-backface-visibility:hidden;min-height:220px}
-.ring .ic h3{font-size:19px}.ring .ic p{font-size:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.ring-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px}
+.ring .ic h3{font-size:19px}
+.ring .ic p{font-size:14px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ring-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;flex-wrap:wrap}
 .ring-nav button{font:500 15px/1 var(--sans);border:0;border-radius:999px;padding:13px 20px;background:var(--chip);color:var(--tinta);cursor:pointer}
 .ring-nav button:hover{background:var(--superficie)}
 .ring-nav output{font-size:14px;color:var(--gris);font-variant-numeric:tabular-nums}
 .ideas-acciones{display:flex;gap:14px 22px;flex-wrap:wrap;align-items:center;margin-top:34px}
 .ideas-acciones p{margin:0;color:var(--gris);font-size:16px}
 @media(max-width:700px){.ring .ic{min-height:200px}}
-@media(prefers-reduced-motion:reduce){.gal-grid .ic{animation:none}.stk span,.carp-body{transition:none}}
 /* ---------- mapas de procesos ---------- */
 .mapa-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:44px 0 28px}
 .mapa-tabs button{font:500 15px/1.2 var(--sans);padding:13px 18px;border-radius:999px;border:0;background:var(--chip);color:var(--tinta);cursor:pointer;transition:background .2s,color .2s}
@@ -614,12 +586,12 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 <section class="sec" id="ideas" style="padding-top:clamp(96px,12vw,150px)">
   <div class="wrap">
     <h2 class="titulo">Tell me about your business and I’ll brainstorm ideas.</h2>
-    <p class="bajada">Pick your industry and the tools you use. Then open the folders for what eats your time and watch the ideas come out.</p>
+    <p class="bajada">Pick your industry and the tools you use, and watch automation ideas spin around. Mark the ones you like.</p>
     <div class="ideas-ctl">
       <div><p class="paso-t" id="p1">What kind of business do you have?</p><div class="opts" id="o-rubro" role="group" aria-labelledby="p1"></div></div>
       <div><p class="paso-t" id="p3">What do you use today?</p><div class="opts" id="o-tools" role="group" aria-labelledby="p3"></div></div>
+      <div class="ancho"><p class="paso-t" id="p2">What takes up most of your time? (optional)</p><div class="opts" id="o-tareas" role="group" aria-labelledby="p2"></div></div>
     </div>
-    <div class="vistas" id="vistas" role="group" aria-label="How to view the ideas"></div>
     <div id="stage" aria-live="polite"></div>
     <div class="ideas-acciones">
       <p id="ideas-n"></p>
@@ -991,90 +963,71 @@ form.addEventListener('submit',e=>{
 
 /* ===== Lluvia de ideas ===== */
 (()=>{
-const D={"rubros": [["comercio", "Retail"], ["agro", "Agriculture"], ["salud", "Health and clinics"], ["servicios", "Professional services"], ["gastro", "Food and hospitality"], ["educacion", "Education"], ["otro", "Other"]], "tareas": [["consultas", "Answering the same questions"], ["pedidos", "Moving orders to a spreadsheet"], ["turnos", "Appointments and reminders"], ["seguimiento", "Following up with customers"], ["reportes", "Reports and numbers"], ["archivos", "Sorting photos and files"], ["redes", "Social media and content"], ["cobros", "Payments and invoices"]], "tools": [["WhatsApp", "WhatsApp"], ["Instagram", "Instagram"], ["Gmail", "Gmail"], ["Google Sheets", "Google Sheets"], ["Excel", "Excel"], ["Notion", "Notion"], ["Tienda online", "Online store"], ["nada", "Nothing yet"]], "rn": {"comercio": {"cli": "your customers", "prod": "your products", "ped": "a new order", "r": "retail"}, "agro": {"cli": "your customers", "prod": "your supplies", "ped": "a new order", "r": "agriculture"}, "salud": {"cli": "your patients", "prod": "your treatments", "ped": "a new appointment", "r": "health"}, "servicios": {"cli": "your clients", "prod": "your services", "ped": "a new inquiry", "r": "professional services"}, "gastro": {"cli": "your guests", "prod": "your dishes", "ped": "a new booking", "r": "food and hospitality"}, "educacion": {"cli": "your students", "prod": "your courses", "ped": "a new enrollment", "r": "education"}, "otro": {"cli": "your customers", "prod": "what you sell", "ped": "a new order", "r": "other"}}, "ideas": {"consultas": [["An assistant that answers the usual questions", "Replies on {canal} with prices, hours and availability for {prod} any time of day, and pings you only when a person is needed.", ["{canal}", "AI"]], ["Handoff with the summary ready", "If a question is complex, it passes it to a person with all the context, so {cli} never repeat themselves.", ["{canal}", "AI", "{plan}"]]], "pedidos": [["Every order into the spreadsheet, no typing", "When {ped} arrives on {canal}, it’s logged in {plan} and whoever prepares it gets a heads-up.", ["{canal}", "{plan}", "Make"]], ["Automatic confirmation", "The buyer gets a confirmation with the details, and you see everything in a single table.", ["{canal}", "{plan}"]]], "turnos": [["Reminders that prevent no-shows", "The day before, everyone gets a reminder on {canal} and confirms or reschedules with one tap.", ["{canal}", "Make"]], ["A waiting list that fills itself", "If a slot opens up, it’s offered in order to the people who were waiting.", ["{canal}", "{plan}"]]], "seguimiento": [["Quote follow-ups", "If a quote goes three days without an answer, a friendly message goes out and it’s noted in {plan}.", ["{canal}", "{plan}", "AI"]], ["A nudge to buy again", "When it’s about time {cli} usually come back, they get a message with the option ready.", ["{canal}", "{plan}"]]], "reportes": [["A weekly summary in your inbox", "Every Monday you get what happened that week, pulled from {plan}, with nothing built by hand.", ["{plan}", "Gmail", "Make"]], ["Alerts for what matters", "If stock runs low, a payment is late or something looks off, you hear about it right away.", ["{plan}", "{canal}"]]], "archivos": [["Photos and documents in the right folder", "Everything that comes in on {canal} is saved to Drive in the correct folder, with a name and date.", ["{canal}", "Google Drive", "AI"]], ["Voice notes to text", "Voice notes are transcribed and filed by topic in {plan}.", ["{canal}", "AI", "{plan}"]]], "redes": [["Posts drafted with AI", "From one photo and two lines from you, the AI drafts the copy for {prod} so you can review and schedule it.", ["AI", "Instagram"]], ["Replies to comments and messages", "Frequent questions on social media get an answer with the detail or link they ask for.", ["Instagram", "AI"]]], "cobros": [["Getting paid without chasing anyone", "The payment link goes out with the order and, once it clears, it’s logged and the receipt is sent.", ["{canal}", "{plan}", "Make"]], ["Reminders for pending payments", "Whoever owes gets a polite message at 3, 7 and 15 days.", ["{canal}", "{plan}"]]]}, "canal": {"WhatsApp": "WhatsApp", "Instagram": "Instagram", "Gmail": "Gmail", "def": "WhatsApp"}, "plan": {"Google Sheets": "Google Sheets", "Excel": "Excel", "Notion": "Notion", "def": "a Google Sheets spreadsheet"}, "vacio": "Pick your industry and at least one task, and your ideas show up here.", "si": "I’m interested", "msg_head": "Hi Juani. My industry: {r}. I saw these automation ideas on your site:", "msg_tail": "Can we talk?", "v": {"carp": "Folders", "ring": "Ring", "gal": "Gallery"}, "hint": "Open a folder and the ideas come out of it.", "nid": "ideas", "sip": "Marked", "nmark": "{n} ideas marked.", "n0": "Mark the ones you like and I’ll get them to you on WhatsApp.", "prev": "Previous", "next": "Next"};
+const D={"rubros": [["comercio", "Retail"], ["agro", "Agriculture"], ["salud", "Health and clinics"], ["servicios", "Professional services"], ["gastro", "Food and hospitality"], ["educacion", "Education"], ["otro", "Other"]], "tools": [["WhatsApp", "WhatsApp"], ["Instagram", "Instagram"], ["Gmail", "Gmail"], ["Google Sheets", "Google Sheets"], ["Excel", "Excel"], ["Notion", "Notion"], ["Tienda online", "Online store"], ["nada", "Nothing yet"]], "rn": {"comercio": {"cli": "your customers", "prod": "your products", "ped": "a new order", "r": "retail"}, "agro": {"cli": "your customers", "prod": "your supplies", "ped": "a new order", "r": "agriculture"}, "salud": {"cli": "your patients", "prod": "your treatments", "ped": "a new appointment", "r": "health"}, "servicios": {"cli": "your clients", "prod": "your services", "ped": "a new inquiry", "r": "professional services"}, "gastro": {"cli": "your guests", "prod": "your dishes", "ped": "a new booking", "r": "food and hospitality"}, "educacion": {"cli": "your students", "prod": "your courses", "ped": "a new enrollment", "r": "education"}, "otro": {"cli": "your customers", "prod": "what you sell", "ped": "a new order", "r": "other"}}, "canal": {"WhatsApp": "WhatsApp", "Instagram": "Instagram", "Gmail": "Gmail", "def": "WhatsApp"}, "plan": {"Google Sheets": "Google Sheets", "Excel": "Excel", "Notion": "Notion", "def": "a Google Sheets spreadsheet"}, "tareas": [["consultas", "Answering questions"], ["pedidos", "Processing orders"], ["turnos", "Appointments and bookings"], ["seguimiento", "Customer follow-up"], ["reportes", "Reports and alerts"], ["archivos", "Sorting files"], ["redes", "Social media and content"], ["cobros", "Payments"], ["captacion", "Winning customers"], ["resenas", "Reviews and feedback"], ["stock", "Stock and purchasing"], ["equipo", "Team and internal tasks"]], "ideas": [["consultas", "*", "An assistant that answers the usual questions", "Replies on {canal} with prices, hours and availability for {prod} any time of day, and pings you only when a person is needed.", ["{canal}", "IA"]], ["consultas", "*", "Handoff with the summary ready", "If a question is complex, it passes it to a person with all the context, so {cli} never repeat themselves.", ["{canal}", "IA", "{plan}"]], ["consultas", "comercio gastro", "Catalog or menu on WhatsApp", "Whoever writes gets prices, photos and availability for {prod} instantly, and can order with one tap.", ["{canal}", "{plan}"]], ["consultas", "agro", "Product recommender by crop", "Whoever asks says which crop and what problem they have, and gets the right product with its data sheet and purchase link.", ["{canal}", "IA", "{plan}"]], ["consultas", "salud servicios", "FAQ before the appointment", "Answers how to get there, what to bring, what coverage you accept and the cost, before anyone has to call.", ["{canal}", "IA"]], ["turnos", "*", "Reminders that prevent no-shows", "The day before, everyone gets a reminder on {canal} and confirms or reschedules with one tap.", ["{canal}", "Make"]], ["turnos", "*", "A waiting list that fills itself", "If a slot opens up, it’s offered in order to the people who were waiting.", ["{canal}", "{plan}"]], ["turnos", "salud", "A full record before they walk in", "When booking, the patient fills in a form and the record reaches the clinic organized before the visit.", ["Formulario", "{plan}", "Make"]], ["turnos", "gastro", "Bookings with confirmation", "The booking comes in on {canal}, is logged in {plan} and the day before the party size is confirmed.", ["{canal}", "{plan}"]], ["turnos", "educacion", "Enrollments with paperwork", "Each enrollment asks for documents on {canal}, files them in their folder and flags what’s missing.", ["{canal}", "Google Drive", "{plan}"]], ["pedidos", "*", "Every order into the spreadsheet, no typing", "When {ped} arrives on {canal}, it’s logged in {plan} and whoever prepares it gets a heads-up.", ["{canal}", "{plan}", "Make"]], ["pedidos", "*", "Automatic confirmation", "The buyer gets a confirmation with the details, and you see everything in a single table.", ["{canal}", "{plan}"]], ["pedidos", "comercio agro", "Shipment tracking without asking", "Whoever bought gets their order status on {canal}, from dispatch to delivery.", ["{canal}", "{plan}", "Make"]], ["pedidos", "gastro", "Orders to the kitchen, no mistakes", "Orders coming in on {canal} land on a single screen, with time and address.", ["{canal}", "{plan}"]], ["seguimiento", "*", "Quote follow-ups", "If a quote goes three days without an answer, a friendly message goes out and it’s noted in {plan}.", ["{canal}", "{plan}", "IA"]], ["seguimiento", "*", "A nudge to buy again", "When it’s about time {cli} usually come back, they get a message with the option ready.", ["{canal}", "{plan}"]], ["seguimiento", "servicios", "From yes to contract in one step", "When someone accepts a quote, their folder is created, the contract is generated and the kickoff is scheduled.", ["Google Drive", "Gmail", "Make"]], ["seguimiento", "salud", "Check-in after treatment", "A few days after the visit, they’re asked how it went and, if something looks off, the professional is notified.", ["{canal}", "IA"]], ["reportes", "*", "A weekly summary in your inbox", "Every Monday you get what happened that week, pulled from {plan}, with nothing built by hand.", ["{plan}", "Gmail", "Make"]], ["reportes", "*", "Alerts for what matters", "If a payment is late or something looks off, you hear about it right away.", ["{plan}", "{canal}"]], ["reportes", "comercio gastro", "End of day in one message", "At closing, sales are gathered in {plan} and you get what sold most and least.", ["{plan}", "{canal}", "Make"]], ["reportes", "agro", "A dashboard per plot or variety", "Every field capture feeds a dashboard, so you see how each variety evolves with nothing built by hand.", ["{plan}", "Make", "IA"]], ["archivos", "*", "Photos and documents in the right folder", "Everything that comes in on {canal} is saved to Drive in the correct folder, with a name and date.", ["{canal}", "Google Drive", "IA"]], ["archivos", "*", "Voice notes to text", "Voice notes are transcribed and filed by topic in {plan}.", ["{canal}", "IA", "{plan}"]], ["archivos", "servicios comercio gastro", "Invoices read by AI", "The AI reads the invoice that arrives by email, pulls supplier, date and amount, and logs them in {plan}.", ["Gmail", "IA", "{plan}"]], ["archivos", "agro", "Photos described and filed", "Each trial photo is described, tagged and filed in its variety folder, with day and code.", ["Google Drive", "IA", "Make"]], ["archivos", "salud", "Test results in the patient record", "Test results each patient sends are stored in their record with the date, with nobody forwarding them.", ["{canal}", "Google Drive"]], ["redes", "*", "Posts drafted with AI", "From one photo and two lines from you, the AI drafts the copy for {prod} so you can review and schedule it.", ["IA", "Instagram"]], ["redes", "*", "Replies to comments and messages", "Frequent questions on social media get an answer with the detail or link they ask for.", ["Instagram", "IA"]], ["redes", "gastro comercio", "News for those who asked for it", "Every week a message goes out with what’s new to people who opted in, with the link to order.", ["{canal}", "{plan}"]], ["redes", "educacion servicios", "One note, several formats", "From a class or a note, the post, the email and the group summary are drafted.", ["IA", "Gmail", "Instagram"]], ["cobros", "*", "Getting paid without chasing anyone", "The payment link goes out with the order and, once it clears, it’s logged and the receipt is sent.", ["{canal}", "{plan}", "Make"]], ["cobros", "*", "Reminders for pending payments", "Whoever owes gets a polite message at 3, 7 and 15 days.", ["{canal}", "{plan}"]], ["cobros", "servicios educacion", "Installments and due dates", "Each month the installment link goes out and whoever pays is marked in {plan}.", ["{canal}", "{plan}"]], ["cobros", "comercio", "Payments matched to orders", "Incoming payments are matched with orders in {plan} and mismatches are flagged.", ["{plan}", "Make"]], ["captacion", "*", "A form that qualifies on its own", "Whoever leaves their details answers three questions and ends up as hot, warm or cold in {plan}.", ["Formulario", "{plan}", "IA"]], ["captacion", "servicios comercio salud", "A reply within minutes to every contact", "When an inquiry comes in from the website, it’s answered right away and the right person is notified.", ["Formulario", "{canal}", "Make"]], ["captacion", "agro comercio", "Contacts from fairs and events", "Photos of business cards or voice notes from an event land in {plan} and get a follow-up message.", ["IA", "{plan}", "{canal}"]], ["resenas", "*", "A review request after the purchase", "A few days later, a friendly message asks for feedback, with a direct Google link.", ["{canal}", "{plan}"]], ["resenas", "*", "Feedback read and sorted", "The AI groups what people say by topic and flags what keeps coming up.", ["IA", "{plan}"]], ["resenas", "gastro salud", "A heads-up when someone complains", "If a review is negative, you get it right away so you can respond before it goes cold.", ["IA", "{canal}"]], ["stock", "comercio agro gastro", "Low stock alert", "When a product falls below a minimum, you get a heads-up to restock in time.", ["{plan}", "{canal}", "Make"]], ["stock", "comercio gastro", "Supplier order already drafted", "From the stock in {plan}, an order for each supplier is drafted and sent for your approval.", ["{plan}", "Gmail", "Make"]], ["stock", "agro", "Batch expiry dates", "You’re warned in advance which batches expire, so you sell them first.", ["{plan}", "{canal}"]], ["equipo", "*", "A summary of every meeting", "The recording is transcribed and summarized, and tasks move to {plan} with an owner.", ["IA", "{plan}", "Make"]], ["equipo", "*", "A tidy inbox", "The AI sorts incoming email, answers the simple ones and flags what’s urgent.", ["Gmail", "IA"]], ["equipo", "servicios educacion salud", "Onboarding a new team member", "When someone joins, their access, folder and first-steps checklist are created.", ["Google Drive", "Gmail", "Make"]], ["equipo", "*", "Recurring tasks that create themselves", "Weekly or monthly tasks show up on their own, with a date and an owner.", ["{plan}", "Make"]]], "si": "I’m interested", "sip": "Marked", "nmark": "{n} ideas marked.", "n0": "Mark the ones you like and I’ll get them to you on WhatsApp.", "prev": "Previous", "next": "Next", "mas": "Another round", "sin": "I don’t have ideas for that combination yet. Try another industry or remove a filter.", "msg_head": "Hi Juani. My industry: {r}. I saw these automation ideas on your site:", "msg_tail": "Can we talk?"};
 const $=id=>document.getElementById(id);
-const COL={consultas:'#f0b875',pedidos:'#9fd6b4',turnos:'#f4c6c6',seguimiento:'#a9c4ee',reportes:'#e6dc9a',archivos:'#b9d9d3',redes:'#f2a98f',cobros:'#cfd8a8'};
+const COL={consultas:'#f0b875',pedidos:'#9fd6b4',turnos:'#f4c6c6',seguimiento:'#a9c4ee',reportes:'#e6dc9a',archivos:'#b9d9d3',redes:'#f2a98f',cobros:'#cfd8a8',captacion:'#e9a77d',resenas:'#f1d27a',stock:'#9ccbe0',equipo:'#c9bfa8'};
+const MAX=14;
 const noMov=typeof reduce!=='undefined'?reduce:matchMedia('(prefers-reduced-motion: reduce)').matches;
-const st={rubro:null,tools:new Set(),open:new Set(),mark:new Set(),view:'carp'};
+const st={rubro:null,tools:new Set(),tareas:new Set(),mark:new Set(),off:0};
 const esc=s=>s.replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-/* chips de rubro y herramientas */
 const mk=(box,arr,multi,key)=>arr.forEach(([v,t])=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.setAttribute('aria-pressed','false');
   b.addEventListener('click',()=>{
     if(multi){const s=st[key];s.has(v)?s.delete(v):s.add(v);b.setAttribute('aria-pressed',s.has(v))}
     else{st[key]=st[key]===v?null:v;[...box.children].forEach(c=>c.setAttribute('aria-pressed',c===b&&st[key]===v))}
-    render()});box.appendChild(b)});
-mk($('o-rubro'),D.rubros,false,'rubro');mk($('o-tools'),D.tools,true,'tools');
-/* vistas */
-const VIEWS=[['carp',D.v.carp],['ring',D.v.ring],['gal',D.v.gal]];
-VIEWS.forEach(([k,t])=>{const b=document.createElement('button');b.type='button';b.textContent=t;b.dataset.v=k;b.setAttribute('aria-pressed',k===st.view);
-  b.addEventListener('click',()=>{st.view=k;[...$('vistas').children].forEach(c=>c.setAttribute('aria-pressed',c.dataset.v===k));render()});$('vistas').appendChild(b)});
-/* datos */
+    st.off=0;render()});box.appendChild(b)});
+mk($('o-rubro'),D.rubros,false,'rubro');mk($('o-tools'),D.tools,true,'tools');mk($('o-tareas'),D.tareas,true,'tareas');
+/* ideas aplicables */
 function ideas(){
   const r=D.rn[st.rubro||'otro'];
   const canal=['WhatsApp','Instagram','Gmail'].find(x=>st.tools.has(x))||D.canal.def;
   const plan=['Google Sheets','Excel','Notion'].find(x=>st.tools.has(x))||D.plan.def;
+  const short=x=>x.replace(/^(una|un) planilla de /i,'').replace(/^a Google Sheets spreadsheet$/i,'Google Sheets');
   const sub=s=>s.replace(/\{canal\}/g,canal).replace(/\{plan\}/g,plan).replace(/\{cli\}/g,r.cli).replace(/\{prod\}/g,r.prod).replace(/\{ped\}/g,r.ped);
-  const out=[];
-  D.tareas.forEach(([t])=>D.ideas[t].forEach((x,i)=>out.push({id:t+i,t:t,title:sub(x[0]),d:sub(x[1]),s:[...new Set(x[2].map(sub))]})));
-  return out;
+  let L=D.ideas.map((x,i)=>({id:'i'+i,c:x[0],r:x[1],title:sub(x[2]),d:sub(x[3]),s:[...new Set(x[4].map(sub).map(short))].slice(0,3)}));
+  L=L.filter(i=>(!st.tareas.size||st.tareas.has(i.c))&&(!st.rubro||i.r==='*'||i.r.split(' ').includes(st.rubro)));
+  const sp=L.filter(i=>i.r!=='*'),ge=L.filter(i=>i.r==='*');
+  const ord=[...sp,...ge],cat={};
+  ord.forEach(i=>(cat[i.c]=cat[i.c]||[]).push(i));
+  const ks=Object.keys(cat),out=[];
+  for(let k=0;out.length<ord.length;k++)ks.forEach(c=>{if(cat[c][k])out.push(cat[c][k])});
+  const n=out.length,o=n?(st.off*5)%n:0;
+  return n?[...out.slice(o),...out.slice(0,o)].slice(0,MAX):[];
 }
-const short=x=>x.replace(/^(una|un) planilla de /i,'').replace(/^a Google Sheets spreadsheet$/i,'Google Sheets');
-const taskName=t=>D.tareas.find(x=>x[0]===t)[1];
-function card(i,n,sty,attr){
+function card(i,n,sty){
   const on=st.mark.has(i.id);
-  return '<article class="ic" style="--c:'+COL[i.t]+';--i:'+n+';'+(sty||'')+'"'+(attr||'')+'><h3>'+esc(i.title)+'</h3><p>'+esc(i.d)+'</p><div class="ic-pie"><div class="chips">'+i.s.map(x=>'<span>'+esc(x)+'</span>').join('')+'</div><button type="button" class="si" data-id="'+i.id+'" aria-pressed="'+on+'">'+(on?D.sip:D.si)+'</button></div></article>';
+  return '<article class="ic" style="--c:'+COL[i.c]+';--i:'+n+';'+(sty||'')+'"><h3>'+esc(i.title)+'</h3><p>'+esc(i.d)+'</p><div class="ic-pie"><div class="chips">'+i.s.map(x=>'<span>'+esc(x)+'</span>').join('')+'</div><button type="button" class="si" data-id="'+i.id+'" aria-pressed="'+on+'">'+(on?D.sip:D.si)+'</button></div></article>';
 }
-function bindSi(root){root.querySelectorAll('.si').forEach(b=>b.addEventListener('click',e=>{
-  if(dragMoved){e.preventDefault();return}
-  const id=b.dataset.id;st.mark.has(id)?st.mark.delete(id):st.mark.add(id);
-  root.querySelectorAll('.si[data-id="'+id+'"]').forEach(x=>{x.setAttribute('aria-pressed',st.mark.has(id));x.textContent=st.mark.has(id)?D.sip:D.si});
-  foot()}))}
+let cur=[];
 function foot(){
-  const L=ideas(),md=L.filter(i=>st.mark.has(i.id));
+  const md=cur.filter(i=>st.mark.has(i.id));
   $('ideas-n').textContent=md.length?D.nmark.replace('{n}',md.length):D.n0;
-  const base=md.length?md:vis().slice(0,6);
-  const r=D.rn[st.rubro||'otro'].r;
-  const txt=D.msg_head.replace('{r}',r)+'\n'+(base.length?base:L.slice(0,3)).map(i=>'- '+i.title).join('\n')+'\n'+D.msg_tail;
+  const base=md.length?md:cur.slice(0,6);
+  const txt=D.msg_head.replace('{r}',D.rn[st.rubro||'otro'].r)+'\n'+base.map(i=>'- '+i.title).join('\n')+'\n'+D.msg_tail;
   $('ideas-wa').href='https://wa.me/5492634876659?text='+encodeURIComponent(txt);
 }
-function vis(){const L=ideas();return st.open.size?L.filter(i=>st.open.has(i.t)):L}
-/* ---- vista carpetas ---- */
-function carpetas(){
-  const L=ideas();
-  const f=D.tareas.map(([t,name],k)=>{
-    const its=L.filter(i=>i.t===t),tools=[...new Set(its.flatMap(i=>i.s).map(short))].slice(0,2);
-    const stk=tools.map((x,j)=>'<span style="--x:'+(28+j*32)+'%;--r:'+[-5,4][j]+'deg;--k:'+j+'">'+esc(x)+'</span>').join('');
-    return '<button type="button" class="carp" style="--c:'+COL[t]+'" data-t="'+t+'" aria-pressed="'+st.open.has(t)+'"><span class="stk">'+stk+'</span><span class="carp-tab"></span><span class="carp-body"><span class="carp-ok" aria-hidden="true">&#10003;</span><b>'+esc(name)+'</b><span>'+its.length+' '+D.nid+'</span></span></button>';
-  }).join('');
-  const sel=L.filter(i=>st.open.has(i.t));
-  $('stage').innerHTML='<div class="carp-grid">'+f+'</div>'+(sel.length?'<div class="carp-res gal-grid">'+sel.map((i,n)=>card(i,n)).join('')+'</div>':'<p class="carp-vacio">'+D.hint+'</p>');
-  $('stage').querySelectorAll('.carp').forEach(b=>b.addEventListener('click',()=>{const t=b.dataset.t;st.open.has(t)?st.open.delete(t):st.open.add(t);carpetas();foot()}));
-  bindSi($('stage'));
-}
-/* ---- vista galería ---- */
-function galeria(){
-  const L=vis();
-  $('stage').innerHTML='<div class="gal-grid">'+L.map((i,n)=>card(i,n)).join('')+'</div>';
-  bindSi($('stage'));
-}
-/* ---- vista anillo ---- */
+/* ---- anillo ---- */
 let rot=0,vel=0,tgt=null,drag=null,dragMoved=false,hover=false,onScreen=false,raf=0,ringEl=null,cards=[],STEP=45,N=0,lastIdx=-1,lastY=scrollY,ringR=0;
 function anillo(){
-  const L=vis();N=L.length;
+  const L=cur;N=L.length;
+  if(!N){$('stage').innerHTML='<p class="ideas-n0" style="font-family:var(--serif);font-weight:300;font-size:clamp(22px,2.3vw,30px);color:var(--gris);margin:30px 0">'+D.sin+'</p>';ringEl=null;return}
   STEP=360/Math.max(N,8);
   const cw=window.innerWidth<700?190:235;
-  const R=Math.max(220,1.04*(cw/2)/Math.tan(Math.PI/Math.max(N,8)));
-  $('stage').innerHTML='<div class="ring-wrap" id="ring-wrap"><div class="ring" id="ring">'+L.map((i,n)=>card(i,n,'--cw:'+cw+'px;transform:rotateY('+(n*STEP)+'deg) translateZ('+R+'px)',' data-n="'+n+'"')).join('')+'</div></div><div class="ring-nav"><button type="button" id="r-prev" aria-label="'+D.prev+'">&larr; '+D.prev+'</button><output id="r-cnt" aria-live="off"></output><button type="button" id="r-next" aria-label="'+D.next+'">'+D.next+' &rarr;</button></div>';
-  ringEl=$('ring');cards=[...ringEl.children];ringR=R;
-  bindSi($('stage'));
+  ringR=Math.max(220,1.04*(cw/2)/Math.tan(Math.PI/Math.max(N,8)));
+  $('stage').innerHTML='<div class="ring-wrap" id="ring-wrap"><div class="ring" id="ring">'+L.map((i,n)=>card(i,n,'--cw:'+cw+'px;transform:rotateY('+(n*STEP)+'deg) translateZ('+ringR+'px)')).join('')+'</div></div><div class="ring-nav"><button type="button" id="r-prev" aria-label="'+D.prev+'">&larr; '+D.prev+'</button><button type="button" id="r-mas">'+D.mas+'</button><output id="r-cnt" aria-live="off"></output><button type="button" id="r-next" aria-label="'+D.next+'">'+D.next+' &rarr;</button></div>';
+  ringEl=$('ring');cards=[...ringEl.children];lastIdx=-1;
+  $('stage').querySelectorAll('.si').forEach(b=>b.addEventListener('click',e=>{
+    if(dragMoved){e.preventDefault();return}
+    const id=b.dataset.id;st.mark.has(id)?st.mark.delete(id):st.mark.add(id);
+    b.setAttribute('aria-pressed',st.mark.has(id));b.textContent=st.mark.has(id)?D.sip:D.si;foot()}));
   const wrap=$('ring-wrap');
   wrap.addEventListener('pointerdown',e=>{drag={last:e.clientX,moved:0};tgt=null});
   wrap.addEventListener('mouseenter',()=>hover=true);wrap.addEventListener('mouseleave',()=>hover=false);
   cards.forEach((c,n)=>c.addEventListener('focusin',()=>{tgt=-n*STEP;kick()}));
   $('r-prev').addEventListener('click',()=>go(-1));$('r-next').addEventListener('click',()=>go(1));
+  $('r-mas').addEventListener('click',()=>{st.off++;rot=0;render()});
   apply();kick();
 }
-function go(d){const cur=Math.round(-rot/STEP);tgt=-(cur+d)*STEP;kick()}
+function go(d){const c=Math.round(-rot/STEP);tgt=-(c+d)*STEP;kick()}
 function apply(){
   if(!ringEl)return;
   ringEl.style.transform='translateZ('+(-ringR)+'px) rotateX(-9deg) rotateY('+rot+'deg)';
@@ -1082,20 +1035,17 @@ function apply(){
   if(idx!==lastIdx&&$('r-cnt')){lastIdx=idx;$('r-cnt').textContent=(idx+1)+' / '+N;cards.forEach((c,n)=>{const d=Math.abs(((n-idx+N/2+N)%N)-N/2);c.style.pointerEvents=d<=Math.max(1,N/6)?'auto':'none';c.style.zIndex=d===0?2:1})}
 }
 function frame(){
-  raf=0;if(st.view!=='ring'||!onScreen||!ringEl)return;
+  raf=0;if(!onScreen||!ringEl)return;
   if(tgt!=null){const d=((tgt-rot+540)%360)-180;rot+=d*0.14;if(Math.abs(d)<0.15){rot=tgt;tgt=null}}
   else if(!drag){rot+=vel;vel*=0.93;if(Math.abs(vel)<0.02)vel=0;if(!hover&&!noMov)rot+=0.09}
   apply();raf=requestAnimationFrame(frame);
 }
-function kick(){if(!raf&&st.view==='ring'&&onScreen)raf=requestAnimationFrame(frame)}
+function kick(){if(!raf&&onScreen&&ringEl)raf=requestAnimationFrame(frame)}
 addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.last;drag.last=e.clientX;drag.moved+=Math.abs(dx);if(drag.moved>6)dragMoved=true;rot+=dx*0.32;vel=dx*0.32;apply()});
 addEventListener('pointerup',()=>{if(drag){drag=null;setTimeout(()=>dragMoved=false,0)}});
-addEventListener('scroll',()=>{const y=scrollY,dy=y-lastY;lastY=y;if(st.view==='ring'&&onScreen&&!noMov){vel+=Math.max(-3,Math.min(3,dy*0.03));kick()}},{passive:true});
+addEventListener('scroll',()=>{const y=scrollY,dy=y-lastY;lastY=y;if(onScreen&&ringEl&&!noMov){vel+=Math.max(-3,Math.min(3,dy*0.03));kick()}},{passive:true});
 new IntersectionObserver(es=>{onScreen=es[0].isIntersecting;if(onScreen)kick()},{threshold:.15}).observe($('stage'));
-function render(){
-  if(st.view==='carp')carpetas();else if(st.view==='ring')anillo();else galeria();
-  foot();
-}
+function render(){cur=ideas();anillo();foot()}
 render();
 })();
 
