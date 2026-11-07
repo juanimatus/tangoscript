@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_Ensayos_antes" targetNamespace="http://bpmn.io/schema/bpmn">
+  <bpmn:process id="Ensayos_antes" name="Fotos de ensayos · Antes" isExecutable="false">
+    <bpmn:startEvent id="N_s" name="Sacar las fotos en el campo">
+      <bpmn:outgoing>F_s_t1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="N_t1" name="Anotar las observaciones en una libreta">
+      <bpmn:incoming>F_s_t1</bpmn:incoming>
+      <bpmn:outgoing>F_t1_t2</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="N_t2" name="Pasar las fotos a la computadora">
+      <bpmn:incoming>F_t1_t2</bpmn:incoming>
+      <bpmn:outgoing>F_t2_t3</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="N_t3" name="Renombrar cada foto">
+      <bpmn:incoming>F_t2_t3</bpmn:incoming>
+      <bpmn:outgoing>F_t3_t4</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="N_t4" name="Mover cada foto a la carpeta de su variedad y su día">
+      <bpmn:incoming>F_t3_t4</bpmn:incoming>
+      <bpmn:outgoing>F_t4_t5</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="N_t5" name="Escribir la descripción en la planilla">
+      <bpmn:incoming>F_t4_t5</bpmn:incoming>
+      <bpmn:outgoing>F_t5_e</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="N_e" name="Registro armado">
+      <bpmn:incoming>F_t5_e</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="F_s_t1" sourceRef="N_s" targetRef="N_t1" />
+    <bpmn:sequenceFlow id="F_t1_t2" sourceRef="N_t1" targetRef="N_t2" />
+    <bpmn:sequenceFlow id="F_t2_t3" sourceRef="N_t2" targetRef="N_t3" />
+    <bpmn:sequenceFlow id="F_t3_t4" sourceRef="N_t3" targetRef="N_t4" />
+    <bpmn:sequenceFlow id="F_t4_t5" sourceRef="N_t4" targetRef="N_t5" />
+    <bpmn:sequenceFlow id="F_t5_e" sourceRef="N_t5" targetRef="N_e" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_Ensayos_antes">
+    <bpmndi:BPMNPlane id="BPMNPlane_Ensayos_antes" bpmnElement="Ensayos_antes">
+      <bpmndi:BPMNShape id="N_s_di" bpmnElement="N_s">
+        <dc:Bounds x="57" y="52" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="N_t1_di" bpmnElement="N_t1">
+        <dc:Bounds x="175" y="30" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="N_t2_di" bpmnElement="N_t2">
+        <dc:Bounds x="325" y="30" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="N_t3_di" bpmnElement="N_t3">
+        <dc:Bounds x="475" y="30" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="N_t4_di" bpmnElement="N_t4">
+        <dc:Bounds x="625" y="30" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="N_t5_di" bpmnElement="N_t5">
+        <dc:Bounds x="775" y="30" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="N_e_di" bpmnElement="N_e">
+        <dc:Bounds x="957" y="52" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="F_s_t1_di" bpmnElement="F_s_t1">
+        <di:waypoint x="93" y="70" />
+        <di:waypoint x="175" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_t1_t2_di" bpmnElement="F_t1_t2">
+        <di:waypoint x="275" y="70" />
+        <di:waypoint x="325" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_t2_t3_di" bpmnElement="F_t2_t3">
+        <di:waypoint x="425" y="70" />
+        <di:waypoint x="475" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_t3_t4_di" bpmnElement="F_t3_t4">
+        <di:waypoint x="575" y="70" />
+        <di:waypoint x="625" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_t4_t5_di" bpmnElement="F_t4_t5">
+        <di:waypoint x="725" y="70" />
+        <di:waypoint x="775" y="70" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="F_t5_e_di" bpmnElement="F_t5_e">
+        <di:waypoint x="875" y="70" />
+        <di:waypoint x="957" y="70" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
