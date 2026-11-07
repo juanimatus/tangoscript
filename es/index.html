@@ -251,6 +251,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .tarjeta-cliente{font-size:15px;color:var(--gris);font-weight:500}
 .tarjeta h3{font-size:clamp(30px,3.2vw,44px);line-height:1.08}
 .tarjeta-txt>p{color:var(--gris);max-width:44ch}
+.stack{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.stack span{font-size:13px;padding:6px 11px;border-radius:999px;background:color-mix(in srgb,currentColor 13%,transparent);white-space:nowrap}
 .cifras-caso{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:auto;padding-top:22px;border-top:1px solid rgba(11,22,38,.12)}
 .cifras-caso b{display:block;font:300 clamp(30px,3vw,40px)/1 var(--serif);margin-bottom:6px}
 .cifras-caso span{font-size:14px;color:var(--gris);line-height:1.35;display:block}
@@ -458,7 +460,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
     <div class="tareas" aria-label="Ejemplos de tareas que se automatizan">
       <div class="tarea"><q>Respondé el precio de cada semilla que consultan por WhatsApp, con el link a la tienda.</q><div class="chips"><span>WhatsApp</span><span>Shopify</span><span>Make</span></div></div>
       <div class="tarea"><q>Pasá cada pedido nuevo a la planilla y avisale a logística.</q><div class="chips"><span>WhatsApp</span><span>Google Sheets</span><span>Gmail</span></div></div>
-      <div class="tarea"><q>Ordená las fotos del ensayo por variedad y por día.</q><div class="chips"><span>Web app</span><span>IA</span><span>Google Drive</span></div></div>
+      <div class="tarea"><q>Ordená las fotos del ensayo por variedad y por día.</q><div class="chips"><span>Vercel</span><span>IA</span><span>Google Drive</span></div></div>
       <div class="tarea"><q>Si no tenemos el producto, derivalo al distribuidor de su localidad.</q><div class="chips"><span>WhatsApp</span><span>Google Sheets</span><span>Make</span></div></div>
       <div class="tarea"><q>Guardá en mi Notion las ideas que te mando por audio.</q><div class="chips"><span>WhatsApp</span><span>IA</span><span>Notion</span></div></div>
     </div>
@@ -517,6 +519,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
           <span class="tarjeta-cliente">Chemical Group · Rodeo Semillas y Chemical Sud</span>
           <h3>De responder cada consulta a mano a un catálogo que contesta solo</h3>
           <p>Flujo inteligente en Make, conectado a WhatsApp, que encuentra el producto aunque esté mal escrito y manda el link de compra de la tienda o de Mercado Libre.</p>
+          <div class="stack"><span>WhatsApp Business</span><span>Make</span><span>Shopify</span><span>Mercado Libre</span></div>
           <div class="cifras-caso"><div><b>1.700+</b><span>mensajes procesados desde septiembre de 2026</span></div><div><b>2</b><span>canales de venta conectados: tienda y Mercado Libre</span></div><div><b>24/7</b><span>atención por WhatsApp, también fuera de horario</span></div></div>
           <details><summary>Ver el caso completo</summary><dl class="star"><div><dt>Situación</dt><dd>La empresa recibe por WhatsApp consultas sobre semillas y fertilizantes, y vende por su tienda AgroVerde, Mercado Libre y distribuidores.</dd></div><div><dt>Desafío</dt><dd>Responder rápido sin que una persona conteste cada mensaje, llevar cada consulta al canal de compra correcto y no mandar nunca el link de otro producto.</dd></div><div><dt>Qué hice</dt><dd>Armé en Make un flujo conectado a WhatsApp Business con un motor de búsqueda propio: tolera errores de escritura, distingue variedades, envases y cajas, y cruza la tienda con Mercado Libre. Si piden un distribuidor, lo ubica por provincia y localidad desde una planilla que el cliente actualiza.</dd></div><div><dt>Resultado</dt><dd>Más de 1.700 mensajes procesados sin que nadie tenga que contestarlos a mano. Ante la duda, el flujo manda a la tienda antes que a un producto equivocado.</dd></div></dl></details>
         </div>
@@ -531,6 +534,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
           <span class="tarjeta-cliente">Ensayos agronómicos · Web app con IA · Campaña 2026/27</span>
           <h3>De fotos sueltas en el celular a un archivo que se ordena solo</h3>
           <p>Web app con IA para el campo: el técnico saca la foto de la etiqueta, la IA reconoce la variedad y las notas de voz se transcriben solas.</p>
+          <div class="stack"><span>Vercel</span><span>Vite</span><span>Make</span><span>GPT-4o</span><span>Google Drive</span></div>
           <div class="cifras-caso"><div><b>0</b><span>fotos para renombrar a mano</span></div><div><b>Voz</b><span>notas habladas que se transcriben solas</span></div><div><b>IA</b><span>lee la etiqueta, aunque esté escrita a mano</span></div></div>
           <details><summary>Ver el caso completo</summary><dl class="star"><div><dt>Situación</dt><dd>En los ensayos a campo se sacan muchas fotos por variedad y por día, y quedaban mezcladas en el celular.</dd></div><div><dt>Desafío</dt><dd>Que cada foto quede identificada, descripta y archivada en su lugar sin trabajo extra en el campo.</dd></div><div><dt>Qué hice</dt><dd>Empecé con un prototipo en AppSheet y lo llevé a una web app propia, publicada en Vercel y pensada para usar con una mano en el campo. Las observaciones se dictan por voz y se transcriben solas. Detrás, una automatización en Make con GPT-4o lee la foto: transcribe la etiqueta, describe la muestra y elige la variedad del catálogo. La foto se copia a Drive en la carpeta de su variedad, dentro de la subcarpeta del día, con nombre de código y fecha. Si la IA no está segura, la toma queda marcada para revisar a mano.</dd></div><div><dt>Resultado</dt><dd>El registro del ensayo queda ordenado y descripto, sin renombrar ni mover archivos, y una persona solo interviene cuando la IA tiene dudas.</dd></div></dl></details>
         </div>
@@ -547,6 +551,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
           <span class="tarjeta-cliente">Producto propio · Freelancers y emprendedores</span>
           <h3>Banco de ideas: de un mensaje de WhatsApp a tu Notion</h3>
           <p>Mandás la idea por WhatsApp, la IA la clasifica y queda guardada en una plantilla de Notion.</p>
+          <div class="stack"><span>WhatsApp</span><span>IA</span><span>Notion</span></div>
           <div class="cifras-caso"><div><b>1</b><span>mensaje para guardar una idea</span></div><div><b>0</b><span>apps que abrir</span></div><div><b>IA</b><span>clasifica cada idea por tema</span></div></div>
         </div>
         <div class="tarjeta-media papel">
@@ -573,7 +578,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
         <span class="tarjeta-cliente">Consultorio odontológico · Dra. Natalia Matus</span>
         <h3>Agenda de turnos para un consultorio</h3>
         <p>Los pacientes sacan turno solos desde el celular. El consultorio maneja la semana arrastrando turnos y tiene en un lugar la ficha de cada paciente, el plan de tratamiento y el presupuesto.</p>
-        <div class="chips"><span>Web app</span><span>Turnos online</span><span>Ficha del paciente</span></div>
+        <div class="chips"><span>Vercel</span><span>Supabase</span><span>Turnos online</span><span>Ficha del paciente</span></div>
         <a class="btn btn-tinta" href="https://turnos-dranataliamatus.vercel.app/" target="_blank" rel="noopener">Ver en vivo ↗</a>
       </article>
 
@@ -581,7 +586,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
         <span class="tarjeta-cliente">Producto propio · Datos abiertos</span>
         <h3>Observatorio de Empleo IT Argentina</h3>
         <p>Cuánto se gana en cada rol IT según seniority, dónde está el empleo por provincia y cuánta gente trabaja en el sector. Cada dato aclara si es oficial, de encuesta o estimado.</p>
-        <div class="chips"><span>Sitio de datos</span><span>Buscador por rol</span><span>Fuentes citadas</span></div>
+        <div class="chips"><span>Vercel</span><span>Vite</span><span>Sitio de datos</span><span>Buscador por rol</span><span>Fuentes citadas</span></div>
         <a class="btn btn-tinta" href="https://observatorio-it-ar.vercel.app/" target="_blank" rel="noopener">Ver en vivo ↗</a>
       </article>
 
@@ -589,7 +594,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
         <span class="tarjeta-cliente">Civic tech · Mendoza</span>
         <h3>Mendoza Respira</h3>
         <p>Los vecinos reportan el arbolado de su cuadra con una foto. Un ingeniero agrónomo evalúa el riesgo y el reporte llega al municipio con ubicación y evidencia. Reportar no pide datos personales.</p>
-        <div class="chips"><span>Web app</span><span>Mapa</span><span>Datos abiertos</span></div>
+        <div class="chips"><span>Vercel</span><span>Next.js</span><span>Supabase</span><span>Mapa</span><span>Datos abiertos</span></div>
         <a class="btn btn-tinta" href="https://mendoza-respira-app.vercel.app/" target="_blank" rel="noopener">Ver en vivo ↗</a>
       </article>
 

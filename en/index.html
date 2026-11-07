@@ -251,6 +251,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .tarjeta-cliente{font-size:15px;color:var(--gris);font-weight:500}
 .tarjeta h3{font-size:clamp(30px,3.2vw,44px);line-height:1.08}
 .tarjeta-txt>p{color:var(--gris);max-width:44ch}
+.stack{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.stack span{font-size:13px;padding:6px 11px;border-radius:999px;background:color-mix(in srgb,currentColor 13%,transparent);white-space:nowrap}
 .cifras-caso{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:auto;padding-top:22px;border-top:1px solid rgba(11,22,38,.12)}
 .cifras-caso b{display:block;font:300 clamp(30px,3vw,40px)/1 var(--serif);margin-bottom:6px}
 .cifras-caso span{font-size:14px;color:var(--gris);line-height:1.35;display:block}
@@ -458,7 +460,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
     <div class="tareas" aria-label="Examples of tasks that get automated">
       <div class="tarea"><q>Reply with the price of every seed people ask about on WhatsApp, with a link to the store.</q><div class="chips"><span>WhatsApp</span><span>Shopify</span><span>Make</span></div></div>
       <div class="tarea"><q>Add every new order to the spreadsheet and let logistics know.</q><div class="chips"><span>WhatsApp</span><span>Google Sheets</span><span>Gmail</span></div></div>
-      <div class="tarea"><q>Sort the field trial photos by variety and by day.</q><div class="chips"><span>Web app</span><span>AI</span><span>Google Drive</span></div></div>
+      <div class="tarea"><q>Sort the field trial photos by variety and by day.</q><div class="chips"><span>Vercel</span><span>AI</span><span>Google Drive</span></div></div>
       <div class="tarea"><q>If we don’t carry the product, send them to their local distributor.</q><div class="chips"><span>WhatsApp</span><span>Google Sheets</span><span>Make</span></div></div>
       <div class="tarea"><q>Save the ideas I send you by voice note to my Notion.</q><div class="chips"><span>WhatsApp</span><span>AI</span><span>Notion</span></div></div>
     </div>
@@ -517,6 +519,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
           <span class="tarjeta-cliente">Chemical Group · Rodeo Semillas and Chemical Sud</span>
           <h3>From answering every question by hand to a catalog that replies on its own</h3>
           <p>A smart workflow in Make, connected to WhatsApp, that finds the product even when it’s misspelled and sends the purchase link from the store or Mercado Libre.</p>
+          <div class="stack"><span>WhatsApp Business</span><span>Make</span><span>Shopify</span><span>Mercado Libre</span></div>
           <div class="cifras-caso"><div><b>1,700+</b><span>messages handled since September 2026</span></div><div><b>2</b><span>sales channels connected: store and Mercado Libre</span></div><div><b>24/7</b><span>support on WhatsApp, after hours too</span></div></div>
           <details><summary>See the full case</summary><dl class="star"><div><dt>Situation</dt><dd>The company gets questions about seeds and fertilizers on WhatsApp, and sells through its AgroVerde store, Mercado Libre and distributors.</dd></div><div><dt>Challenge</dt><dd>Reply fast without a person answering every message, send each request to the right place to buy, and never link the wrong product.</dd></div><div><dt>What I did</dt><dd>I built a Make workflow on WhatsApp Business with a custom search engine: it handles typos, tells apart varieties, sizes and bulk boxes, and matches the store against Mercado Libre. When someone asks for a distributor, it finds one by province and town from a spreadsheet the client keeps updated.</dd></div><div><dt>Result</dt><dd>Over 1,700 messages handled without anyone replying by hand. When in doubt, the workflow points to the store rather than to the wrong product.</dd></div></dl></details>
         </div>
@@ -531,6 +534,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
           <span class="tarjeta-cliente">Crop trials · AI web app · 2026/27 season</span>
           <h3>From loose photos on a phone to an archive that sorts itself</h3>
           <p>An AI web app for the field: the technician photographs the label, AI recognizes the variety, and voice notes are transcribed automatically.</p>
+          <div class="stack"><span>Vercel</span><span>Vite</span><span>Make</span><span>GPT-4o</span><span>Google Drive</span></div>
           <div class="cifras-caso"><div><b>0</b><span>photos to rename by hand</span></div><div><b>Voice</b><span>spoken notes transcribed automatically</span></div><div><b>AI</b><span>reads the label, even when handwritten</span></div></div>
           <details><summary>See the full case</summary><dl class="star"><div><dt>Situation</dt><dd>Field trials produce many photos per variety and per day, and they piled up mixed on the phone.</dd></div><div><dt>Challenge</dt><dd>Get every photo identified, described and filed in the right place with no extra work in the field.</dd></div><div><dt>What I did</dt><dd>I started with an AppSheet prototype and turned it into a custom web app, deployed on Vercel and designed for one-handed use in the field. Observations are dictated and transcribed automatically. Behind it, a Make automation with GPT-4o reads the photo: it transcribes the label, describes the sample and picks the variety from the catalog. The photo is copied to Drive into its variety’s folder, under that day’s subfolder, named with code and date. If the AI isn’t sure, the entry is flagged for manual review.</dd></div><div><dt>Result</dt><dd>The trial log stays organized and described, with no renaming or moving files, and a person only steps in when the AI is unsure.</dd></div></dl></details>
         </div>
@@ -547,6 +551,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
           <span class="tarjeta-cliente">My own product · Freelancers and entrepreneurs</span>
           <h3>Idea bank: from a WhatsApp message to your Notion</h3>
           <p>Send the idea on WhatsApp, AI tags it and it’s saved to a Notion template.</p>
+          <div class="stack"><span>WhatsApp</span><span>AI</span><span>Notion</span></div>
           <div class="cifras-caso"><div><b>1</b><span>message to save an idea</span></div><div><b>0</b><span>apps to open</span></div><div><b>AI</b><span>tags each idea by topic</span></div></div>
         </div>
         <div class="tarjeta-media papel">
@@ -573,7 +578,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
         <span class="tarjeta-cliente">Dental practice · Dr. Natalia Matus</span>
         <h3>Appointment booking for a dental practice</h3>
         <p>Patients book their own appointments from their phone. The practice manages the week by dragging appointments around and keeps each patient's record, treatment plan and quote in one place.</p>
-        <div class="chips"><span>Web app</span><span>Online booking</span><span>Patient records</span></div>
+        <div class="chips"><span>Vercel</span><span>Supabase</span><span>Online booking</span><span>Patient records</span></div>
         <a class="btn btn-tinta" href="https://turnos-dranataliamatus.vercel.app/" target="_blank" rel="noopener">See it live ↗</a>
       </article>
 
@@ -581,7 +586,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
         <span class="tarjeta-cliente">Own product · Open data</span>
         <h3>Argentina IT Jobs Observatory</h3>
         <p>How much each IT role earns by seniority, where the jobs are by province and how many people work in the sector. Every figure says whether it is official, survey-based or estimated.</p>
-        <div class="chips"><span>Data site</span><span>Search by role</span><span>Cited sources</span></div>
+        <div class="chips"><span>Vercel</span><span>Vite</span><span>Data site</span><span>Search by role</span><span>Cited sources</span></div>
         <a class="btn btn-tinta" href="https://observatorio-it-ar.vercel.app/" target="_blank" rel="noopener">See it live ↗</a>
       </article>
 
@@ -589,7 +594,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
         <span class="tarjeta-cliente">Civic tech · Mendoza</span>
         <h3>Mendoza Respira</h3>
         <p>Neighbors report the trees on their block with a photo. An agronomist assesses the risk and the report reaches the city with its location and evidence. Reporting needs no personal data.</p>
-        <div class="chips"><span>Web app</span><span>Map</span><span>Open data</span></div>
+        <div class="chips"><span>Vercel</span><span>Next.js</span><span>Supabase</span><span>Map</span><span>Open data</span></div>
         <a class="btn btn-tinta" href="https://mendoza-respira-app.vercel.app/" target="_blank" rel="noopener">See it live ↗</a>
       </article>
 
