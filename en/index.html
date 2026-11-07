@@ -308,6 +308,11 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .tarjeta-media.campo .cel:nth-child(2):hover{transform:translateY(-28px)}
 @media(max-width:520px){.tarjeta-media.campo .cel{width:32%}}
 
+/* ---------- texto justificado (párrafos largos) ---------- */
+@media(min-width:700px){
+.carta p:not(.primera),.faq details p,.star dd,.tarjeta-txt>p,.mapa-ctx,.mapa-pie p{text-align:justify;text-justify:inter-word;hyphens:auto;-webkit-hyphens:auto;text-wrap:pretty}
+}
+.carta p.sub{margin-top:-6px}
 /* ---------- otros proyectos ---------- */
 .proyectos{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
 .proyecto{display:flex;flex-direction:column;gap:14px;padding:30px 28px 28px;border-radius:24px;background:var(--superficie);border-top:6px solid var(--acento,var(--tinta))}
@@ -785,7 +790,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
       <p class="primera">You probably don’t lack ideas. You lack time.</p>
       <p>You answer the same message again and again, copy data from one spreadsheet to another and feel like everything depends on you. I see it in almost every business I talk to.</p>
       <p>That’s why I start by understanding how you work. Automating a messy process only makes the mess faster.</p>
-      <p>I’m studying software development (Analista Programador) at UAI and data networks and telecommunications at ITU, Universidad Nacional de Cuyo. I’m also an agricultural technician specialized in winemaking, a graduate of the Don Bosco wine school in Rodeo del Medio, so I know field work and I know technology has to fit the business, not the other way around.</p>
+      <p>I’m an agricultural technician specialized in winemaking, a graduate of the Don Bosco wine school in Rodeo del Medio. I know field work, and I know technology has to fit the business, not the other way around.</p>
+      <p>Today I’m studying software development (Analista Programador) at UAI and data networks and telecommunications at ITU, Universidad Nacional de Cuyo.</p>
       <div class="firma"><b>Juan Ignacio Matus</b>Founder of TangoScript</div>
     </div>
   </div>
@@ -796,12 +802,12 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
   <div class="wrap">
     <h2 class="titulo">Common questions.</h2>
     <div class="faq">
-      <details><summary>Do I need to be technical?</summary><p>No. You know how your business works and I handle the technical side. I explain everything plainly and document how each automation works.</p></details>
       <details><summary>How much does a project cost?</summary><p>It depends on the scope. After our first call and the process review, I send you a fixed quote with no hidden costs.</p></details>
+      <details><summary>Do I need to be technical?</summary><p>No. You know how your business works and I handle the technical side. I explain everything plainly and document how each automation works.</p></details>
       <details><summary>Can you guarantee I’ll save time?</summary><p>Before we start, we agree on how to measure success. If the review shows automation isn’t worth it for you, I’ll tell you.</p></details>
+      <details><summary>What if something stops working?</summary><p>Workflows are monitored and documented. If a tool changes or something breaks, I review and fix it. We can also agree on monthly maintenance.</p></details>
       <details><summary>Make or n8n?</summary><p>Make is great for getting started fast with a visual builder. n8n makes sense for high volume or when you need more control and predictable costs. We choose based on your case.</p></details>
       <details><summary>Do you work remotely?</summary><p>Yes. I work with clients in any country, in English or Spanish, over video calls and WhatsApp.</p></details>
-      <details><summary>What if something stops working?</summary><p>Workflows are monitored and documented. If a tool changes or something breaks, I review and fix it. We can also agree on monthly maintenance.</p></details>
     </div>
     <p class="ia">Want a second opinion? Ask your AI whether I’m a good fit for your business:
       <a id="ask-claude" href="#" target="_blank" rel="noopener">Claude</a>
