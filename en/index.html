@@ -21,11 +21,12 @@ document.documentElement.setAttribute('data-theme',t);})();
 <meta name="theme-color" content="#071322">
 <link rel="icon" type="image/png" href="../img/logo.png">
 <link rel="apple-touch-icon" href="../img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600&family=Newsreader:opsz,wght@6..72,300;6..72,400&display=swap" rel="stylesheet">
-
+<link rel="preload" href="../fonts/hanken-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{font-family:'Hanken Grotesk';font-style:normal;font-weight:400 600;font-display:swap;src:url(../fonts/hanken-grotesk-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Newsreader';font-style:normal;font-weight:300 400;font-display:swap;src:url(../fonts/newsreader-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
 /* ============================================================
    Tokens
    noche: el azul del logo · alba: el amanecer sobre la cordillera
@@ -613,8 +614,8 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
           <details><summary>See the full case</summary><dl class="star"><div><dt>Situation</dt><dd>The company gets questions about seeds and fertilizers on WhatsApp, and sells through its AgroVerde store, Mercado Libre and distributors.</dd></div><div><dt>Challenge</dt><dd>Reply fast without a person answering every message, send each request to the right place to buy, and never link the wrong product.</dd></div><div><dt>What I did</dt><dd>I built a Make workflow on WhatsApp Business with a custom search engine: it handles typos, tells apart varieties, sizes and bulk boxes, and matches the store against Mercado Libre. When someone asks for a distributor, it finds one by province and town from a spreadsheet the client keeps updated.</dd></div><div><dt>Result</dt><dd>Over 2,000 messages handled without anyone replying by hand. When in doubt, the workflow points to the store rather than to the wrong product.</dd></div></dl></details>
         </div>
         <div class="tarjeta-media amanecer">
-          <button class="cel" data-full="../img/caso-bot-bienvenida.jpg"><img src="../img/caso-bot-bienvenida.jpg" alt="Assistant welcome message listing where to buy (in Spanish)" loading="lazy"></button>
-          <button class="cel" data-full="../img/caso-bot-catalogo.jpg"><img src="../img/caso-bot-catalogo.jpg" alt="The assistant finds six catalog matches with store links (in Spanish)" loading="lazy"></button>
+          <button class="cel" data-full="../img/caso-bot-bienvenida.jpg"><img width="620" height="1343" src="../img/caso-bot-bienvenida.jpg" alt="Assistant welcome message listing where to buy (in Spanish)" loading="lazy"></button>
+          <button class="cel" data-full="../img/caso-bot-catalogo.jpg"><img width="620" height="1343" src="../img/caso-bot-catalogo.jpg" alt="The assistant finds six catalog matches with store links (in Spanish)" loading="lazy"></button>
         </div>
       </article>
 
@@ -725,7 +726,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 <!-- ============ SOBRE MÍ ============ -->
 <section class="sec" id="sobre-mi" style="padding-top:0">
   <div class="wrap yo">
-    <div class="foto"><img src="../img/juani.jpg" alt="Juan Ignacio Matus, founder of TangoScript" loading="lazy"></div>
+    <div class="foto"><img width="900" height="1128" src="../img/juani.jpg" alt="Juan Ignacio Matus, founder of TangoScript" loading="lazy"></div>
     <div class="carta">
       <p class="primera">You probably don’t lack ideas. You lack time.</p>
       <p>You answer the same message again and again, copy data from one spreadsheet to another and feel like everything depends on you. I see it in almost every business I talk to.</p>
