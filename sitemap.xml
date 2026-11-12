@@ -12,4 +12,10 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://tangoscript.vercel.app/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tangoscript.vercel.app/en/"/>
   </url>
+  <url>
+    <loc>https://tangoscript.vercel.app/es/agro/</loc>
+  </url>
+  <url>
+    <loc>https://tangoscript.vercel.app/es/consultorios/</loc>
+  </url>
 </urlset>
