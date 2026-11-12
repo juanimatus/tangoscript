@@ -601,6 +601,34 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 .planes-nota{margin-top:26px;font-size:15px;color:var(--gris);max-width:74ch}
 :root[data-theme="dark"] .plan:not(.destacado){background:linear-gradient(180deg,rgba(242,237,218,.07),rgba(242,237,218,.02));box-shadow:inset 0 0 0 1px rgba(242,237,218,.1)}
 @media(max-width:960px){.planes{grid-template-columns:1fr}}
+
+/* ---------- precios: selector y cuadro comparativo ---------- */
+.precio-ctl{display:flex;align-items:center;gap:12px 16px;flex-wrap:wrap;margin-top:40px}
+.seg{display:inline-flex;padding:4px;border-radius:999px;background:var(--chip);box-shadow:inset 0 0 0 1px var(--linea)}
+.seg[hidden]{display:none}
+.seg button{font:500 14.5px/1 var(--sans);padding:11px 18px;border:0;border-radius:999px;background:transparent;color:var(--tinta);cursor:pointer;transition:background .25s,color .25s}
+.seg button[aria-pressed="true"]{background:var(--tinta);color:var(--papel)}
+.seg button:focus-visible{outline:2px solid var(--alba);outline-offset:2px}
+.precio-quien{flex-basis:100%;margin:4px 0 0;color:var(--gris);font-size:16px;min-height:1.6em}
+.precio-ctl+.planes{margin-top:26px}
+.precio-desc{list-style:none;display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.precio-desc li{font-size:14.5px;padding:9px 14px;border-radius:999px;background:var(--chip);box-shadow:inset 0 0 0 1px var(--linea)}
+.precio-desc b{color:var(--alba);font-weight:600}
+:root[data-theme="light"] .precio-desc b{color:#9a5a12}
+.precio-h3{font-size:clamp(28px,2.8vw,38px);line-height:1.1;margin-top:clamp(56px,7vw,84px)}
+.tabla-wrap{overflow-x:auto;margin-top:22px;border-radius:24px;background:var(--superficie)}
+:root[data-theme="dark"] .tabla-wrap{background:linear-gradient(180deg,rgba(242,237,218,.07),rgba(242,237,218,.02));box-shadow:inset 0 0 0 1px rgba(242,237,218,.1)}
+.tabla-precios{width:100%;min-width:780px;border-collapse:collapse;font-size:15.5px;font-variant-numeric:tabular-nums}
+.tabla-precios th,.tabla-precios td{text-align:left;padding:15px 18px;border-bottom:1px solid var(--linea);white-space:nowrap}
+.tabla-precios thead th{font-weight:600;font-size:13.5px;color:var(--gris)}
+.tabla-precios thead tr:first-child th{font-size:15px;color:var(--tinta);padding-bottom:4px;border-bottom:0}
+.tabla-precios tbody th{font-weight:600}
+.tabla-precios tbody th small{display:block;font-weight:400;font-size:13px;color:var(--gris)}
+.tabla-precios tbody tr:last-child>*{border-bottom:0}
+.tabla-precios td.ts{font-weight:600}
+.tabla-precios td.mer{color:var(--gris)}
+.tabla-precios .sep{border-left:1px solid var(--linea)}
+.tabla-precios tr.on>*{background:rgba(227,160,92,.13)}
 </style>
 </head>
 <body>
@@ -818,35 +846,55 @@ h1,h2,h3{font-family:var(--serif);font-weight:300;letter-spacing:-.01em;font-opt
 </section>
 
 <!-- ============ PRECIOS ============ -->
-<!-- TODO: completar los tres montos "USD ___" antes de publicar -->
 <section class="sec" id="precios" style="padding-top:0">
   <div class="wrap">
     <h2 class="titulo">Clear pricing, stage by stage.</h2>
-    <p class="bajada">You pay per stage and can stop after any of them. The first diagnostic call is free.</p>
+    <p class="bajada">You pay per stage and can stop after any of them. The first diagnostic call is free. Pick your case to see the numbers.</p>
+    <div class="precio-ctl">
+      <div class="seg" id="seg-tipo" role="group" aria-label="Type of client"><button type="button" data-k="pro" aria-pressed="true">Professionals</button><button type="button" data-k="emp" aria-pressed="false">Companies</button></div>
+      <div class="seg" id="seg-tam" role="group" aria-label="Company size" hidden><button type="button" data-k="chica" aria-pressed="true">Small</button><button type="button" data-k="mediana" aria-pressed="false">Mid-size</button><button type="button" data-k="grande" aria-pressed="false">Large</button></div>
+      <p class="precio-quien" id="precio-quien">For independent professionals, practices and small studios.</p>
+    </div>
     <div class="planes">
       <article class="plan">
         <h3>Process mapping</h3>
         <p class="plan-para">To find out what is worth automating.</p>
-        <p class="plan-precio">USD ___<small>one-time, per process</small></p>
+        <p class="plan-precio"><span data-precio="0">USD 90</span><small>one-time, per process</small></p>
         <ul><li>A review of how you work today</li><li>Before and after map</li><li>What gets automated, what gets simplified and what stays the same</li><li>A fixed quote for the automation</li></ul>
         <a class="btn btn-tinta wa" href="#" target="_blank" rel="noopener">I want a process mapped</a>
       </article>
       <article class="plan destacado">
         <h3>Automation</h3>
         <p class="plan-para">To leave the process running on its own.</p>
-        <p class="plan-precio"><i>From</i>USD ___<small>per flow, depending on scope</small></p>
+        <p class="plan-precio"><i>From</i><span data-precio="1">USD 250</span><small>per flow, depending on scope</small></p>
         <ul><li>Flows built in Make or n8n</li><li>AI to understand messages, voice notes or photos</li><li>Tests with real cases from your business</li><li>Documentation and a walkthrough of how it works</li></ul>
         <a class="btn btn-wa wa" href="#" target="_blank" rel="noopener">I want to automate</a>
       </article>
       <article class="plan">
         <h3>Ongoing support</h3>
         <p class="plan-para">To keep it running.</p>
-        <p class="plan-precio">USD ___<small>per month</small></p>
+        <p class="plan-precio"><span data-precio="2">USD 45</span><small>per month</small></p>
         <ul><li>Monitoring of the flows</li><li>Fixes when a tool changes or something fails</li><li>Support over WhatsApp</li></ul>
         <a class="btn btn-tinta wa" href="#" target="_blank" rel="noopener">I want ongoing support</a>
       </article>
     </div>
-    <p class="planes-nota">Tools (Make, n8n, WhatsApp Business, AI) are paid separately to each provider. The quote details what they cost.</p>
+    <ul class="precio-desc"><li>The mapping fee is <b>fully credited</b> if you automate afterwards</li><li><b>15% off</b> from the second flow</li><li><b>First month</b> of support included</li></ul>
+    <h3 class="precio-h3">How they compare with the market.</h3>
+    <div class="tabla-wrap">
+      <table class="tabla-precios" id="tabla-precios">
+        <thead>
+          <tr><th></th><th colspan="3">TangoScript</th><th colspan="2" class="sep">Market reference</th></tr>
+          <tr><th scope="col"></th><th scope="col">Mapping</th><th scope="col">Automation, per flow</th><th scope="col">Support, per month</th><th scope="col" class="sep">Build, per flow</th><th scope="col">Monthly</th></tr>
+        </thead>
+        <tbody>
+          <tr data-k="pro" class="on"><th scope="row">Professional<small>independent or small studio</small></th><td class="ts">USD 90</td><td class="ts">from USD 250</td><td class="ts">USD 45</td><td class="mer sep">USD 150 – 800</td><td class="mer">USD 50 – 500</td></tr>
+          <tr data-k="chica"><th scope="row">Small company<small>up to 10 people</small></th><td class="ts">USD 180</td><td class="ts">from USD 500</td><td class="ts">USD 90</td><td class="mer sep">USD 500 – 2,000</td><td class="mer">USD 300 – 1,500</td></tr>
+          <tr data-k="mediana"><th scope="row">Mid-size company<small>11 to 50 people</small></th><td class="ts">USD 350</td><td class="ts">from USD 1,200</td><td class="ts">USD 220</td><td class="mer sep">USD 1,500 – 5,000</td><td class="mer">USD 500 – 3,000</td></tr>
+          <tr data-k="grande"><th scope="row">Large company<small>more than 50 people</small></th><td class="ts">USD 700</td><td class="ts">from USD 2,500</td><td class="ts">USD 450</td><td class="mer sep">USD 5,000 – 20,000+</td><td class="mer">USD 3,000 – 8,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="planes-nota">Amounts in US dollars. TangoScript prices are launch prices. The market reference is indicative ranges published by automation agencies and consultants in 2026; they are not quotes. Tools (Make, n8n, WhatsApp Business, AI) are paid separately to each provider and are detailed in the quote.</p>
   </div>
 </section>
 
@@ -1213,6 +1261,21 @@ g.addEventListener('focusin',e=>{if(e.target.matches(':focus-visible')){pausa=tr
 document.addEventListener('visibilitychange',andar);
 new IntersectionObserver(es=>{visible=es[0].isIntersecting;andar()},{threshold:.25}).observe(g);
 pintar();})();
+
+/* ===== Precios: profesionales o empresas por tamaño ===== */
+(()=>{const P={"pro":[90,250,45],"chica":[180,500,90],"mediana":[350,1200,220],"grande":[700,2500,450]},Q={"pro":"For independent professionals, practices and small studios.","chica":"Companies with up to 10 people.","mediana":"Companies with 11 to 50 people.","grande":"Companies with more than 50 people, or several teams and systems."};
+const tipo=document.getElementById('seg-tipo'),tam=document.getElementById('seg-tam');if(!tipo)return;
+let k='pro',kt='chica';
+const marca=(g,v)=>g.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k===v));
+function ver(){
+  const emp=k!=='pro';tam.hidden=!emp;marca(tipo,emp?'emp':'pro');marca(tam,kt);
+  document.querySelectorAll('[data-precio]').forEach(e=>e.textContent='USD '+P[k][+e.dataset.precio].toLocaleString('en-US'));
+  document.getElementById('precio-quien').textContent=Q[k];
+  document.querySelectorAll('#tabla-precios tbody tr').forEach(r=>r.classList.toggle('on',r.dataset.k===k));
+}
+tipo.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;k=b.dataset.k==='pro'?'pro':kt;ver()});
+tam.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;k=kt=b.dataset.k;ver()});
+})();
 
 /* ===== Mapas de procesos ===== */
 (()=>{
